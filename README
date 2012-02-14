@@ -1,0 +1,17 @@
+ _  __       __      __   _         __      _______ _______ 
+| |/ /       \ \    / /  | |        \ \    / / ____|__   __|
+| ' / ___ _   \ \  / /_ _| |_   _  __\ \  / / (___    | |   
+|  < / _ \ | | \ \/ / _` | | | | |/ _ \ \/ / \___ \   | |   
+| . \  __/ |_| |\  / (_| | | |_| |  __/\  /  ____) |  | |   
+|_|\_\___|\__, | \/ \__,_|_|\__,_|\___| \/  |_____/   |_|   
+           __/ |                                            
+          |___/         
+
+KeyValueVST routes JSON formatted, sample accurate 
+timestamped, bars of midi in and out of an IPC Pipe
+
+KeyValueVST is built using JUCE 
+www.rawmaterialsoftware.com
+
+                                      www.flipmu.com
+                               owensvallis@gmail.com
