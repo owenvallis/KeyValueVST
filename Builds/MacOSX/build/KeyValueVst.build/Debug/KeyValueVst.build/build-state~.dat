@@ -1,857 +1,0 @@
-TKeyValueVst
-v4
-r1
-cCheck dependencies
-cProcessInfoPlistFile /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/Debug/KeyValueVst.component/Contents/Info.plist Info.plist
-cRez /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/ResourceManagerResources/Objects/juce_AU_Resources.rsrc ../../JuceLibraryCode/modules/juce_audio_plugin_client/AU/juce_AU_Resources.r
-cRez /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/ResourceManagerResources/Objects/juce_RTAS_MacResources.rsrc ../../JuceLibraryCode/modules/juce_audio_plugin_client/RTAS/juce_RTAS_MacResources.r
-cResMergerCollector /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/ResourceManagerResources/KeyValueVst.rsrc
-cResMergerProduct /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/Debug/KeyValueVst.component/Contents/Resources/KeyValueVst.rsrc
-cCompileC build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/IPCBus.o /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../Source/IPCBus.cpp normal i386 c++ com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/BackgroundThread.o /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../Source/BackgroundThread.cpp normal i386 c++ com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/IPCMIDIConnection.o /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../Source/IPCMIDIConnection.cpp normal i386 c++ com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/KeyValueMIDIRecieve.o /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../Source/KeyValueMIDIRecieve.cpp normal i386 c++ com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/MIDIAggregater.o /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../Source/MIDIAggregater.cpp normal i386 c++ com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/PluginProcessor.o /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../Source/PluginProcessor.cpp normal i386 c++ com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/PluginEditor.o /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../Source/PluginEditor.cpp normal i386 c++ com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/juce_AU_Wrapper.o /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_plugin_client/AU/juce_AU_Wrapper.mm normal i386 objective-c++ com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/juce_audio_basics.o /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_basics/juce_audio_basics.mm normal i386 objective-c++ com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/juce_audio_devices.o /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_devices/juce_audio_devices.mm normal i386 objective-c++ com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/juce_audio_formats.o /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_formats/juce_audio_formats.mm normal i386 objective-c++ com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/juce_audio_processors.o /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_processors/juce_audio_processors.mm normal i386 objective-c++ com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/juce_core.o /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_core/juce_core.mm normal i386 objective-c++ com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/juce_cryptography.o /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_cryptography/juce_cryptography.mm normal i386 objective-c++ com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/juce_data_structures.o /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_data_structures/juce_data_structures.mm normal i386 objective-c++ com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/juce_events.o /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_events/juce_events.mm normal i386 objective-c++ com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/juce_graphics.o /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_graphics/juce_graphics.mm normal i386 objective-c++ com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/juce_gui_basics.o /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_gui_basics/juce_gui_basics.mm normal i386 objective-c++ com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/juce_gui_extra.o /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_gui_extra/juce_gui_extra.mm normal i386 objective-c++ com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/juce_RTAS_DigiCode1.o /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_plugin_client/RTAS/juce_RTAS_DigiCode1.cpp normal i386 c++ com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/juce_RTAS_DigiCode2.o /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_plugin_client/RTAS/juce_RTAS_DigiCode2.cpp normal i386 c++ com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/juce_RTAS_DigiCode3.o /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_plugin_client/RTAS/juce_RTAS_DigiCode3.cpp normal i386 c++ com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/juce_RTAS_MacUtilities.o /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_plugin_client/RTAS/juce_RTAS_MacUtilities.mm normal i386 objective-c++ com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/juce_RTAS_Wrapper.o /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_plugin_client/RTAS/juce_RTAS_Wrapper.cpp normal i386 c++ com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/juce_VST_Wrapper-51CE055A3511B99E.o /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_plugin_client/VST/juce_VST_Wrapper.cpp normal i386 c++ com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/juce_VST_Wrapper-1869C4B2BB9F48B.o /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_plugin_client/VST/juce_VST_Wrapper.mm normal i386 objective-c++ com.apple.compilers.llvm.clang.1_0.compiler
-cLd /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/Debug/KeyValueVst.component/Contents/MacOS/KeyValueVst normal i386
-
-N/System/Library/Frameworks/AudioToolbox.framework/AudioToolbox
-c000000004F1A6E66000000000039E5E0
-t1327132262
-s3794400
-
-N/System/Library/Frameworks/Carbon.framework/Carbon
-c000000004E1B3B730000000000006530
-t1310407539
-s25904
-
-N/System/Library/Frameworks/Cocoa.framework/Cocoa
-c000000004E1B3B730000000000006560
-t1310407539
-s25952
-
-N/System/Library/Frameworks/CoreAudio.framework/CoreAudio
-c000000004F29E07E00000000001195D0
-t1328144510
-s1152464
-
-N/System/Library/Frameworks/CoreMIDI.framework/CoreMIDI
-c000000004E1B3B9A00000000000E5590
-t1310407578
-s939408
-
-N/System/Library/Frameworks/DiscRecording.framework/DiscRecording
-c000000004F29E07E000000000026FEF0
-t1328144510
-s2555632
-
-N/System/Library/Frameworks/IOKit.framework/IOKit
-c000000004F29E07E000000000011FDE0
-t1328144510
-s1179104
-
-N/System/Library/Frameworks/QuartzCore.framework/QuartzCore
-c000000004F1A6E4F00000000004374B0
-t1327132239
-s4420784
-
-N/System/Library/Frameworks/WebKit.framework/WebKit
-c000000004F29E0810000000000432960
-t1328144513
-s4401504
-
-N/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_basics/juce_audio_basics.mm
-c000000004F3AC8C700000000000004A1
-t1329252551
-s1185
-
-N/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_devices/juce_audio_devices.mm
-c000000004F3AC8C700000000000004A2
-t1329252551
-s1186
-
-N/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_formats/juce_audio_formats.mm
-c000000004F3AC8C700000000000004A2
-t1329252551
-s1186
-
-N/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_plugin_client/AU/juce_AU_Resources.r
-c000000004F3AC8C70000000000000B28
-t1329252551
-s2856
-
-N/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_plugin_client/AU/juce_AU_Wrapper.mm
-c000000004F3AC8C7000000000000BDA1
-t1329252551
-s48545
-
-N/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_plugin_client/RTAS/juce_RTAS_DigiCode1.cpp
-c000000004F3AC8C70000000000000A92
-t1329252551
-s2706
-
-N/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_plugin_client/RTAS/juce_RTAS_DigiCode2.cpp
-c000000004F3AC8C70000000000000994
-t1329252551
-s2452
-
-N/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_plugin_client/RTAS/juce_RTAS_DigiCode3.cpp
-c000000004F3AC8C70000000000000DBF
-t1329252551
-s3519
-
-N/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_plugin_client/RTAS/juce_RTAS_MacResources.r
-c000000004F3AC8C700000000000000C9
-t1329252551
-s201
-
-N/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_plugin_client/RTAS/juce_RTAS_MacUtilities.mm
-c000000004F3AC8C7000000000000148F
-t1329252551
-s5263
-
-N/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_plugin_client/RTAS/juce_RTAS_Wrapper.cpp
-c000000004F3AC8C70000000000008A17
-t1329252551
-s35351
-
-N/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_plugin_client/VST/juce_VST_Wrapper.cpp
-c000000004F3AC8C7000000000000BD13
-t1329252551
-s48403
-
-N/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_plugin_client/VST/juce_VST_Wrapper.mm
-c000000004F3AC8C70000000000002426
-t1329252551
-s9254
-
-N/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_processors/juce_audio_processors.mm
-c000000004F3AC8C700000000000004A5
-t1329252551
-s1189
-
-N/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_core/juce_core.mm
-c000000004F3AC8C70000000000000499
-t1329252551
-s1177
-
-N/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_cryptography/juce_cryptography.mm
-c000000004F3AC8C800000000000004A1
-t1329252552
-s1185
-
-N/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_data_structures/juce_data_structures.mm
-c000000004F3AC8C800000000000004A4
-t1329252552
-s1188
-
-N/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_events/juce_events.mm
-c000000004F3AC8C8000000000000049B
-t1329252552
-s1179
-
-N/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_graphics/juce_graphics.mm
-c000000004F3AC8C8000000000000049D
-t1329252552
-s1181
-
-N/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_gui_basics/juce_gui_basics.mm
-c000000004F3AC8C8000000000000049F
-t1329252552
-s1183
-
-N/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_gui_extra/juce_gui_extra.mm
-c000000004F3AC8C8000000000000049E
-t1329252552
-s1182
-
-N/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../Source/BackgroundThread.cpp
-c000000004F3748F90000000000000533
-t1329023225
-s1331
-
-N/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../Source/IPCBus.cpp
-c000000004F374E5400000000000004EA
-t1329024596
-s1258
-
-N/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../Source/IPCMIDIConnection.cpp
-c000000004F3228240000000000000109
-t1328687140
-s265
-
-N/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../Source/KeyValueMIDIRecieve.cpp
-c000000004F3752A8000000000000042E
-t1329025704
-s1070
-
-N/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../Source/MIDIAggregater.cpp
-c000000004F3986A500000000000017F9
-t1329170085
-s6137
-
-N/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../Source/PluginEditor.cpp
-c000000004F34E2E20000000000000D28
-t1328866018
-s3368
-
-N/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../Source/PluginProcessor.cpp
-c000000004F374E0A00000000000014A1
-t1329024522
-s5281
-
-N/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/Debug/KeyValueVst.component
-t2
-s0
-
-N/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/Debug/KeyValueVst.component/Contents/Info.plist
-t2
-s0
-
-N/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/Debug/KeyValueVst.component/Contents/MacOS/KeyValueVst
-t2
-s0
-
-N/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/Debug/KeyValueVst.component/Contents/PkgInfo
-t2
-s0
-
-N/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/Debug/KeyValueVst.component/Contents/Resources/KeyValueVst.rsrc
-t2
-s0
-
-N/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/BackgroundThread.o
-t2
-s0
-
-N/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/IPCBus.o
-t2
-s0
-
-N/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/IPCMIDIConnection.o
-t2
-s0
-
-N/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/KeyValueMIDIRecieve.o
-t2
-s0
-
-N/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/KeyValueVst.LinkFileList
-c000000004F3AC9EC0000000000000FC4
-t1329252844
-s4036
-
-N/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/MIDIAggregater.o
-t2
-s0
-
-N/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/PluginEditor.o
-t2
-s0
-
-N/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/PluginProcessor.o
-t2
-s0
-
-N/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/juce_AU_Wrapper.o
-t2
-s0
-
-N/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/juce_RTAS_DigiCode1.o
-t2
-s0
-
-N/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/juce_RTAS_DigiCode2.o
-t2
-s0
-
-N/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/juce_RTAS_DigiCode3.o
-t2
-s0
-
-N/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/juce_RTAS_MacUtilities.o
-t2
-s0
-
-N/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/juce_RTAS_Wrapper.o
-t2
-s0
-
-N/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/juce_VST_Wrapper-1869C4B2BB9F48B.o
-t2
-s0
-
-N/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/juce_VST_Wrapper-51CE055A3511B99E.o
-t2
-s0
-
-N/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/juce_audio_basics.o
-t2
-s0
-
-N/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/juce_audio_devices.o
-t2
-s0
-
-N/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/juce_audio_formats.o
-t2
-s0
-
-N/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/juce_audio_processors.o
-t2
-s0
-
-N/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/juce_core.o
-t2
-s0
-
-N/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/juce_cryptography.o
-t2
-s0
-
-N/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/juce_data_structures.o
-t2
-s0
-
-N/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/juce_events.o
-t2
-s0
-
-N/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/juce_graphics.o
-t2
-s0
-
-N/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/juce_gui_basics.o
-t2
-s0
-
-N/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/juce_gui_extra.o
-t2
-s0
-
-N/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/ResourceManagerResources/KeyValueVst.rsrc
-t2
-s0
-
-N/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/ResourceManagerResources/Objects/juce_AU_Resources.rsrc
-t2
-s0
-
-N/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/ResourceManagerResources/Objects/juce_RTAS_MacResources.rsrc
-t2
-s0
-
-N/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/Script-DF86831D0A3C2899A5B61EB9.sh
-c000000004F3AC9EC0000000000000588
-t1329252844
-s1416
-
-NInfo.plist
-c000000004F3AC76400000000000002CC
-t1329252196
-s716
-
-CBuild AST from /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_basics/juce_audio_basics.mm
-r0
-
-CBuild AST from /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_devices/juce_audio_devices.mm
-r0
-
-CBuild AST from /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_formats/juce_audio_formats.mm
-r0
-
-CBuild AST from /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_plugin_client/AU/juce_AU_Wrapper.mm
-r0
-
-CBuild AST from /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_plugin_client/RTAS/juce_RTAS_DigiCode1.cpp
-r0
-
-CBuild AST from /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_plugin_client/RTAS/juce_RTAS_DigiCode2.cpp
-r0
-
-CBuild AST from /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_plugin_client/RTAS/juce_RTAS_DigiCode3.cpp
-r0
-
-CBuild AST from /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_plugin_client/RTAS/juce_RTAS_MacUtilities.mm
-r0
-
-CBuild AST from /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_plugin_client/RTAS/juce_RTAS_Wrapper.cpp
-r0
-
-CBuild AST from /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_plugin_client/VST/juce_VST_Wrapper.cpp
-r0
-
-CBuild AST from /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_plugin_client/VST/juce_VST_Wrapper.mm
-r0
-
-CBuild AST from /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_processors/juce_audio_processors.mm
-r0
-
-CBuild AST from /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_core/juce_core.mm
-r0
-
-CBuild AST from /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_cryptography/juce_cryptography.mm
-r0
-
-CBuild AST from /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_data_structures/juce_data_structures.mm
-r0
-
-CBuild AST from /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_events/juce_events.mm
-r0
-
-CBuild AST from /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_graphics/juce_graphics.mm
-r0
-
-CBuild AST from /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_gui_basics/juce_gui_basics.mm
-r0
-
-CBuild AST from /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_gui_extra/juce_gui_extra.mm
-r0
-
-CBuild AST from /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../Source/BackgroundThread.cpp
-r0
-
-CBuild AST from /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../Source/IPCBus.cpp
-r0
-
-CBuild AST from /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../Source/IPCMIDIConnection.cpp
-r0
-
-CBuild AST from /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../Source/KeyValueMIDIRecieve.cpp
-r0
-
-CBuild AST from /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../Source/MIDIAggregater.cpp
-r0
-
-CBuild AST from /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../Source/PluginEditor.cpp
-r0
-
-CBuild AST from /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../Source/PluginProcessor.cpp
-r0
-
-CCheck dependencies
-r0
-lSLF04#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection18"Check dependenciesc9048c6c01ebb441^af77bf6c01ebb441^---0#1#0#--18"Check dependencies36"7BDE482E-788A-4D05-A44A-F564ADC5A939-
-
-CCompileC build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/BackgroundThread.o /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../Source/BackgroundThread.cpp normal i386 c++ com.apple.compilers.llvm.clang.1_0.compiler
-s350945645.729721
-e350945651.944968
-r1
-xCompileC
-xbuild/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/BackgroundThread.o
-x/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../Source/BackgroundThread.cpp
-xnormal
-xi386
-xc++
-xcom.apple.compilers.llvm.clang.1_0.compiler
-lSLF04#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection108"Compile /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../Source/BackgroundThread.cpp47e5ba6d01ebb441^32e3f17301ebb441^---0#0#0#-19%DVTDocumentLocation2@116"file://localhost/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../Source/BackgroundThread.cpp0000000000000000^2379"CompileC build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/BackgroundThread.o ../../Source/BackgroundThread.cpp normal i386 c++ com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX    setenv LANG en_US.US-ASCII    /Developer/usr/bin/clang -x c++ -arch i386 -fmessage-length=0 -fdiagnostics-print-source-range-info -fdiagnostics-show-category=id -fdiagnostics-parseable-fixits -std=c++0x -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wnon-virtual-dtor -Wparentheses -Wswitch -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-shorten-64-to-32 -Wc++0x-extensions -D_DEBUG=1 -DDEBUG=1 -DJUCE_ObjCExtraSuffix=TecZ6l -DJUCER_XCODE_MAC_F6D2F4CF=1 -fasm-blocks -gdwarf-2 -fvisibility-inlines-hidden -Wno-sign-conversion -iquote /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/KeyValueVst-generated-files.hmap -I/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/KeyValueVst-own-target-headers.hmap -I/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/KeyValueVst-all-target-headers.hmap -iquote /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/KeyValueVst-project-headers.hmap -I/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/Debug/include -I/Users/owenvallis/SDKs/vstsdk2.4 -I../../JuceLibraryCode -I/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/DerivedSources/i386 -I/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/DerivedSources -Wreorder -F/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/Debug -MMD -MT dependencies -MF /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/BackgroundThread.d -c /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../Source/BackgroundThread.cpp -o /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/BackgroundThread.o36"665F7F35-CAAF-4EEC-A3CB-285CE4A89F3A-
-
-CCompileC build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/IPCBus.o /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../Source/IPCBus.cpp normal i386 c++ com.apple.compilers.llvm.clang.1_0.compiler
-s350945645.729714
-e350945652.329717
-r1
-xCompileC
-xbuild/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/IPCBus.o
-x/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../Source/IPCBus.cpp
-xnormal
-xi386
-xc++
-xcom.apple.compilers.llvm.clang.1_0.compiler
-lSLF04#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection98"Compile /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../Source/IPCBus.cppe2e4ba6d01ebb441^3b6e547401ebb441^---0#0#0#-19%DVTDocumentLocation2@106"file://localhost/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../Source/IPCBus.cpp0000000000000000^2329"CompileC build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/IPCBus.o ../../Source/IPCBus.cpp normal i386 c++ com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX    setenv LANG en_US.US-ASCII    /Developer/usr/bin/clang -x c++ -arch i386 -fmessage-length=0 -fdiagnostics-print-source-range-info -fdiagnostics-show-category=id -fdiagnostics-parseable-fixits -std=c++0x -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wnon-virtual-dtor -Wparentheses -Wswitch -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-shorten-64-to-32 -Wc++0x-extensions -D_DEBUG=1 -DDEBUG=1 -DJUCE_ObjCExtraSuffix=TecZ6l -DJUCER_XCODE_MAC_F6D2F4CF=1 -fasm-blocks -gdwarf-2 -fvisibility-inlines-hidden -Wno-sign-conversion -iquote /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/KeyValueVst-generated-files.hmap -I/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/KeyValueVst-own-target-headers.hmap -I/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/KeyValueVst-all-target-headers.hmap -iquote /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/KeyValueVst-project-headers.hmap -I/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/Debug/include -I/Users/owenvallis/SDKs/vstsdk2.4 -I../../JuceLibraryCode -I/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/DerivedSources/i386 -I/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/DerivedSources -Wreorder -F/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/Debug -MMD -MT dependencies -MF /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/IPCBus.d -c /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../Source/IPCBus.cpp -o /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/IPCBus.o36"FEB653E1-52EC-4ABD-8BDD-264FB301337E-
-
-CCompileC build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/IPCMIDIConnection.o /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../Source/IPCMIDIConnection.cpp normal i386 c++ com.apple.compilers.llvm.clang.1_0.compiler
-s350945645.729727
-e350945645.748113
-r1
-xCompileC
-xbuild/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/IPCMIDIConnection.o
-x/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../Source/IPCMIDIConnection.cpp
-xnormal
-xi386
-xc++
-xcom.apple.compilers.llvm.clang.1_0.compiler
-lSLF04#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection109"Compile /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../Source/IPCMIDIConnection.cpp79e5ba6d01ebb441^5f95bf6d01ebb441^---0#0#0#-19%DVTDocumentLocation2@117"file://localhost/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../Source/IPCMIDIConnection.cpp0000000000000000^2384"CompileC build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/IPCMIDIConnection.o ../../Source/IPCMIDIConnection.cpp normal i386 c++ com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX    setenv LANG en_US.US-ASCII    /Developer/usr/bin/clang -x c++ -arch i386 -fmessage-length=0 -fdiagnostics-print-source-range-info -fdiagnostics-show-category=id -fdiagnostics-parseable-fixits -std=c++0x -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wnon-virtual-dtor -Wparentheses -Wswitch -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-shorten-64-to-32 -Wc++0x-extensions -D_DEBUG=1 -DDEBUG=1 -DJUCE_ObjCExtraSuffix=TecZ6l -DJUCER_XCODE_MAC_F6D2F4CF=1 -fasm-blocks -gdwarf-2 -fvisibility-inlines-hidden -Wno-sign-conversion -iquote /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/KeyValueVst-generated-files.hmap -I/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/KeyValueVst-own-target-headers.hmap -I/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/KeyValueVst-all-target-headers.hmap -iquote /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/KeyValueVst-project-headers.hmap -I/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/Debug/include -I/Users/owenvallis/SDKs/vstsdk2.4 -I../../JuceLibraryCode -I/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/DerivedSources/i386 -I/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/DerivedSources -Wreorder -F/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/Debug -MMD -MT dependencies -MF /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/IPCMIDIConnection.d -c /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../Source/IPCMIDIConnection.cpp -o /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/IPCMIDIConnection.o36"935F7C3F-8CAE-4D47-BDF7-A7E10D112873-
-
-CCompileC build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/KeyValueMIDIRecieve.o /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../Source/KeyValueMIDIRecieve.cpp normal i386 c++ com.apple.compilers.llvm.clang.1_0.compiler
-s350945645.729749
-e350945647.395011
-r1
-xCompileC
-xbuild/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/KeyValueMIDIRecieve.o
-x/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../Source/KeyValueMIDIRecieve.cpp
-xnormal
-xi386
-xc++
-xcom.apple.compilers.llvm.clang.1_0.compiler
-lSLF04#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection111"Compile /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../Source/KeyValueMIDIRecieve.cpp39ecba6d01ebb441^3f1f656f01ebb441^---0#0#0#-19%DVTDocumentLocation2@119"file://localhost/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../Source/KeyValueMIDIRecieve.cpp0000000000000000^2394"CompileC build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/KeyValueMIDIRecieve.o ../../Source/KeyValueMIDIRecieve.cpp normal i386 c++ com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX    setenv LANG en_US.US-ASCII    /Developer/usr/bin/clang -x c++ -arch i386 -fmessage-length=0 -fdiagnostics-print-source-range-info -fdiagnostics-show-category=id -fdiagnostics-parseable-fixits -std=c++0x -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wnon-virtual-dtor -Wparentheses -Wswitch -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-shorten-64-to-32 -Wc++0x-extensions -D_DEBUG=1 -DDEBUG=1 -DJUCE_ObjCExtraSuffix=TecZ6l -DJUCER_XCODE_MAC_F6D2F4CF=1 -fasm-blocks -gdwarf-2 -fvisibility-inlines-hidden -Wno-sign-conversion -iquote /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/KeyValueVst-generated-files.hmap -I/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/KeyValueVst-own-target-headers.hmap -I/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/KeyValueVst-all-target-headers.hmap -iquote /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/KeyValueVst-project-headers.hmap -I/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/Debug/include -I/Users/owenvallis/SDKs/vstsdk2.4 -I../../JuceLibraryCode -I/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/DerivedSources/i386 -I/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/DerivedSources -Wreorder -F/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/Debug -MMD -MT dependencies -MF /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/KeyValueMIDIRecieve.d -c /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../Source/KeyValueMIDIRecieve.cpp -o /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/KeyValueMIDIRecieve.o36"42866E27-DC12-42EE-8CB9-A328A460A1DF-
-
-CCompileC build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/MIDIAggregater.o /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../Source/MIDIAggregater.cpp normal i386 c++ com.apple.compilers.llvm.clang.1_0.compiler
-s350945645.730137
-e350945652.332493
-r1
-xCompileC
-xbuild/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/MIDIAggregater.o
-x/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../Source/MIDIAggregater.cpp
-xnormal
-xi386
-xc++
-xcom.apple.compilers.llvm.clang.1_0.compiler
-lSLF04#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection106"Compile /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../Source/MIDIAggregater.cppa302bb6d01ebb441^471d557401ebb441^---0#0#0#-19%DVTDocumentLocation2@114"file://localhost/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../Source/MIDIAggregater.cpp0000000000000000^2369"CompileC build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/MIDIAggregater.o ../../Source/MIDIAggregater.cpp normal i386 c++ com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX    setenv LANG en_US.US-ASCII    /Developer/usr/bin/clang -x c++ -arch i386 -fmessage-length=0 -fdiagnostics-print-source-range-info -fdiagnostics-show-category=id -fdiagnostics-parseable-fixits -std=c++0x -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wnon-virtual-dtor -Wparentheses -Wswitch -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-shorten-64-to-32 -Wc++0x-extensions -D_DEBUG=1 -DDEBUG=1 -DJUCE_ObjCExtraSuffix=TecZ6l -DJUCER_XCODE_MAC_F6D2F4CF=1 -fasm-blocks -gdwarf-2 -fvisibility-inlines-hidden -Wno-sign-conversion -iquote /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/KeyValueVst-generated-files.hmap -I/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/KeyValueVst-own-target-headers.hmap -I/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/KeyValueVst-all-target-headers.hmap -iquote /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/KeyValueVst-project-headers.hmap -I/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/Debug/include -I/Users/owenvallis/SDKs/vstsdk2.4 -I../../JuceLibraryCode -I/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/DerivedSources/i386 -I/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/DerivedSources -Wreorder -F/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/Debug -MMD -MT dependencies -MF /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/MIDIAggregater.d -c /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../Source/MIDIAggregater.cpp -o /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/MIDIAggregater.o36"4C0A144C-4178-44A2-B8B5-A711819E1D2C-
-
-CCompileC build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/PluginEditor.o /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../Source/PluginEditor.cpp normal i386 c++ com.apple.compilers.llvm.clang.1_0.compiler
-s350945645.730166
-e350945651.947971
-r1
-xCompileC
-xbuild/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/PluginEditor.o
-x/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../Source/PluginEditor.cpp
-xnormal
-xi386
-xc++
-xcom.apple.compilers.llvm.clang.1_0.compiler
-lSLF04#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection104"Compile /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../Source/PluginEditor.cppa705bb6d01ebb441^d6adf27301ebb441^---0#0#0#-19%DVTDocumentLocation2@112"file://localhost/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../Source/PluginEditor.cpp0000000000000000^2359"CompileC build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/PluginEditor.o ../../Source/PluginEditor.cpp normal i386 c++ com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX    setenv LANG en_US.US-ASCII    /Developer/usr/bin/clang -x c++ -arch i386 -fmessage-length=0 -fdiagnostics-print-source-range-info -fdiagnostics-show-category=id -fdiagnostics-parseable-fixits -std=c++0x -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wnon-virtual-dtor -Wparentheses -Wswitch -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-shorten-64-to-32 -Wc++0x-extensions -D_DEBUG=1 -DDEBUG=1 -DJUCE_ObjCExtraSuffix=TecZ6l -DJUCER_XCODE_MAC_F6D2F4CF=1 -fasm-blocks -gdwarf-2 -fvisibility-inlines-hidden -Wno-sign-conversion -iquote /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/KeyValueVst-generated-files.hmap -I/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/KeyValueVst-own-target-headers.hmap -I/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/KeyValueVst-all-target-headers.hmap -iquote /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/KeyValueVst-project-headers.hmap -I/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/Debug/include -I/Users/owenvallis/SDKs/vstsdk2.4 -I../../JuceLibraryCode -I/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/DerivedSources/i386 -I/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/DerivedSources -Wreorder -F/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/Debug -MMD -MT dependencies -MF /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/PluginEditor.d -c /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../Source/PluginEditor.cpp -o /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/PluginEditor.o36"CBE6B1EB-36CC-4F1D-B2F6-E04F99C2C3E5-
-
-CCompileC build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/PluginProcessor.o /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../Source/PluginProcessor.cpp normal i386 c++ com.apple.compilers.llvm.clang.1_0.compiler
-s350945645.730145
-e350945652.169732
-r1
-xCompileC
-xbuild/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/PluginProcessor.o
-x/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../Source/PluginProcessor.cpp
-xnormal
-xi386
-xc++
-xcom.apple.compilers.llvm.clang.1_0.compiler
-lSLF04#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection107"Compile /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../Source/PluginProcessor.cpp5800bb6d01ebb441^d2732b7401ebb441^---0#0#0#-19%DVTDocumentLocation2@115"file://localhost/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../Source/PluginProcessor.cpp0000000000000000^2374"CompileC build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/PluginProcessor.o ../../Source/PluginProcessor.cpp normal i386 c++ com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX    setenv LANG en_US.US-ASCII    /Developer/usr/bin/clang -x c++ -arch i386 -fmessage-length=0 -fdiagnostics-print-source-range-info -fdiagnostics-show-category=id -fdiagnostics-parseable-fixits -std=c++0x -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wnon-virtual-dtor -Wparentheses -Wswitch -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-shorten-64-to-32 -Wc++0x-extensions -D_DEBUG=1 -DDEBUG=1 -DJUCE_ObjCExtraSuffix=TecZ6l -DJUCER_XCODE_MAC_F6D2F4CF=1 -fasm-blocks -gdwarf-2 -fvisibility-inlines-hidden -Wno-sign-conversion -iquote /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/KeyValueVst-generated-files.hmap -I/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/KeyValueVst-own-target-headers.hmap -I/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/KeyValueVst-all-target-headers.hmap -iquote /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/KeyValueVst-project-headers.hmap -I/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/Debug/include -I/Users/owenvallis/SDKs/vstsdk2.4 -I../../JuceLibraryCode -I/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/DerivedSources/i386 -I/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/DerivedSources -Wreorder -F/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/Debug -MMD -MT dependencies -MF /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/PluginProcessor.d -c /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../Source/PluginProcessor.cpp -o /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/PluginProcessor.o36"77F02548-53B0-44C6-82FB-394581AA67DB-
-
-CCompileC build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/juce_AU_Wrapper.o /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_plugin_client/AU/juce_AU_Wrapper.mm normal i386 objective-c++ com.apple.compilers.llvm.clang.1_0.compiler
-s350945645.730183
-e350945645.758625
-r1
-xCompileC
-xbuild/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/juce_AU_Wrapper.o
-x/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_plugin_client/AU/juce_AU_Wrapper.mm
-xnormal
-xi386
-xobjective-c++
-xcom.apple.compilers.llvm.clang.1_0.compiler
-lSLF04#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection151"Compile /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_plugin_client/AU/juce_AU_Wrapper.mm4f06bb6d01ebb441^ec34c26d01ebb441^---0#0#0#-19%DVTDocumentLocation2@159"file://localhost/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_plugin_client/AU/juce_AU_Wrapper.mm0000000000000000^2658"CompileC build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/juce_AU_Wrapper.o ../../JuceLibraryCode/modules/juce_audio_plugin_client/AU/juce_AU_Wrapper.mm normal i386 objective-c++ com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX    setenv LANG en_US.US-ASCII    /Developer/usr/bin/clang -x objective-c++ -arch i386 -fmessage-length=0 -fdiagnostics-print-source-range-info -fdiagnostics-show-category=id -fdiagnostics-parseable-fixits -std=c++0x -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wnon-virtual-dtor -Wparentheses -Wswitch -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-shorten-64-to-32 -Wno-arc-abi -Wc++0x-extensions -D_DEBUG=1 -DDEBUG=1 -DJUCE_ObjCExtraSuffix=TecZ6l -DJUCER_XCODE_MAC_F6D2F4CF=1 -fasm-blocks -gdwarf-2 -fvisibility-inlines-hidden -Wno-sign-conversion "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -iquote /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/KeyValueVst-generated-files.hmap -I/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/KeyValueVst-own-target-headers.hmap -I/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/KeyValueVst-all-target-headers.hmap -iquote /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/KeyValueVst-project-headers.hmap -I/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/Debug/include -I/Users/owenvallis/SDKs/vstsdk2.4 -I../../JuceLibraryCode -I/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/DerivedSources/i386 -I/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/DerivedSources -Wreorder -F/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/Debug -MMD -MT dependencies -MF /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/juce_AU_Wrapper.d -c /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_plugin_client/AU/juce_AU_Wrapper.mm -o /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/juce_AU_Wrapper.o36"B7319C71-2B3E-4F39-B889-5167CC25CFB4-
-
-CCompileC build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/juce_RTAS_DigiCode1.o /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_plugin_client/RTAS/juce_RTAS_DigiCode1.cpp normal i386 c++ com.apple.compilers.llvm.clang.1_0.compiler
-s350945658.132728
-e350945658.169199
-r1
-xCompileC
-xbuild/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/juce_RTAS_DigiCode1.o
-x/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_plugin_client/RTAS/juce_RTAS_DigiCode1.cpp
-xnormal
-xi386
-xc++
-xcom.apple.compilers.llvm.clang.1_0.compiler
-lSLF04#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection158"Compile /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_plugin_client/RTAS/juce_RTAS_DigiCode1.cppfb21227a01ebb441^8b512b7a01ebb441^---0#0#0#-19%DVTDocumentLocation2@166"file://localhost/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_plugin_client/RTAS/juce_RTAS_DigiCode1.cpp0000000000000000^2491"CompileC build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/juce_RTAS_DigiCode1.o ../../JuceLibraryCode/modules/juce_audio_plugin_client/RTAS/juce_RTAS_DigiCode1.cpp normal i386 c++ com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX    setenv LANG en_US.US-ASCII    /Developer/usr/bin/clang -x c++ -arch i386 -fmessage-length=0 -fdiagnostics-print-source-range-info -fdiagnostics-show-category=id -fdiagnostics-parseable-fixits -std=c++0x -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wnon-virtual-dtor -Wparentheses -Wswitch -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-shorten-64-to-32 -Wc++0x-extensions -D_DEBUG=1 -DDEBUG=1 -DJUCE_ObjCExtraSuffix=TecZ6l -DJUCER_XCODE_MAC_F6D2F4CF=1 -fasm-blocks -gdwarf-2 -fvisibility-inlines-hidden -Wno-sign-conversion -iquote /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/KeyValueVst-generated-files.hmap -I/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/KeyValueVst-own-target-headers.hmap -I/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/KeyValueVst-all-target-headers.hmap -iquote /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/KeyValueVst-project-headers.hmap -I/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/Debug/include -I/Users/owenvallis/SDKs/vstsdk2.4 -I../../JuceLibraryCode -I/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/DerivedSources/i386 -I/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/DerivedSources -Wreorder -F/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/Debug -w -MMD -MT dependencies -MF /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/juce_RTAS_DigiCode1.d -c /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_plugin_client/RTAS/juce_RTAS_DigiCode1.cpp -o /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/juce_RTAS_DigiCode1.o36"036AFD53-FD2B-4891-BD70-036CC55CA75F-
-
-CCompileC build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/juce_RTAS_DigiCode2.o /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_plugin_client/RTAS/juce_RTAS_DigiCode2.cpp normal i386 c++ com.apple.compilers.llvm.clang.1_0.compiler
-s350945658.170517
-e350945658.191795
-r1
-xCompileC
-xbuild/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/juce_RTAS_DigiCode2.o
-x/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_plugin_client/RTAS/juce_RTAS_DigiCode2.cpp
-xnormal
-xi386
-xc++
-xcom.apple.compilers.llvm.clang.1_0.compiler
-lSLF04#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection158"Compile /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_plugin_client/RTAS/juce_RTAS_DigiCode2.cppdbbe2b7a01ebb441^971a317a01ebb441^---0#0#0#-19%DVTDocumentLocation2@166"file://localhost/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_plugin_client/RTAS/juce_RTAS_DigiCode2.cpp0000000000000000^2491"CompileC build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/juce_RTAS_DigiCode2.o ../../JuceLibraryCode/modules/juce_audio_plugin_client/RTAS/juce_RTAS_DigiCode2.cpp normal i386 c++ com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX    setenv LANG en_US.US-ASCII    /Developer/usr/bin/clang -x c++ -arch i386 -fmessage-length=0 -fdiagnostics-print-source-range-info -fdiagnostics-show-category=id -fdiagnostics-parseable-fixits -std=c++0x -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wnon-virtual-dtor -Wparentheses -Wswitch -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-shorten-64-to-32 -Wc++0x-extensions -D_DEBUG=1 -DDEBUG=1 -DJUCE_ObjCExtraSuffix=TecZ6l -DJUCER_XCODE_MAC_F6D2F4CF=1 -fasm-blocks -gdwarf-2 -fvisibility-inlines-hidden -Wno-sign-conversion -iquote /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/KeyValueVst-generated-files.hmap -I/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/KeyValueVst-own-target-headers.hmap -I/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/KeyValueVst-all-target-headers.hmap -iquote /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/KeyValueVst-project-headers.hmap -I/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/Debug/include -I/Users/owenvallis/SDKs/vstsdk2.4 -I../../JuceLibraryCode -I/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/DerivedSources/i386 -I/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/DerivedSources -Wreorder -F/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/Debug -w -MMD -MT dependencies -MF /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/juce_RTAS_DigiCode2.d -c /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_plugin_client/RTAS/juce_RTAS_DigiCode2.cpp -o /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/juce_RTAS_DigiCode2.o36"25360F26-9A51-4DC0-805D-BFED378562A2-
-
-CCompileC build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/juce_RTAS_DigiCode3.o /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_plugin_client/RTAS/juce_RTAS_DigiCode3.cpp normal i386 c++ com.apple.compilers.llvm.clang.1_0.compiler
-s350945658.193135
-e350945658.221131
-r1
-xCompileC
-xbuild/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/juce_RTAS_DigiCode3.o
-x/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_plugin_client/RTAS/juce_RTAS_DigiCode3.cpp
-xnormal
-xi386
-xc++
-xcom.apple.compilers.llvm.clang.1_0.compiler
-lSLF04#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection158"Compile /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_plugin_client/RTAS/juce_RTAS_DigiCode3.cpp9a99317a01ebb441^529b387a01ebb441^---0#0#0#-19%DVTDocumentLocation2@166"file://localhost/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_plugin_client/RTAS/juce_RTAS_DigiCode3.cpp0000000000000000^2491"CompileC build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/juce_RTAS_DigiCode3.o ../../JuceLibraryCode/modules/juce_audio_plugin_client/RTAS/juce_RTAS_DigiCode3.cpp normal i386 c++ com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX    setenv LANG en_US.US-ASCII    /Developer/usr/bin/clang -x c++ -arch i386 -fmessage-length=0 -fdiagnostics-print-source-range-info -fdiagnostics-show-category=id -fdiagnostics-parseable-fixits -std=c++0x -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wnon-virtual-dtor -Wparentheses -Wswitch -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-shorten-64-to-32 -Wc++0x-extensions -D_DEBUG=1 -DDEBUG=1 -DJUCE_ObjCExtraSuffix=TecZ6l -DJUCER_XCODE_MAC_F6D2F4CF=1 -fasm-blocks -gdwarf-2 -fvisibility-inlines-hidden -Wno-sign-conversion -iquote /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/KeyValueVst-generated-files.hmap -I/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/KeyValueVst-own-target-headers.hmap -I/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/KeyValueVst-all-target-headers.hmap -iquote /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/KeyValueVst-project-headers.hmap -I/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/Debug/include -I/Users/owenvallis/SDKs/vstsdk2.4 -I../../JuceLibraryCode -I/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/DerivedSources/i386 -I/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/DerivedSources -Wreorder -F/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/Debug -w -MMD -MT dependencies -MF /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/juce_RTAS_DigiCode3.d -c /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_plugin_client/RTAS/juce_RTAS_DigiCode3.cpp -o /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/juce_RTAS_DigiCode3.o36"2C04B665-07FE-4DC0-B8E3-AC64558C03A2-
-
-CCompileC build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/juce_RTAS_MacUtilities.o /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_plugin_client/RTAS/juce_RTAS_MacUtilities.mm normal i386 objective-c++ com.apple.compilers.llvm.clang.1_0.compiler
-s350945658.222479
-e350945658.270331
-r1
-xCompileC
-xbuild/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/juce_RTAS_MacUtilities.o
-x/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_plugin_client/RTAS/juce_RTAS_MacUtilities.mm
-xnormal
-xi386
-xobjective-c++
-xcom.apple.compilers.llvm.clang.1_0.compiler
-lSLF04#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection160"Compile /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_plugin_client/RTAS/juce_RTAS_MacUtilities.mma626397a01ebb441^7f33457a01ebb441^---0#0#0#-19%DVTDocumentLocation2@168"file://localhost/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_plugin_client/RTAS/juce_RTAS_MacUtilities.mm0000000000000000^2697"CompileC build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/juce_RTAS_MacUtilities.o ../../JuceLibraryCode/modules/juce_audio_plugin_client/RTAS/juce_RTAS_MacUtilities.mm normal i386 objective-c++ com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX    setenv LANG en_US.US-ASCII    /Developer/usr/bin/clang -x objective-c++ -arch i386 -fmessage-length=0 -fdiagnostics-print-source-range-info -fdiagnostics-show-category=id -fdiagnostics-parseable-fixits -std=c++0x -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wnon-virtual-dtor -Wparentheses -Wswitch -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-shorten-64-to-32 -Wno-arc-abi -Wc++0x-extensions -D_DEBUG=1 -DDEBUG=1 -DJUCE_ObjCExtraSuffix=TecZ6l -DJUCER_XCODE_MAC_F6D2F4CF=1 -fasm-blocks -gdwarf-2 -fvisibility-inlines-hidden -Wno-sign-conversion "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -iquote /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/KeyValueVst-generated-files.hmap -I/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/KeyValueVst-own-target-headers.hmap -I/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/KeyValueVst-all-target-headers.hmap -iquote /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/KeyValueVst-project-headers.hmap -I/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/Debug/include -I/Users/owenvallis/SDKs/vstsdk2.4 -I../../JuceLibraryCode -I/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/DerivedSources/i386 -I/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/DerivedSources -Wreorder -F/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/Debug -MMD -MT dependencies -MF /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/juce_RTAS_MacUtilities.d -c /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_plugin_client/RTAS/juce_RTAS_MacUtilities.mm -o /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/juce_RTAS_MacUtilities.o36"E83E5D6B-5CC7-4E9E-9215-CDB22F169765-
-
-CCompileC build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/juce_RTAS_Wrapper.o /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_plugin_client/RTAS/juce_RTAS_Wrapper.cpp normal i386 c++ com.apple.compilers.llvm.clang.1_0.compiler
-s350945658.271653
-e350945658.328334
-r1
-xCompileC
-xbuild/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/juce_RTAS_Wrapper.o
-x/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_plugin_client/RTAS/juce_RTAS_Wrapper.cpp
-xnormal
-xi386
-xc++
-xcom.apple.compilers.llvm.clang.1_0.compiler
-lSLF04#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection156"Compile /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_plugin_client/RTAS/juce_RTAS_Wrapper.cppb9a9457a01ebb441^310c547a01ebb441^---0#0#0#-19%DVTDocumentLocation2@164"file://localhost/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_plugin_client/RTAS/juce_RTAS_Wrapper.cpp0000000000000000^2481"CompileC build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/juce_RTAS_Wrapper.o ../../JuceLibraryCode/modules/juce_audio_plugin_client/RTAS/juce_RTAS_Wrapper.cpp normal i386 c++ com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX    setenv LANG en_US.US-ASCII    /Developer/usr/bin/clang -x c++ -arch i386 -fmessage-length=0 -fdiagnostics-print-source-range-info -fdiagnostics-show-category=id -fdiagnostics-parseable-fixits -std=c++0x -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wnon-virtual-dtor -Wparentheses -Wswitch -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-shorten-64-to-32 -Wc++0x-extensions -D_DEBUG=1 -DDEBUG=1 -DJUCE_ObjCExtraSuffix=TecZ6l -DJUCER_XCODE_MAC_F6D2F4CF=1 -fasm-blocks -gdwarf-2 -fvisibility-inlines-hidden -Wno-sign-conversion -iquote /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/KeyValueVst-generated-files.hmap -I/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/KeyValueVst-own-target-headers.hmap -I/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/KeyValueVst-all-target-headers.hmap -iquote /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/KeyValueVst-project-headers.hmap -I/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/Debug/include -I/Users/owenvallis/SDKs/vstsdk2.4 -I../../JuceLibraryCode -I/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/DerivedSources/i386 -I/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/DerivedSources -Wreorder -F/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/Debug -w -MMD -MT dependencies -MF /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/juce_RTAS_Wrapper.d -c /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_plugin_client/RTAS/juce_RTAS_Wrapper.cpp -o /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/juce_RTAS_Wrapper.o36"D236E0D0-122D-47D0-9544-CBF85A535272-
-
-CCompileC build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/juce_VST_Wrapper-1869C4B2BB9F48B.o /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_plugin_client/VST/juce_VST_Wrapper.mm normal i386 objective-c++ com.apple.compilers.llvm.clang.1_0.compiler
-s350945658.968384
-e350945661.285444
-r1
-xCompileC
-xbuild/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/juce_VST_Wrapper-1869C4B2BB9F48B.o
-x/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_plugin_client/VST/juce_VST_Wrapper.mm
-xnormal
-xi386
-xobjective-c++
-xcom.apple.compilers.llvm.clang.1_0.compiler
-lSLF04#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection153"Compile /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_plugin_client/VST/juce_VST_Wrapper.mm8a03f87a01ebb441^ec12497d01ebb441^---0#0#0#-19%DVTDocumentLocation2@161"file://localhost/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_plugin_client/VST/juce_VST_Wrapper.mm0000000000000000^2713"CompileC build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/juce_VST_Wrapper-1869C4B2BB9F48B.o ../../JuceLibraryCode/modules/juce_audio_plugin_client/VST/juce_VST_Wrapper.mm normal i386 objective-c++ com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX    setenv LANG en_US.US-ASCII    /Developer/usr/bin/clang -x objective-c++ -arch i386 -fmessage-length=0 -fdiagnostics-print-source-range-info -fdiagnostics-show-category=id -fdiagnostics-parseable-fixits -std=c++0x -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wnon-virtual-dtor -Wparentheses -Wswitch -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-shorten-64-to-32 -Wno-arc-abi -Wc++0x-extensions -D_DEBUG=1 -DDEBUG=1 -DJUCE_ObjCExtraSuffix=TecZ6l -DJUCER_XCODE_MAC_F6D2F4CF=1 -fasm-blocks -gdwarf-2 -fvisibility-inlines-hidden -Wno-sign-conversion "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -iquote /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/KeyValueVst-generated-files.hmap -I/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/KeyValueVst-own-target-headers.hmap -I/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/KeyValueVst-all-target-headers.hmap -iquote /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/KeyValueVst-project-headers.hmap -I/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/Debug/include -I/Users/owenvallis/SDKs/vstsdk2.4 -I../../JuceLibraryCode -I/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/DerivedSources/i386 -I/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/DerivedSources -Wreorder -F/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/Debug -MMD -MT dependencies -MF /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/juce_VST_Wrapper-1869C4B2BB9F48B.d -c /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_plugin_client/VST/juce_VST_Wrapper.mm -o /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/juce_VST_Wrapper-1869C4B2BB9F48B.o36"5162AED5-037D-474B-9310-4B8A7059FC2F-
-
-CCompileC build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/juce_VST_Wrapper-51CE055A3511B99E.o /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_plugin_client/VST/juce_VST_Wrapper.cpp normal i386 c++ com.apple.compilers.llvm.clang.1_0.compiler
-s350945658.329709
-e350945661.796379
-r1
-xCompileC
-xbuild/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/juce_VST_Wrapper-51CE055A3511B99E.o
-x/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_plugin_client/VST/juce_VST_Wrapper.cpp
-xnormal
-xi386
-xc++
-xcom.apple.compilers.llvm.clang.1_0.compiler
-oIn file included from /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_plugin_client/VST/juce_VST_Wrapper.cpp:72:
-o/Users/owenvallis/SDKs/vstsdk2.4/public.sdk/source/vst2.x/audioeffectx.cpp:307:48: warning: conversion from string literal to 'char *' is deprecated [-Wdeprecated-writable-strings,3]
-o         if (cEffect.flags & effFlagsIsSynth || canDo ("receiveVstMidiEvent") == 1)
-o                                                       ^
-o1 warning generated.
-lSLF04#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection154"Compile /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_plugin_client/VST/juce_VST_Wrapper.cpp6e89547a01ebb441^d7decb7d01ebb441^-518"In file included from /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_plugin_client/VST/juce_VST_Wrapper.cpp:72:/Users/owenvallis/SDKs/vstsdk2.4/public.sdk/source/vst2.x/audioeffectx.cpp:307:48: warning: conversion from string literal to 'char *' is deprecated [-Wdeprecated-writable-strings,3]         if (cEffect.flags & effFlagsIsSynth || canDo ("receiveVstMidiEvent") == 1)                                                       ^1 warning generated.1(21%IDEActivityLogMessage2@56"Conversion from string literal to 'char *' is deprecated-350945660#173#183#2(36%IDEActivityLogHeaderInclusionMessage3@172"In file included from /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_plugin_client/VST/juce_VST_Wrapper.cpp:72:-350945660#0#173#-0#-23%DVTTextDocumentLocation4@142"file://localhost/Users/owenvallis/Documents/JuceProjects/KeyValueVst/JuceLibraryCode/modules/juce_audio_plugin_client/VST/juce_VST_Wrapper.cpp0000000000000000^71#18446744073709551615#71#18446744073709551615#18446744073709551615#0#---2@134"Conversion from string literal to 'char *' is deprecated in /Users/owenvallis/SDKs/vstsdk2.4/public.sdk/source/vst2.x/audioeffectx.cpp-350945660#18446744073709551615#0#-0#-4@90"file://localhost/Users/owenvallis/SDKs/vstsdk2.4/public.sdk/source/vst2.x/audioeffectx.cpp0000000000000000^306#47#306#47#18446744073709551615#0#---1#-4@90"file://localhost/Users/owenvallis/SDKs/vstsdk2.4/public.sdk/source/vst2.x/audioeffectx.cpp0000000000000000^306#47#306#47#18446744073709551615#0#14"Semantic Issue--0#0#0#-19%DVTDocumentLocation5@162"file://localhost/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_plugin_client/VST/juce_VST_Wrapper.cpp0000000000000000^2522"CompileC build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/juce_VST_Wrapper-51CE055A3511B99E.o ../../JuceLibraryCode/modules/juce_audio_plugin_client/VST/juce_VST_Wrapper.cpp normal i386 c++ com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX    setenv LANG en_US.US-ASCII    /Developer/usr/bin/clang -x c++ -arch i386 -fmessage-length=0 -fdiagnostics-print-source-range-info -fdiagnostics-show-category=id -fdiagnostics-parseable-fixits -std=c++0x -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wnon-virtual-dtor -Wparentheses -Wswitch -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-shorten-64-to-32 -Wc++0x-extensions -D_DEBUG=1 -DDEBUG=1 -DJUCE_ObjCExtraSuffix=TecZ6l -DJUCER_XCODE_MAC_F6D2F4CF=1 -fasm-blocks -gdwarf-2 -fvisibility-inlines-hidden -Wno-sign-conversion -iquote /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/KeyValueVst-generated-files.hmap -I/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/KeyValueVst-own-target-headers.hmap -I/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/KeyValueVst-all-target-headers.hmap -iquote /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/KeyValueVst-project-headers.hmap -I/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/Debug/include -I/Users/owenvallis/SDKs/vstsdk2.4 -I../../JuceLibraryCode -I/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/DerivedSources/i386 -I/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/DerivedSources -Wreorder -F/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/Debug -MMD -MT dependencies -MF /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/juce_VST_Wrapper-51CE055A3511B99E.d -c /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_plugin_client/VST/juce_VST_Wrapper.cpp -o /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/juce_VST_Wrapper-51CE055A3511B99E.o36"6E416669-D7BA-43D2-881C-2B6EC82206DE-
-
-CCompileC build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/juce_audio_basics.o /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_basics/juce_audio_basics.mm normal i386 objective-c++ com.apple.compilers.llvm.clang.1_0.compiler
-s350945645.749479
-e350945652.868799
-r1
-xCompileC
-xbuild/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/juce_audio_basics.o
-x/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_basics/juce_audio_basics.mm
-xnormal
-xi386
-xobjective-c++
-xcom.apple.compilers.llvm.clang.1_0.compiler
-lSLF04#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection143"Compile /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_basics/juce_audio_basics.mm2d09c06d01ebb441^5a65de7401ebb441^---0#0#0#-19%DVTDocumentLocation2@151"file://localhost/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_basics/juce_audio_basics.mm0000000000000000^2648"CompileC build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/juce_audio_basics.o ../../JuceLibraryCode/modules/juce_audio_basics/juce_audio_basics.mm normal i386 objective-c++ com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX    setenv LANG en_US.US-ASCII    /Developer/usr/bin/clang -x objective-c++ -arch i386 -fmessage-length=0 -fdiagnostics-print-source-range-info -fdiagnostics-show-category=id -fdiagnostics-parseable-fixits -std=c++0x -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wnon-virtual-dtor -Wparentheses -Wswitch -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-shorten-64-to-32 -Wno-arc-abi -Wc++0x-extensions -D_DEBUG=1 -DDEBUG=1 -DJUCE_ObjCExtraSuffix=TecZ6l -DJUCER_XCODE_MAC_F6D2F4CF=1 -fasm-blocks -gdwarf-2 -fvisibility-inlines-hidden -Wno-sign-conversion "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -iquote /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/KeyValueVst-generated-files.hmap -I/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/KeyValueVst-own-target-headers.hmap -I/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/KeyValueVst-all-target-headers.hmap -iquote /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/KeyValueVst-project-headers.hmap -I/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/Debug/include -I/Users/owenvallis/SDKs/vstsdk2.4 -I../../JuceLibraryCode -I/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/DerivedSources/i386 -I/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/DerivedSources -Wreorder -F/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/Debug -MMD -MT dependencies -MF /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/juce_audio_basics.d -c /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_basics/juce_audio_basics.mm -o /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/juce_audio_basics.o36"4D583849-F76A-4844-8F79-F012A37370E8-
-
-CCompileC build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/juce_audio_devices.o /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_devices/juce_audio_devices.mm normal i386 objective-c++ com.apple.compilers.llvm.clang.1_0.compiler
-s350945645.760008
-e350945654.509460
-r1
-xCompileC
-xbuild/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/juce_audio_devices.o
-x/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_devices/juce_audio_devices.mm
-xnormal
-xi386
-xobjective-c++
-xcom.apple.compilers.llvm.clang.1_0.compiler
-lSLF04#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection145"Compile /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_devices/juce_audio_devices.mm45b7c26d01ebb441^2f6b827601ebb441^---0#0#0#-19%DVTDocumentLocation2@153"file://localhost/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_devices/juce_audio_devices.mm0000000000000000^2655"CompileC build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/juce_audio_devices.o ../../JuceLibraryCode/modules/juce_audio_devices/juce_audio_devices.mm normal i386 objective-c++ com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX    setenv LANG en_US.US-ASCII    /Developer/usr/bin/clang -x objective-c++ -arch i386 -fmessage-length=0 -fdiagnostics-print-source-range-info -fdiagnostics-show-category=id -fdiagnostics-parseable-fixits -std=c++0x -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wnon-virtual-dtor -Wparentheses -Wswitch -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-shorten-64-to-32 -Wno-arc-abi -Wc++0x-extensions -D_DEBUG=1 -DDEBUG=1 -DJUCE_ObjCExtraSuffix=TecZ6l -DJUCER_XCODE_MAC_F6D2F4CF=1 -fasm-blocks -gdwarf-2 -fvisibility-inlines-hidden -Wno-sign-conversion "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -iquote /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/KeyValueVst-generated-files.hmap -I/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/KeyValueVst-own-target-headers.hmap -I/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/KeyValueVst-all-target-headers.hmap -iquote /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/KeyValueVst-project-headers.hmap -I/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/Debug/include -I/Users/owenvallis/SDKs/vstsdk2.4 -I../../JuceLibraryCode -I/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/DerivedSources/i386 -I/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/DerivedSources -Wreorder -F/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/Debug -MMD -MT dependencies -MF /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/juce_audio_devices.d -c /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_devices/juce_audio_devices.mm -o /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/juce_audio_devices.o36"5162004C-22B4-4433-9CC8-8152CA2D9044-
-
-CCompileC build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/juce_audio_formats.o /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_formats/juce_audio_formats.mm normal i386 objective-c++ com.apple.compilers.llvm.clang.1_0.compiler
-s350945647.396416
-e350945658.131336
-r1
-xCompileC
-xbuild/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/juce_audio_formats.o
-x/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_formats/juce_audio_formats.mm
-xnormal
-xi386
-xobjective-c++
-xcom.apple.compilers.llvm.clang.1_0.compiler
-lSLF04#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection145"Compile /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_formats/juce_audio_formats.mmb0af656f01ebb441^d89e217a01ebb441^---0#0#0#-19%DVTDocumentLocation2@153"file://localhost/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_formats/juce_audio_formats.mm0000000000000000^2655"CompileC build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/juce_audio_formats.o ../../JuceLibraryCode/modules/juce_audio_formats/juce_audio_formats.mm normal i386 objective-c++ com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX    setenv LANG en_US.US-ASCII    /Developer/usr/bin/clang -x objective-c++ -arch i386 -fmessage-length=0 -fdiagnostics-print-source-range-info -fdiagnostics-show-category=id -fdiagnostics-parseable-fixits -std=c++0x -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wnon-virtual-dtor -Wparentheses -Wswitch -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-shorten-64-to-32 -Wno-arc-abi -Wc++0x-extensions -D_DEBUG=1 -DDEBUG=1 -DJUCE_ObjCExtraSuffix=TecZ6l -DJUCER_XCODE_MAC_F6D2F4CF=1 -fasm-blocks -gdwarf-2 -fvisibility-inlines-hidden -Wno-sign-conversion "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -iquote /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/KeyValueVst-generated-files.hmap -I/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/KeyValueVst-own-target-headers.hmap -I/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/KeyValueVst-all-target-headers.hmap -iquote /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/KeyValueVst-project-headers.hmap -I/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/Debug/include -I/Users/owenvallis/SDKs/vstsdk2.4 -I../../JuceLibraryCode -I/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/DerivedSources/i386 -I/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/DerivedSources -Wreorder -F/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/Debug -MMD -MT dependencies -MF /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/juce_audio_formats.d -c /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_formats/juce_audio_formats.mm -o /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/juce_audio_formats.o36"6DA13B8C-6C4F-49BA-8E46-B1CDB378ED34-
-
-CCompileC build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/juce_audio_processors.o /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_processors/juce_audio_processors.mm normal i386 objective-c++ com.apple.compilers.llvm.clang.1_0.compiler
-s350945651.946738
-e350945655.743009
-r1
-xCompileC
-xbuild/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/juce_audio_processors.o
-x/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_processors/juce_audio_processors.mm
-xnormal
-xi386
-xobjective-c++
-xcom.apple.compilers.llvm.clang.1_0.compiler
-lSLF04#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection151"Compile /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_processors/juce_audio_processors.mmef8cf27301ebb441^6d36be7701ebb441^---0#0#0#-19%DVTDocumentLocation2@159"file://localhost/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_processors/juce_audio_processors.mm0000000000000000^2676"CompileC build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/juce_audio_processors.o ../../JuceLibraryCode/modules/juce_audio_processors/juce_audio_processors.mm normal i386 objective-c++ com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX    setenv LANG en_US.US-ASCII    /Developer/usr/bin/clang -x objective-c++ -arch i386 -fmessage-length=0 -fdiagnostics-print-source-range-info -fdiagnostics-show-category=id -fdiagnostics-parseable-fixits -std=c++0x -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wnon-virtual-dtor -Wparentheses -Wswitch -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-shorten-64-to-32 -Wno-arc-abi -Wc++0x-extensions -D_DEBUG=1 -DDEBUG=1 -DJUCE_ObjCExtraSuffix=TecZ6l -DJUCER_XCODE_MAC_F6D2F4CF=1 -fasm-blocks -gdwarf-2 -fvisibility-inlines-hidden -Wno-sign-conversion "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -iquote /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/KeyValueVst-generated-files.hmap -I/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/KeyValueVst-own-target-headers.hmap -I/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/KeyValueVst-all-target-headers.hmap -iquote /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/KeyValueVst-project-headers.hmap -I/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/Debug/include -I/Users/owenvallis/SDKs/vstsdk2.4 -I../../JuceLibraryCode -I/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/DerivedSources/i386 -I/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/DerivedSources -Wreorder -F/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/Debug -MMD -MT dependencies -MF /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/juce_audio_processors.d -c /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_processors/juce_audio_processors.mm -o /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/juce_audio_processors.o36"C42122DB-5B92-49DB-8D43-7B3EE15FA515-
-
-CCompileC build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/juce_core.o /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_core/juce_core.mm normal i386 objective-c++ com.apple.compilers.llvm.clang.1_0.compiler
-s350945652.870137
-e350945658.967071
-r1
-xCompileC
-xbuild/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/juce_core.o
-x/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_core/juce_core.mm
-xnormal
-xi386
-xobjective-c++
-xcom.apple.compilers.llvm.clang.1_0.compiler
-lSLF04#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection127"Compile /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_core/juce_core.mmf9dbde7401ebb441^b092f77a01ebb441^---0#0#0#-19%DVTDocumentLocation2@135"file://localhost/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_core/juce_core.mm0000000000000000^2592"CompileC build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/juce_core.o ../../JuceLibraryCode/modules/juce_core/juce_core.mm normal i386 objective-c++ com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX    setenv LANG en_US.US-ASCII    /Developer/usr/bin/clang -x objective-c++ -arch i386 -fmessage-length=0 -fdiagnostics-print-source-range-info -fdiagnostics-show-category=id -fdiagnostics-parseable-fixits -std=c++0x -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wnon-virtual-dtor -Wparentheses -Wswitch -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-shorten-64-to-32 -Wno-arc-abi -Wc++0x-extensions -D_DEBUG=1 -DDEBUG=1 -DJUCE_ObjCExtraSuffix=TecZ6l -DJUCER_XCODE_MAC_F6D2F4CF=1 -fasm-blocks -gdwarf-2 -fvisibility-inlines-hidden -Wno-sign-conversion "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -iquote /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/KeyValueVst-generated-files.hmap -I/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/KeyValueVst-own-target-headers.hmap -I/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/KeyValueVst-all-target-headers.hmap -iquote /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/KeyValueVst-project-headers.hmap -I/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/Debug/include -I/Users/owenvallis/SDKs/vstsdk2.4 -I../../JuceLibraryCode -I/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/DerivedSources/i386 -I/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/DerivedSources -Wreorder -F/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/Debug -MMD -MT dependencies -MF /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/juce_core.d -c /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_core/juce_core.mm -o /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/juce_core.o36"9232DD5E-71A4-4371-8DC7-012D151E3F2C-
-
-CCompileC build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/juce_cryptography.o /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_cryptography/juce_cryptography.mm normal i386 objective-c++ com.apple.compilers.llvm.clang.1_0.compiler
-s350945654.510788
-e350945655.407921
-r1
-xCompileC
-xbuild/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/juce_cryptography.o
-x/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_cryptography/juce_cryptography.mm
-xnormal
-xi386
-xobjective-c++
-xcom.apple.compilers.llvm.clang.1_0.compiler
-lSLF04#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection143"Compile /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_cryptography/juce_cryptography.mmefe5827601ebb441^f86d687701ebb441^---0#0#0#-19%DVTDocumentLocation2@151"file://localhost/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_cryptography/juce_cryptography.mm0000000000000000^2648"CompileC build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/juce_cryptography.o ../../JuceLibraryCode/modules/juce_cryptography/juce_cryptography.mm normal i386 objective-c++ com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX    setenv LANG en_US.US-ASCII    /Developer/usr/bin/clang -x objective-c++ -arch i386 -fmessage-length=0 -fdiagnostics-print-source-range-info -fdiagnostics-show-category=id -fdiagnostics-parseable-fixits -std=c++0x -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wnon-virtual-dtor -Wparentheses -Wswitch -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-shorten-64-to-32 -Wno-arc-abi -Wc++0x-extensions -D_DEBUG=1 -DDEBUG=1 -DJUCE_ObjCExtraSuffix=TecZ6l -DJUCER_XCODE_MAC_F6D2F4CF=1 -fasm-blocks -gdwarf-2 -fvisibility-inlines-hidden -Wno-sign-conversion "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -iquote /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/KeyValueVst-generated-files.hmap -I/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/KeyValueVst-own-target-headers.hmap -I/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/KeyValueVst-all-target-headers.hmap -iquote /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/KeyValueVst-project-headers.hmap -I/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/Debug/include -I/Users/owenvallis/SDKs/vstsdk2.4 -I../../JuceLibraryCode -I/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/DerivedSources/i386 -I/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/DerivedSources -Wreorder -F/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/Debug -MMD -MT dependencies -MF /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/juce_cryptography.d -c /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_cryptography/juce_cryptography.mm -o /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/juce_cryptography.o36"C26E5B79-F903-4651-8A29-25F6AEF08646-
-
-CCompileC build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/juce_data_structures.o /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_data_structures/juce_data_structures.mm normal i386 objective-c++ com.apple.compilers.llvm.clang.1_0.compiler
-s350945654.511464
-e350945655.898875
-r1
-xCompileC
-xbuild/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/juce_data_structures.o
-x/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_data_structures/juce_data_structures.mm
-xnormal
-xi386
-xobjective-c++
-xcom.apple.compilers.llvm.clang.1_0.compiler
-lSLF04#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection149"Compile /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_data_structures/juce_data_structures.mmf303837601ebb441^8f1be67701ebb441^---0#0#0#-19%DVTDocumentLocation2@157"file://localhost/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_data_structures/juce_data_structures.mm0000000000000000^2669"CompileC build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/juce_data_structures.o ../../JuceLibraryCode/modules/juce_data_structures/juce_data_structures.mm normal i386 objective-c++ com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX    setenv LANG en_US.US-ASCII    /Developer/usr/bin/clang -x objective-c++ -arch i386 -fmessage-length=0 -fdiagnostics-print-source-range-info -fdiagnostics-show-category=id -fdiagnostics-parseable-fixits -std=c++0x -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wnon-virtual-dtor -Wparentheses -Wswitch -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-shorten-64-to-32 -Wno-arc-abi -Wc++0x-extensions -D_DEBUG=1 -DDEBUG=1 -DJUCE_ObjCExtraSuffix=TecZ6l -DJUCER_XCODE_MAC_F6D2F4CF=1 -fasm-blocks -gdwarf-2 -fvisibility-inlines-hidden -Wno-sign-conversion "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -iquote /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/KeyValueVst-generated-files.hmap -I/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/KeyValueVst-own-target-headers.hmap -I/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/KeyValueVst-all-target-headers.hmap -iquote /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/KeyValueVst-project-headers.hmap -I/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/Debug/include -I/Users/owenvallis/SDKs/vstsdk2.4 -I../../JuceLibraryCode -I/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/DerivedSources/i386 -I/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/DerivedSources -Wreorder -F/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/Debug -MMD -MT dependencies -MF /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/juce_data_structures.d -c /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_data_structures/juce_data_structures.mm -o /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/juce_data_structures.o36"6BE4A2B4-0EB3-4AA4-B2D1-698488F9238D-
-
-CCompileC build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/juce_events.o /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_events/juce_events.mm normal i386 objective-c++ com.apple.compilers.llvm.clang.1_0.compiler
-s350945655.409285
-e350945657.684438
-r1
-xCompileC
-xbuild/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/juce_events.o
-x/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_events/juce_events.mm
-xnormal
-xi386
-xobjective-c++
-xcom.apple.compilers.llvm.clang.1_0.compiler
-lSLF04#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection131"Compile /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_events/juce_events.mmefe7687701ebb441^5437af7901ebb441^---0#0#0#-19%DVTDocumentLocation2@139"file://localhost/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_events/juce_events.mm0000000000000000^2606"CompileC build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/juce_events.o ../../JuceLibraryCode/modules/juce_events/juce_events.mm normal i386 objective-c++ com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX    setenv LANG en_US.US-ASCII    /Developer/usr/bin/clang -x objective-c++ -arch i386 -fmessage-length=0 -fdiagnostics-print-source-range-info -fdiagnostics-show-category=id -fdiagnostics-parseable-fixits -std=c++0x -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wnon-virtual-dtor -Wparentheses -Wswitch -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-shorten-64-to-32 -Wno-arc-abi -Wc++0x-extensions -D_DEBUG=1 -DDEBUG=1 -DJUCE_ObjCExtraSuffix=TecZ6l -DJUCER_XCODE_MAC_F6D2F4CF=1 -fasm-blocks -gdwarf-2 -fvisibility-inlines-hidden -Wno-sign-conversion "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -iquote /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/KeyValueVst-generated-files.hmap -I/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/KeyValueVst-own-target-headers.hmap -I/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/KeyValueVst-all-target-headers.hmap -iquote /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/KeyValueVst-project-headers.hmap -I/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/Debug/include -I/Users/owenvallis/SDKs/vstsdk2.4 -I../../JuceLibraryCode -I/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/DerivedSources/i386 -I/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/DerivedSources -Wreorder -F/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/Debug -MMD -MT dependencies -MF /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/juce_events.d -c /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_events/juce_events.mm -o /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/juce_events.o36"782A388A-C764-4C02-8445-13F5BE44F06A-
-
-CCompileC build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/juce_graphics.o /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_graphics/juce_graphics.mm normal i386 objective-c++ com.apple.compilers.llvm.clang.1_0.compiler
-s350945655.744340
-e350945664.834760
-r1
-xCompileC
-xbuild/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/juce_graphics.o
-x/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_graphics/juce_graphics.mm
-xnormal
-xi386
-xobjective-c++
-xcom.apple.compilers.llvm.clang.1_0.compiler
-lSLF04#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection135"Compile /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_graphics/juce_graphics.mm75b0be7701ebb441^d5b2d58001ebb441^---0#0#0#-19%DVTDocumentLocation2@143"file://localhost/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_graphics/juce_graphics.mm0000000000000000^2620"CompileC build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/juce_graphics.o ../../JuceLibraryCode/modules/juce_graphics/juce_graphics.mm normal i386 objective-c++ com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX    setenv LANG en_US.US-ASCII    /Developer/usr/bin/clang -x objective-c++ -arch i386 -fmessage-length=0 -fdiagnostics-print-source-range-info -fdiagnostics-show-category=id -fdiagnostics-parseable-fixits -std=c++0x -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wnon-virtual-dtor -Wparentheses -Wswitch -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-shorten-64-to-32 -Wno-arc-abi -Wc++0x-extensions -D_DEBUG=1 -DDEBUG=1 -DJUCE_ObjCExtraSuffix=TecZ6l -DJUCER_XCODE_MAC_F6D2F4CF=1 -fasm-blocks -gdwarf-2 -fvisibility-inlines-hidden -Wno-sign-conversion "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -iquote /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/KeyValueVst-generated-files.hmap -I/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/KeyValueVst-own-target-headers.hmap -I/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/KeyValueVst-all-target-headers.hmap -iquote /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/KeyValueVst-project-headers.hmap -I/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/Debug/include -I/Users/owenvallis/SDKs/vstsdk2.4 -I../../JuceLibraryCode -I/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/DerivedSources/i386 -I/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/DerivedSources -Wreorder -F/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/Debug -MMD -MT dependencies -MF /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/juce_graphics.d -c /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_graphics/juce_graphics.mm -o /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/juce_graphics.o36"54FF847C-423F-4CAD-B4E1-501620ADC1F7-
-
-CCompileC build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/juce_gui_basics.o /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_gui_basics/juce_gui_basics.mm normal i386 objective-c++ com.apple.compilers.llvm.clang.1_0.compiler
-s350945655.900222
-e350945669.499763
-r1
-xCompileC
-xbuild/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/juce_gui_basics.o
-x/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_gui_basics/juce_gui_basics.mm
-xnormal
-xi386
-xobjective-c++
-xcom.apple.compilers.llvm.clang.1_0.compiler
-lSLF04#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection139"Compile /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_gui_basics/juce_gui_basics.mmf99de67701ebb441^bbf07f8501ebb441^---0#0#0#-19%DVTDocumentLocation2@147"file://localhost/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_gui_basics/juce_gui_basics.mm0000000000000000^2634"CompileC build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/juce_gui_basics.o ../../JuceLibraryCode/modules/juce_gui_basics/juce_gui_basics.mm normal i386 objective-c++ com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX    setenv LANG en_US.US-ASCII    /Developer/usr/bin/clang -x objective-c++ -arch i386 -fmessage-length=0 -fdiagnostics-print-source-range-info -fdiagnostics-show-category=id -fdiagnostics-parseable-fixits -std=c++0x -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wnon-virtual-dtor -Wparentheses -Wswitch -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-shorten-64-to-32 -Wno-arc-abi -Wc++0x-extensions -D_DEBUG=1 -DDEBUG=1 -DJUCE_ObjCExtraSuffix=TecZ6l -DJUCER_XCODE_MAC_F6D2F4CF=1 -fasm-blocks -gdwarf-2 -fvisibility-inlines-hidden -Wno-sign-conversion "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -iquote /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/KeyValueVst-generated-files.hmap -I/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/KeyValueVst-own-target-headers.hmap -I/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/KeyValueVst-all-target-headers.hmap -iquote /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/KeyValueVst-project-headers.hmap -I/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/Debug/include -I/Users/owenvallis/SDKs/vstsdk2.4 -I../../JuceLibraryCode -I/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/DerivedSources/i386 -I/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/DerivedSources -Wreorder -F/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/Debug -MMD -MT dependencies -MF /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/juce_gui_basics.d -c /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_gui_basics/juce_gui_basics.mm -o /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/juce_gui_basics.o36"EE8C0EAD-259B-48D4-A0F8-9937BA3F8AB8-
-
-CCompileC build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/juce_gui_extra.o /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_gui_extra/juce_gui_extra.mm normal i386 objective-c++ com.apple.compilers.llvm.clang.1_0.compiler
-s350945657.685697
-e350945662.080308
-r1
-xCompileC
-xbuild/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/juce_gui_extra.o
-x/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_gui_extra/juce_gui_extra.mm
-xnormal
-xi386
-xobjective-c++
-xcom.apple.compilers.llvm.clang.1_0.compiler
-lSLF04#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection137"Compile /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_gui_extra/juce_gui_extra.mm38a2af7901ebb441^55306a7e01ebb441^---0#0#0#-19%DVTDocumentLocation2@145"file://localhost/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_gui_extra/juce_gui_extra.mm0000000000000000^2627"CompileC build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/juce_gui_extra.o ../../JuceLibraryCode/modules/juce_gui_extra/juce_gui_extra.mm normal i386 objective-c++ com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX    setenv LANG en_US.US-ASCII    /Developer/usr/bin/clang -x objective-c++ -arch i386 -fmessage-length=0 -fdiagnostics-print-source-range-info -fdiagnostics-show-category=id -fdiagnostics-parseable-fixits -std=c++0x -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wnon-virtual-dtor -Wparentheses -Wswitch -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-shorten-64-to-32 -Wno-arc-abi -Wc++0x-extensions -D_DEBUG=1 -DDEBUG=1 -DJUCE_ObjCExtraSuffix=TecZ6l -DJUCER_XCODE_MAC_F6D2F4CF=1 -fasm-blocks -gdwarf-2 -fvisibility-inlines-hidden -Wno-sign-conversion "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -iquote /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/KeyValueVst-generated-files.hmap -I/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/KeyValueVst-own-target-headers.hmap -I/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/KeyValueVst-all-target-headers.hmap -iquote /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/KeyValueVst-project-headers.hmap -I/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/Debug/include -I/Users/owenvallis/SDKs/vstsdk2.4 -I../../JuceLibraryCode -I/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/DerivedSources/i386 -I/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/DerivedSources -Wreorder -F/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/Debug -MMD -MT dependencies -MF /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/juce_gui_extra.d -c /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_gui_extra/juce_gui_extra.mm -o /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/juce_gui_extra.o36"E7DF84C4-CA1C-4CD2-A105-793BDB93EDA6-
-
-CLd /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/Debug/KeyValueVst.component/Contents/MacOS/KeyValueVst normal i386
-s350945669.506120
-e350945674.277835
-r1
-xLd
-x/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/Debug/KeyValueVst.component/Contents/MacOS/KeyValueVst
-xnormal
-xi386
-lSLF04#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection132"Link /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/Debug/KeyValueVst.component/Contents/MacOS/KeyValueVst7ba0818501ebb441^7520478a01ebb441^---0#0#0#--853"Ld build/Debug/KeyValueVst.component/Contents/MacOS/KeyValueVst normal i386    cd /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX    /Developer/usr/bin/clang++ -arch i386 -bundle -L/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/Debug -F/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/Debug -filelist /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/Objects-normal/i386/KeyValueVst.LinkFileList -bundle -framework AudioToolbox -framework Carbon -framework Cocoa -framework CoreAudio -framework CoreMIDI -framework DiscRecording -framework IOKit -framework QuartzCore -framework WebKit -o /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/Debug/KeyValueVst.component/Contents/MacOS/KeyValueVst36"80A3BA8F-ADF4-4F67-A7E0-EBB84A63176E-
-
-CPhaseScriptExecution "Copy to the different plugin folders" /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/Script-DF86831D0A3C2899A5B61EB9.sh
-r0
-
-CProcessInfoPlistFile /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/Debug/KeyValueVst.component/Contents/Info.plist Info.plist
-s350945644.753271
-e350945644.757233
-r1
-xProcessInfoPlistFile
-x/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/Debug/KeyValueVst.component/Contents/Info.plist
-xInfo.plist
-lSLF04#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection18"Process Info.plist7ae3c06c01ebb441^e4d9c16c01ebb441^---0#0#0#-19%DVTDocumentLocation2@93"file://localhost/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/Info.plist0000000000000000^492"ProcessInfoPlistFile build/Debug/KeyValueVst.component/Contents/Info.plist Info.plist    cd /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX    builtin-infoPlistUtility Info.plist -genpkginfo /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/Debug/KeyValueVst.component/Contents/PkgInfo -expandbuildsettings -platform macosx -o /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/Debug/KeyValueVst.component/Contents/Info.plist36"DA23AD9D-16C1-4050-B9EE-8A429BCF9247-
-
-CResMergerCollector /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/ResourceManagerResources/KeyValueVst.rsrc
-s350945645.638043
-e350945645.696064
-r1
-xResMergerCollector
-x/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/ResourceManagerResources/KeyValueVst.rsrc
-lSLF04#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection177"Merge resources into /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/ResourceManagerResources/KeyValueVst.rsrc8865a36d01ebb441^f931b26d01ebb441^---0#0#0#--733"ResMergerCollector build/KeyValueVst.build/Debug/KeyValueVst.build/ResourceManagerResources/KeyValueVst.rsrc    cd /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX    /Developer/usr/bin/ResMerger -dstIs DF /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/ResourceManagerResources/Objects/juce_AU_Resources.rsrc /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/ResourceManagerResources/Objects/juce_RTAS_MacResources.rsrc -o /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/ResourceManagerResources/KeyValueVst.rsrc36"E433CBB1-BBBB-4C7F-97D9-80BC94B26B8D-
-
-CResMergerProduct /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/Debug/KeyValueVst.component/Contents/Resources/KeyValueVst.rsrc
-s350945645.702480
-e350945645.721162
-r1
-xResMergerProduct
-x/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/Debug/KeyValueVst.component/Contents/Resources/KeyValueVst.rsrc
-lSLF04#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection157"Merge resources into /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/Debug/KeyValueVst.component/Contents/Resources/KeyValueVst.rsrcd6e2b36d01ebb441^8c9db86d01ebb441^---0#0#0#--501"ResMergerProduct build/Debug/KeyValueVst.component/Contents/Resources/KeyValueVst.rsrc    cd /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX    /Developer/usr/bin/ResMerger /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/ResourceManagerResources/KeyValueVst.rsrc -dstIs DF -o /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/Debug/KeyValueVst.component/Contents/Resources/KeyValueVst.rsrc36"38B9C930-7FB9-4A4D-B871-AFE684339ADD-
-
-CRez /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/ResourceManagerResources/Objects/juce_AU_Resources.rsrc ../../JuceLibraryCode/modules/juce_audio_plugin_client/AU/juce_AU_Resources.r
-s350945644.765412
-e350945645.631018
-r1
-xRez
-x/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/ResourceManagerResources/Objects/juce_AU_Resources.rsrc
-x../../JuceLibraryCode/modules/juce_audio_plugin_client/AU/juce_AU_Resources.r
-lSLF04#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection81"Rez ../../JuceLibraryCode/modules/juce_audio_plugin_client/AU/juce_AU_Resources.rdd26c46c01ebb441^018aa16d01ebb441^---0#0#0#-19%DVTDocumentLocation2@160"file://localhost/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_plugin_client/AU/juce_AU_Resources.r0000000000000000^12317"Rez build/KeyValueVst.build/Debug/KeyValueVst.build/ResourceManagerResources/Objects/juce_AU_Resources.rsrc ../../JuceLibraryCode/modules/juce_audio_plugin_client/AU/juce_AU_Resources.r    cd /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX    /Developer/usr/bin/Rez -o /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/ResourceManagerResources/Objects/juce_AU_Resources.rsrc -d SystemSevenOrLater=1 -useDF -script Roman -d "ppc_$ppc" -d i386_YES -d "ppc64_$ppc64" -d "x86_64_$x86_64" -I /System/Library/Frameworks/CoreServices.framework/Frameworks/CarbonCore.framework/Versions/A/Headers -I /Developer/Extras/CoreAudio/AudioUnits/AUPublic/AUBase -arch i386 -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/Debug -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_plugin_client/RTAS -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_gui_extra/code_editor -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_graphics/contexts -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_core/unit_tests -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_graphics/native -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_gui_basics/misc -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_data_structures -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_formats/sampler -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_core/containers -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_processors -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_core -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_core/streams -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_gui_basics/menus -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_core/files -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_devices/native -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_basics -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_cryptography -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_core/zip -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_formats/format -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_data_structures/values -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_basics/synthesisers -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_gui_basics/positioning -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_events/interprocess -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_core/misc -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_gui_basics/properties -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_formats -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_gui_extra/native -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_processors/format_types -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_gui_basics/native -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_gui_basics/components -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_devices -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_core/system -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_graphics/placement -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_core/native -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_data_structures/undomanager -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_gui_extra/lookandfeel -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_devices/audio_cd -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_gui_basics/commands -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_gui_extra -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_devices/audio_io -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_events/native -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_core/json -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_core/text -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_gui_extra/embedding -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_core/maths -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_events -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_cryptography/encryption -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_gui_basics/drawables -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_core/xml -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_core/threads -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_gui_basics/lookandfeel -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_plugin_client -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_core/memory -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_basics/sources -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_graphics/colour -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_gui_basics/keyboard -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_basics/effects -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_devices/midi_io -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_gui_basics/mouse -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_basics/midi -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_processors/processors -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_gui_basics/buttons -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_gui_basics/filebrowser -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_devices/sources -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_graphics -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_cryptography/hashing -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../Source -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_graphics/images -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_core/logging -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_core/time -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_plugin_client/utility -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_core/network -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_gui_basics/widgets -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_processors/format -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_graphics/effects -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_gui_extra/misc -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_events/broadcasters -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_gui_basics/application -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_formats/codecs -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_graphics/geometry -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_graphics/fonts -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_data_structures/app_properties -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_gui_basics/windows -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_gui_basics -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_gui_basics/layout -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_events/messages -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_processors/scanning -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_gui_extra/documents -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_basics/buffers -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_events/timers -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/Debug -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/Debug/include -i /Users/owenvallis/SDKs/vstsdk2.4 -i ../../JuceLibraryCode /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_plugin_client/AU/juce_AU_Resources.r36"5D0C41DF-553E-4B47-AB6A-08CD23D9ED54-
-
-CRez /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/ResourceManagerResources/Objects/juce_RTAS_MacResources.rsrc ../../JuceLibraryCode/modules/juce_audio_plugin_client/RTAS/juce_RTAS_MacResources.r
-s350945644.765418
-e350945645.387437
-r1
-xRez
-x/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/ResourceManagerResources/Objects/juce_RTAS_MacResources.rsrc
-x../../JuceLibraryCode/modules/juce_audio_plugin_client/RTAS/juce_RTAS_MacResources.r
-lSLF04#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection88"Rez ../../JuceLibraryCode/modules/juce_audio_plugin_client/RTAS/juce_RTAS_MacResources.r7826c46c01ebb441^662f636d01ebb441^---0#0#0#-19%DVTDocumentLocation2@167"file://localhost/Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_plugin_client/RTAS/juce_RTAS_MacResources.r0000000000000000^12339"Rez build/KeyValueVst.build/Debug/KeyValueVst.build/ResourceManagerResources/Objects/juce_RTAS_MacResources.rsrc ../../JuceLibraryCode/modules/juce_audio_plugin_client/RTAS/juce_RTAS_MacResources.r    cd /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX    /Developer/usr/bin/Rez -o /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/KeyValueVst.build/Debug/KeyValueVst.build/ResourceManagerResources/Objects/juce_RTAS_MacResources.rsrc -d SystemSevenOrLater=1 -useDF -script Roman -d "ppc_$ppc" -d i386_YES -d "ppc64_$ppc64" -d "x86_64_$x86_64" -I /System/Library/Frameworks/CoreServices.framework/Frameworks/CarbonCore.framework/Versions/A/Headers -I /Developer/Extras/CoreAudio/AudioUnits/AUPublic/AUBase -arch i386 -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/Debug -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_plugin_client/AU -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_gui_extra/code_editor -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_graphics/contexts -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_core/unit_tests -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_graphics/native -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_gui_basics/misc -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_data_structures -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_formats/sampler -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_core/containers -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_processors -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_core -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_core/streams -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_gui_basics/menus -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_core/files -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_devices/native -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_basics -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_cryptography -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_core/zip -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_formats/format -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_data_structures/values -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_basics/synthesisers -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_gui_basics/positioning -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_events/interprocess -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_core/misc -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_gui_basics/properties -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_formats -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_gui_extra/native -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_processors/format_types -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_gui_basics/native -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_gui_basics/components -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_devices -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_core/system -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_graphics/placement -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_core/native -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_data_structures/undomanager -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_gui_extra/lookandfeel -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_devices/audio_cd -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_gui_basics/commands -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_gui_extra -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_devices/audio_io -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_events/native -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_core/json -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_core/text -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_gui_extra/embedding -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_core/maths -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_events -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_cryptography/encryption -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_gui_basics/drawables -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_core/xml -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_core/threads -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_gui_basics/lookandfeel -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_plugin_client -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_core/memory -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_basics/sources -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_graphics/colour -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_gui_basics/keyboard -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_basics/effects -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_devices/midi_io -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_gui_basics/mouse -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_basics/midi -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_processors/processors -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_gui_basics/buttons -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_gui_basics/filebrowser -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_devices/sources -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_graphics -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_cryptography/hashing -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../Source -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_graphics/images -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_core/logging -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_core/time -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_plugin_client/utility -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_core/network -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_gui_basics/widgets -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_processors/format -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_graphics/effects -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_gui_extra/misc -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_events/broadcasters -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_gui_basics/application -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_formats/codecs -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_graphics/geometry -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_graphics/fonts -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_data_structures/app_properties -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_gui_basics/windows -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_gui_basics -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_gui_basics/layout -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_events/messages -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_processors/scanning -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_gui_extra/documents -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_basics/buffers -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_events/timers -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/Debug -i /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/Debug/include -i /Users/owenvallis/SDKs/vstsdk2.4 -i ../../JuceLibraryCode /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/../../JuceLibraryCode/modules/juce_audio_plugin_client/RTAS/juce_RTAS_MacResources.r36"5AC3729B-DD23-4D1B-B82B-3B45D211738E-
-
-CTouch /Users/owenvallis/Documents/JuceProjects/KeyValueVst/Builds/MacOSX/build/Debug/KeyValueVst.component
-r0
-
