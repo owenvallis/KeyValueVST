@@ -1,0 +1,19 @@
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual C++ Express 2008
+Project("{15A7C5EE-6D4B-8D97-0B8F-3E8F4B3B9A2D}") = "KeyValueVst", "KeyValueVst.vcproj", "{95B75BD7-6530-4BEC-EA68-C6C8EDC5D5E1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{95B75BD7-6530-4BEC-EA68-C6C8EDC5D5E1}.Debug|Win32.ActiveCfg = Debug|Win32
+		{95B75BD7-6530-4BEC-EA68-C6C8EDC5D5E1}.Debug|Win32.Build.0 = Debug|Win32
+		{95B75BD7-6530-4BEC-EA68-C6C8EDC5D5E1}.Release|Win32.ActiveCfg = Release|Win32
+		{95B75BD7-6530-4BEC-EA68-C6C8EDC5D5E1}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
