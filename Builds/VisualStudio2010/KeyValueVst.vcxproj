@@ -128,7 +128,6 @@
   <ItemGroup>
     <ClCompile Include="..\..\Source\BackgroundThread.cpp"/>
     <ClCompile Include="..\..\Source\IPCBus.cpp"/>
-    <ClCompile Include="..\..\Source\IPCMIDIConnection.cpp"/>
     <ClCompile Include="..\..\Source\KeyValueMIDIRecieve.cpp"/>
     <ClCompile Include="..\..\Source\MIDIAggregater.cpp"/>
     <ClCompile Include="..\..\Source\PluginProcessor.cpp"/>
@@ -1135,8 +1134,6 @@
   <ItemGroup>
     <ClInclude Include="..\..\Source\BackgroundThread.h"/>
     <ClInclude Include="..\..\Source\IPCBus.h"/>
-    <ClInclude Include="..\..\Source\IPCConnection.h"/>
-    <ClInclude Include="..\..\Source\IPCMIDIConnection.h"/>
     <ClInclude Include="..\..\Source\KeyValueMIDIRecieve.h"/>
     <ClInclude Include="..\..\Source\MIDIAggregater.h"/>
     <ClInclude Include="..\..\Source\PluginProcessor.h"/>

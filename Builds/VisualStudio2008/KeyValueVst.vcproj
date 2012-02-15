@@ -134,9 +134,6 @@
         <File RelativePath="..\..\Source\BackgroundThread.h"/>
         <File RelativePath="..\..\Source\IPCBus.cpp"/>
         <File RelativePath="..\..\Source\IPCBus.h"/>
-        <File RelativePath="..\..\Source\IPCConnection.h"/>
-        <File RelativePath="..\..\Source\IPCMIDIConnection.cpp"/>
-        <File RelativePath="..\..\Source\IPCMIDIConnection.h"/>
         <File RelativePath="..\..\Source\KeyValueMIDIRecieve.cpp"/>
         <File RelativePath="..\..\Source\KeyValueMIDIRecieve.h"/>
         <File RelativePath="..\..\Source\MIDIAggregater.cpp"/>

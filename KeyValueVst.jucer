@@ -54,11 +54,6 @@
             file="Source/BackgroundThread.h"/>
       <FILE id="KUMbxT" name="IPCBus.cpp" compile="1" resource="0" file="Source/IPCBus.cpp"/>
       <FILE id="OJdHuo" name="IPCBus.h" compile="0" resource="0" file="Source/IPCBus.h"/>
-      <FILE id="UPnD4q" name="IPCConnection.h" compile="0" resource="0" file="Source/IPCConnection.h"/>
-      <FILE id="wWaUvj" name="IPCMIDIConnection.cpp" compile="1" resource="0"
-            file="Source/IPCMIDIConnection.cpp"/>
-      <FILE id="bs30Pk" name="IPCMIDIConnection.h" compile="0" resource="0"
-            file="Source/IPCMIDIConnection.h"/>
       <FILE id="gVZ2G8" name="KeyValueMIDIRecieve.cpp" compile="1" resource="0"
             file="Source/KeyValueMIDIRecieve.cpp"/>
       <FILE id="Ak8Av2" name="KeyValueMIDIRecieve.h" compile="0" resource="0"

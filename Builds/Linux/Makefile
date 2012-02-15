@@ -45,7 +45,6 @@ endif
 OBJECTS := \
   $(OBJDIR)/BackgroundThread_862b2f61.o \
   $(OBJDIR)/IPCBus_524cca4d.o \
-  $(OBJDIR)/IPCMIDIConnection_a8a9a7dc.o \
   $(OBJDIR)/KeyValueMIDIRecieve_55c967c9.o \
   $(OBJDIR)/MIDIAggregater_c53ae1fd.o \
   $(OBJDIR)/PluginProcessor_a059e380.o \
@@ -90,11 +89,6 @@ $(OBJDIR)/BackgroundThread_862b2f61.o: ../../Source/BackgroundThread.cpp
 $(OBJDIR)/IPCBus_524cca4d.o: ../../Source/IPCBus.cpp
 	-@mkdir -p $(OBJDIR)
 	@echo "Compiling IPCBus.cpp"
-	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
-
-$(OBJDIR)/IPCMIDIConnection_a8a9a7dc.o: ../../Source/IPCMIDIConnection.cpp
-	-@mkdir -p $(OBJDIR)
-	@echo "Compiling IPCMIDIConnection.cpp"
 	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 
 $(OBJDIR)/KeyValueMIDIRecieve_55c967c9.o: ../../Source/KeyValueMIDIRecieve.cpp

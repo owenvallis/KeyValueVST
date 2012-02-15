@@ -298,9 +298,6 @@
     <ClCompile Include="..\..\Source\IPCBus.cpp">
       <Filter>KeyValueVst\Source</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\IPCMIDIConnection.cpp">
-      <Filter>KeyValueVst\Source</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Source\KeyValueMIDIRecieve.cpp">
       <Filter>KeyValueVst\Source</Filter>
     </ClCompile>
@@ -1468,12 +1465,6 @@
       <Filter>KeyValueVst\Source</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\IPCBus.h">
-      <Filter>KeyValueVst\Source</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\IPCConnection.h">
-      <Filter>KeyValueVst\Source</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\IPCMIDIConnection.h">
       <Filter>KeyValueVst\Source</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\KeyValueMIDIRecieve.h">
