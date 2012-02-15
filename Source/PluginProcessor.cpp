@@ -184,9 +184,9 @@ void Key_valueAudioProcessor::setMidiChannelPerformerB (int channel)
     midiAggregater.setMidiChannelB(channel);
 }
 
-void Key_valueAudioProcessor::setLearning (bool enableLearning)
+void Key_valueAudioProcessor::setMode (String mode_)
 {
-    learningEnabled = enableLearning;
+    midiAggregater.setMode (mode_);
 }
 
 //==============================================================================

@@ -40,11 +40,11 @@ public:
     
 private:
     
-    ComboBox    performerMidiInputSelectorA, performerMidiInputSelectorB;
-    Label       performerMidiInputSelectorALabel, performerMidiInputSelectorBLabel;
+    ComboBox    performerMidiInputSelectorA, performerMidiInputSelectorB, mode;
+    Label       performerMidiInputSelectorALabel, performerMidiInputSelectorBLabel, modeLabel;
         
-    TextButton  learning, connectToIPC;
-    
+    TextButton  connectToIPC;
+        
     Key_valueAudioProcessor* getProcessor() const throw()       
     { 
         return (Key_valueAudioProcessor*) getAudioProcessor(); 

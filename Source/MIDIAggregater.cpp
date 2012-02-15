@@ -9,7 +9,8 @@
  */
 #include "MIDIAggregater.h"
 
-MIDIAggregater::MIDIAggregater (BackgroundThread& midiToVarConverter_) : midiToVarConverter (midiToVarConverter_)
+MIDIAggregater::MIDIAggregater (BackgroundThread& midiToVarConverter_) : midiToVarConverter (midiToVarConverter_),  
+                                                                         mode("Learning")
 {    
     // Parts per Quater Note 
     // ths should be determined by the host
@@ -89,9 +90,16 @@ void MIDIAggregater::setMidiChannelB (int channelB_)
     channelB = channelB_;
 }
 
+void MIDIAggregater::setMode (String mode_)
+{
+    mode = mode_;
+}
+                                               
+
+
 void MIDIAggregater::sendBarOfMidi()
 {
-    var MIDILog = "midi data";
+    var MIDILog = mode;
     
     // check for overflow events and place them at the start of the next midiBuffer
     MidiBuffer::Iterator i (oneBarMidiBuffer);

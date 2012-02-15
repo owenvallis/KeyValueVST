@@ -32,6 +32,9 @@ public:
     
     void setMidiChannelA (int channelA_);
     void setMidiChannelB (int channelB_);
+    void setMode (String mode_);
+    
+    String getMode() { return mode; }
     
 private:
     
@@ -55,6 +58,8 @@ private:
     
     // midi channels
     int channelA, channelB;
+    // mode
+    String mode;
         
     // send our data out the IPC bus
     void sendBarOfMidi();  

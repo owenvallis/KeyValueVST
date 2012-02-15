@@ -17,9 +17,10 @@ Key_valueAudioProcessorEditor::Key_valueAudioProcessorEditor (Key_valueAudioProc
     : AudioProcessorEditor (ownerFilter),
       performerMidiInputSelectorA("PerformerA"),
       performerMidiInputSelectorB("PerformerB"),
+      mode("Mode"),
       performerMidiInputSelectorALabel(" ", "MIDI Channel PerformerA"),
       performerMidiInputSelectorBLabel(" ", "MIDI Channel PerformerB"),      
-      learning("Learning"),
+      modeLabel(" ", "Mode"),
       connectToIPC("Connect")
 
 {
@@ -30,30 +31,31 @@ Key_valueAudioProcessorEditor::Key_valueAudioProcessorEditor (Key_valueAudioProc
         performerMidiInputSelectorB.addItem(String(i), i);
     }
     
+    mode.addItem("Learning", 1);
+    mode.addItem("Performance", 2);
+    
     performerMidiInputSelectorALabel.attachToComponent (&performerMidiInputSelectorA, false);
     performerMidiInputSelectorALabel.setFont (Font (11.0f));
     
     performerMidiInputSelectorBLabel.attachToComponent (&performerMidiInputSelectorB, false);
     performerMidiInputSelectorBLabel.setFont (Font (11.0f));
     
-    
-    // textbutton for enabling/disabling learning
-    learning.setClickingTogglesState(true);
-    learning.setToggleState(false, false);
+    modeLabel.attachToComponent (&mode, false);
+    modeLabel.setFont (Font (11.0f));
     
     // add listeners
     performerMidiInputSelectorA.addListener(this);
     performerMidiInputSelectorB.addListener(this);
-    learning.addListener(this);
+    mode.addListener(this);
     connectToIPC.addListener(this);
     
     // add all our components
     addAndMakeVisible(&performerMidiInputSelectorA);
     addAndMakeVisible(&performerMidiInputSelectorB);
-    addAndMakeVisible(&learning);
+    addAndMakeVisible(&mode);
     addAndMakeVisible(&connectToIPC);
     
-    
+    mode.setText(getProcessor()->getMode());
     
     // This is where our plugin's editor size is set.
     setSize (250, 130);
@@ -74,7 +76,7 @@ void Key_valueAudioProcessorEditor::resized()
     // hard set for right now
     performerMidiInputSelectorA.setBounds(10, 30, 100, 22);
     performerMidiInputSelectorB.setBounds(10, 80, 100, 22);
-    learning.setBounds(130, 30, 100, 22);
+    mode.setBounds(130, 30, 100, 22);
     connectToIPC.setBounds(130, 80, 100, 22);
 }
 
@@ -88,16 +90,17 @@ void Key_valueAudioProcessorEditor::comboBoxChanged (ComboBox *comboBoxThatHasCh
     {
         getProcessor()->setMidiChannelPerformerB(performerMidiInputSelectorB.getSelectedId());
     }
+    else if (comboBoxThatHasChanged == &mode)
+    {
+        getProcessor()->setMode(mode.getText());
+    }
 }
 
 void Key_valueAudioProcessorEditor::buttonClicked (Button* button)
-{    
-    if (button == &learning)
-    {
-        getProcessor()->setLearning(learning.getToggleState());
-        
-    } else if (button == &connectToIPC) {
+{       
+    if (button == &connectToIPC) {
                 
         getProcessor()->connectToDataBus();
     }
 }
+

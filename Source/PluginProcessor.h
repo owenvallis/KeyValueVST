@@ -70,16 +70,15 @@ public:
     void setMidiChannelPerformerA (int channel);
     void setMidiChannelPerformerB (int channel);
     
-    void setLearning (bool enableLearning);
+    void setMode (String mode_);
+    String getMode() { return midiAggregater.getMode(); }
 
 private:
     MIDIAggregater midiAggregater;
     BackgroundThread ipcWorkerThread;
     KeyValueMIDIRecieve keyValueMIDIRecieve;
     IPCBus dataBus;
-    
-    bool learningEnabled;
-    
+        
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Key_valueAudioProcessor);
 };
