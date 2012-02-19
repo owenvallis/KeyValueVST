@@ -20,7 +20,7 @@
 class MIDIAggregater
 {
 public:
-    MIDIAggregater (BackgroundThread& midiToVarConverter_);
+    MIDIAggregater (BackgroundThread& varToJSONConverter_);
     ~MIDIAggregater();
     
     void addMidiBuffer (const MidiBuffer& buffer, 
@@ -41,7 +41,10 @@ private:
     MidiBuffer oneBarMidiBuffer; 
     HashMap<int, double> tickTimeStamp;
     
-    BackgroundThread& midiToVarConverter;
+    // our worker thread to convert teh data to JSON
+    // and pass along to the IPC bus thread
+    // this happens outside of our VST/host thread
+    BackgroundThread& varToJSONConverter;
     
     // Parts per Quater Note 
     // ths should be determined by the host

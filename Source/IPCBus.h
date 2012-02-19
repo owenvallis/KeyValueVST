@@ -21,7 +21,7 @@ public:
     IPCBus (KeyValueMIDIRecieve& keyValueMIDIRecieve_);    
     ~IPCBus();
     
-    void sendData (var& data);
+    void sendData (const MemoryBlock& message);
     
     void connect ();
     

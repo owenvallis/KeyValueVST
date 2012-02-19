@@ -42,8 +42,14 @@ void BackgroundThread::run()
         wait (-1);
             
         DBG ("passing to IPC Bus");
-        // DBG (JSON::toString (MIDILog));
-        dataBus.sendData (MIDILog);
+        
+        // write the data to the IPC bus
+        MemoryBlock m;
+        MemoryOutputStream mos (m, false);
+        JSON::writeToStream (mos, MIDILog);
+        //DBG (JSON::toString (data));
+        
+        dataBus.sendData (m);
 
     }
 }

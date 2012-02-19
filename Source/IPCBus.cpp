@@ -20,23 +20,15 @@ IPCBus::~IPCBus()
     disconnect();
 }
 
-void IPCBus::sendData (var& data)
+void IPCBus::sendData (const MemoryBlock& message)
 {
-    
-    // write the data to the IPC bus
-    MemoryBlock m;
-    MemoryOutputStream mos (m, false);
-    JSON::writeToStream (mos, data);
-    //DBG (JSON::toString (data));
-    
     if (isConnected()) 
     {
         DBG ("sending data");
-        sendMessage (m);
+        sendMessage (message);
     } else {
         DBG ("not connected");
     }
-    
 }
 
 void IPCBus::connect()

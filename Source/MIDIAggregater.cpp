@@ -9,7 +9,7 @@
  */
 #include "MIDIAggregater.h"
 
-MIDIAggregater::MIDIAggregater (BackgroundThread& midiToVarConverter_) : midiToVarConverter (midiToVarConverter_),  
+MIDIAggregater::MIDIAggregater (BackgroundThread& varToJSONConverter_) : varToJSONConverter (varToJSONConverter_),  
                                                                          mode("Learning")
 {    
     // Parts per Quater Note 
@@ -164,7 +164,7 @@ void MIDIAggregater::sendBarOfMidi()
     }
     
     // pass our data to the background thread to send out over the IPC bus
-    midiToVarConverter.sendBarOfMidi (MIDILog);
+    varToJSONConverter.sendBarOfMidi (MIDILog);
     
     sampleOffset = currentSamplePosWithinBar - samplesPerBar; 
     
