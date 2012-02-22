@@ -101,7 +101,7 @@ public:
 
     int64 getTotalLength()
     {
-        jassertfalse; //xxx to do
+        //xxx to do
         return -1;
     }
 
@@ -416,7 +416,7 @@ private:
         }
         else
         {
-            port = 0; // indicates the default port
+            port = 80;
 
             if (nextSlash >= 0)
                 host = url.substring (7, nextSlash);

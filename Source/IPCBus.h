@@ -13,6 +13,8 @@
 
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "KeyValueMIDIRecieve.h"
+#include <zmq.hpp>
+
 
 //==============================================================================
 class IPCBus  : public InterprocessConnection
@@ -31,6 +33,7 @@ public:
     
 private:
     KeyValueMIDIRecieve& keyValueMIDIRecieve;
+
 };
 
 

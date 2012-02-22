@@ -29,19 +29,31 @@ void IPCBus::sendData (const MemoryBlock& message)
     } else {
         DBG ("not connected");
     }
+    
 }
 
 void IPCBus::connect()
 {
+    
+    // and try to open the socket or pipe...
+    bool openedOk = false;
+    
     // connect to our external pipe
-    connectToPipe ("keyvaluevst");
-
+    openedOk = connectToSocket("127.0.0.1", 5555, 1000);
+    
+    if (! openedOk)
+    {        
+        AlertWindow::showMessageBoxAsync (AlertWindow::WarningIcon,
+                                          "VST",
+                                          "Failed to open the socket or pipe...");
+    }
 }
 
 void IPCBus::messageReceived (const MemoryBlock& message) 
 {
     keyValueMIDIRecieve.addData (message);
 }
+
 void IPCBus::connectionLost() 
 {
     DBG ("connection lost");
