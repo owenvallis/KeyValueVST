@@ -59,22 +59,21 @@ def bars_from_datafile(filename, bar_length = 4.0):
 
     return bars
 
+def process_bars(bar1, bar2):
+    # maps perfA in bar 1 to perfB in bar 2
+    bar1_perf_a = [event for event in bar1 if event[0] == 'PerfA']
+    bar2_perf_b = [event for event in bar2 if event[0] == 'PerfB']
+
+    print bar1_perf_a
+    print bar2_perf_b
+
+
 if __name__ == '__main__':
     tfile = 'data/training_data/10_1331192251726.JSON'
-    message_queue = bars_from_datafile(tfile, bar_length = 0.5)
+    bars = bars_from_datafile(tfile, bar_length = 0.5)
 
-    message_queue = [
-        [1,1],
-        [2,2],
-        [3,3],
-        [4,4]
-    ]
-
-    # print each pair (1,2) (2,3) (3,4) etc
-    for i in range(len(message_queue)-1):
-        print (message_queue[i], message_queue[i+1])
-
-    # pprint(message_queue)
+    for i in range(len(bars)-1):
+        process_bars(bars[i], bars[i+1])
 
 
 
