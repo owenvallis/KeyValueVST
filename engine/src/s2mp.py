@@ -133,10 +133,15 @@ class S2MP:
         sc2id = 0
 
         for j in range(len(avbl)):
-            score = self._calc_local_sim(i, avbl[j], self._weights[i][avbl[j]], k, self._mapping_order[k], self._weights[k][self._mapping_order[k]])
+            score = self._calc_local_sim(i, 
+                avbl[j], 
+                self._weights[i][avbl[j]], 
+                k,
+                self._mapping_order[k],
+                self._weights[k][self._mapping_order[k]])
             if score > sc2:
                 sc2 = score
-                sc2id = avbl[k]
+                sc2id = avbl[j]
                 no_alternative_found = False
 
         # Pick the best resolution to the conflict
