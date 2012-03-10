@@ -23,7 +23,7 @@
   ==============================================================================
 */
 
-#if defined (__JUCE_AUDIO_DEVICES_JUCEHEADER__) && ! defined (JUCE_AMALGAMATED_INCLUDE)
+#if defined (__JUCE_AUDIO_DEVICES_JUCEHEADER__) && ! JUCE_AMALGAMATED_INCLUDE
  /* When you add this cpp file to your project, you mustn't include it in a file where you've
     already included any other headers - just put it inside a file on its own, possibly with your config
     flags preceding it, but don't include anything else. That also includes avoiding any automatic prefix
@@ -123,9 +123,16 @@
      Juce with low latency audio support, just set the JUCE_JACK flag to 0.
   */
   #include <jack/jack.h>
-  //#include <jack/transport.h>
  #endif
  #undef SIZEOF
+
+//==============================================================================
+#elif JUCE_ANDROID
+
+ #if JUCE_USE_ANDROID_OPENSLES
+  #include <SLES/OpenSLES.h>
+  #include <SLES/OpenSLES_Android.h>
+ #endif
 
 #endif
 
@@ -150,12 +157,12 @@ using namespace juce;
 
 namespace juce
 {
+ #include "native/juce_MidiDataConcatenator.h"
 
 //==============================================================================
 #if JUCE_MAC
  #include "../juce_core/native/juce_osx_ObjCHelpers.h"
  #include "../juce_core/native/juce_mac_ObjCSuffix.h"
- #include "native/juce_MidiDataConcatenator.h"
  #include "native/juce_mac_CoreAudio.cpp"
  #include "native/juce_mac_CoreMidi.cpp"
 
@@ -170,12 +177,10 @@ namespace juce
 //==============================================================================
 #elif JUCE_IOS
  #include "native/juce_ios_Audio.cpp"
- #include "native/juce_MidiDataConcatenator.h"
  #include "native/juce_mac_CoreMidi.cpp"
 
 //==============================================================================
 #elif JUCE_WINDOWS
- #include "native/juce_MidiDataConcatenator.h"
  #include "../juce_core/native/juce_win32_ComSmartPtr.h"
  #include "../juce_events/native/juce_win32_HiddenMessageWindow.h"
 
@@ -222,6 +227,10 @@ namespace juce
  #include "../juce_core/native/juce_android_JNIHelpers.h"
  #include "native/juce_android_Audio.cpp"
  #include "native/juce_android_Midi.cpp"
+
+ #if JUCE_USE_ANDROID_OPENSLES
+  #include "native/juce_android_OpenSL.cpp"
+ #endif
 
 #endif
 

@@ -52,7 +52,7 @@
 // Debugging and assertion macros
 
 #if JUCE_LOG_ASSERTIONS
- #define juce_LogCurrentAssertion    juce_LogAssertion (__FILE__, __LINE__);
+ #define juce_LogCurrentAssertion    juce::logAssertion (__FILE__, __LINE__);
 #elif JUCE_DEBUG
  #define juce_LogCurrentAssertion    std::cerr << "JUCE Assertion failure in " << __FILE__ << ", line " << __LINE__ << std::endl;
 #else
@@ -298,7 +298,11 @@ namespace juce
 #endif
 
 #if defined (_MSC_VER) && _MSC_VER >= 1600
- #define JUCE_COMPILER_SUPPORTS_NOEXCEPT 0
+ #if _MSC_VER >= 1700
+  #define JUCE_COMPILER_SUPPORTS_NOEXCEPT 1
+ #else
+  #define JUCE_COMPILER_SUPPORTS_NOEXCEPT 0
+ #endif
  #define JUCE_COMPILER_SUPPORTS_NULLPTR 1
  #define JUCE_COMPILER_SUPPORTS_MOVE_SEMANTICS 1
 #endif

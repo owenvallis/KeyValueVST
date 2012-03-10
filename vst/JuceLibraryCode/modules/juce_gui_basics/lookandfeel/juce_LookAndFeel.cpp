@@ -94,14 +94,14 @@ namespace LookAndFeelHelpers
         return baseColour;
     }
 
-    TextLayout layoutTooltipText (const String& text) noexcept
+    TextLayout layoutTooltipText (const String& text, const Colour& colour) noexcept
     {
         const float tooltipFontSize = 13.0f;
         const int maxToolTipWidth = 400;
 
         AttributedString s;
         s.setJustification (Justification::centred);
-        s.append (text, Font (tooltipFontSize, Font::bold));
+        s.append (text, Font (tooltipFontSize, Font::bold), colour);
 
         TextLayout tl;
         tl.createLayoutWithBalancedLineLengths (s, (float) maxToolTipWidth);
@@ -130,11 +130,11 @@ LookAndFeel::LookAndFeel()
     jassert (Colours::white == Colour (0xffffffff));
 
     // set up the standard set of colours..
-    const int textButtonColour = 0xffbbbbff;
-    const int textHighlightColour = 0x401111ee;
-    const int standardOutlineColour = 0xb2808080;
+    const uint32 textButtonColour      = 0xffbbbbff;
+    const uint32 textHighlightColour   = 0x401111ee;
+    const uint32 standardOutlineColour = 0xb2808080;
 
-    static const int standardColours[] =
+    static const uint32 standardColours[] =
     {
         TextButton::buttonColourId,                 textButtonColour,
         TextButton::buttonOnColourId,               0xff4444ff,
@@ -1653,7 +1653,7 @@ ImageEffectFilter* LookAndFeel::getSliderEffect()
 //==============================================================================
 void LookAndFeel::getTooltipSize (const String& tipText, int& width, int& height)
 {
-    const TextLayout tl (LookAndFeelHelpers::layoutTooltipText (tipText));
+    const TextLayout tl (LookAndFeelHelpers::layoutTooltipText (tipText, Colours::black));
 
     width  = (int) (tl.getWidth() + 14.0f);
     height = (int) (tl.getHeight() + 6.0f);
@@ -1668,10 +1668,8 @@ void LookAndFeel::drawTooltip (Graphics& g, const String& text, int width, int h
     g.drawRect (0, 0, width, height, 1);
    #endif
 
-    const TextLayout tl (LookAndFeelHelpers::layoutTooltipText (text));
-
-    g.setColour (findColour (TooltipWindow::textColourId));
-    tl.draw (g, Rectangle<float> (0.0f, 0.0f, (float) width, (float) height));
+    const TextLayout tl (LookAndFeelHelpers::layoutTooltipText (text, findColour (TooltipWindow::textColourId)));
+    tl.draw (g, Rectangle<float> ((float) width, (float) height));
 }
 
 //==============================================================================

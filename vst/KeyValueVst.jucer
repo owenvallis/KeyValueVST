@@ -9,7 +9,7 @@
               pluginEditorRequiresKeys="0" pluginAUExportPrefix="KeyValueVstAU"
               pluginAUViewClass="KeyValueVstAU_V1" pluginRTASCategory="" jucerVersion="3.0.0">
   <EXPORTFORMATS>
-    <XCODE_MAC targetFolder="Builds/MacOSX" objCExtraSuffix="TecZ6l" juceFolder="../../../sdks/juce/modules"
+    <XCODE_MAC targetFolder="Builds/MacOSX" objCExtraSuffix="TecZ6l" juceFolder="../../../../sdks/juce/modules"
                vstFolder="~/SDKs/vstsdk2.4">
       <CONFIGURATIONS>
         <CONFIGURATION name="Debug" isDebug="1" optimisation="1" targetName="KeyValueVst"
@@ -18,33 +18,6 @@
                        osxSDK="default" osxCompatibility="default" osxArchitecture="default"/>
       </CONFIGURATIONS>
     </XCODE_MAC>
-    <VS2008 targetFolder="Builds/VisualStudio2008" libraryType="1" juceFolder="../../../sdks/juce/modules"
-            vstFolder="c:\SDKs\vstsdk2.4">
-      <CONFIGURATIONS>
-        <CONFIGURATION name="Debug" isDebug="1" optimisation="1" targetName="KeyValueVst"
-                       winWarningLevel="4" generateManifest="1"/>
-        <CONFIGURATION name="Release" isDebug="0" optimisation="2" targetName="KeyValueVst"
-                       winWarningLevel="4" generateManifest="1"/>
-      </CONFIGURATIONS>
-    </VS2008>
-    <VS2010 targetFolder="Builds/VisualStudio2010" libraryType="1" juceFolder="../../../sdks/juce/modules"
-            vstFolder="c:\SDKs\vstsdk2.4">
-      <CONFIGURATIONS>
-        <CONFIGURATION name="Debug" isDebug="1" optimisation="1" targetName="KeyValueVst"
-                       winWarningLevel="4" generateManifest="1" winArchitecture="32-bit"/>
-        <CONFIGURATION name="Release" isDebug="0" optimisation="2" targetName="KeyValueVst"
-                       winWarningLevel="4" generateManifest="1" winArchitecture="32-bit"/>
-      </CONFIGURATIONS>
-    </VS2010>
-    <LINUX_MAKE targetFolder="Builds/Linux" juceFolder="../../../sdks/juce/modules"
-                vstFolder="~/SDKs/vstsdk2.4">
-      <CONFIGURATIONS>
-        <CONFIGURATION name="Debug" isDebug="1" optimisation="1" targetName="KeyValueVst"
-                       libraryPath="/usr/X11R6/lib/"/>
-        <CONFIGURATION name="Release" isDebug="0" optimisation="2" targetName="KeyValueVst"
-                       libraryPath="/usr/X11R6/lib/"/>
-      </CONFIGURATIONS>
-    </LINUX_MAKE>
   </EXPORTFORMATS>
   <MAINGROUP id="rDjLyJ" name="KeyValueVst">
     <GROUP id="{1411B4F7-C7FC-6C86-0543-E4ACF975A2A7}" name="Source">

@@ -27,12 +27,17 @@
 
 // these are in the windows SDK, but need to be repeated here for GCC..
 #ifndef GET_APPCOMMAND_LPARAM
- #define FAPPCOMMAND_MASK                  0xF000
  #define GET_APPCOMMAND_LPARAM(lParam)     ((short) (HIWORD (lParam) & ~FAPPCOMMAND_MASK))
+
+ #define FAPPCOMMAND_MASK                  0xF000
  #define APPCOMMAND_MEDIA_NEXTTRACK        11
  #define APPCOMMAND_MEDIA_PREVIOUSTRACK    12
  #define APPCOMMAND_MEDIA_STOP             13
  #define APPCOMMAND_MEDIA_PLAY_PAUSE       14
+#endif
+
+#ifndef WM_APPCOMMAND
+ #define WM_APPCOMMAND                     0x0319
 #endif
 
 extern void juce_repeatLastProcessPriority();
@@ -44,21 +49,22 @@ extern CheckEventBlockedByModalComps isEventBlockedByModalComps;
 
 static bool shouldDeactivateTitleBar = true;
 
+void* getUser32Function (const char* functionName) // (NB: this function also used from other modules)
+{
+    HMODULE user32Mod = GetModuleHandleA ("user32.dll");
+    jassert (user32Mod != 0);
+
+    return static_cast <void*> (GetProcAddress (user32Mod, functionName));
+}
+
 //==============================================================================
 typedef BOOL (WINAPI* UpdateLayeredWinFunc) (HWND, HDC, POINT*, SIZE*, HDC, POINT*, COLORREF, BLENDFUNCTION*, DWORD);
 static UpdateLayeredWinFunc updateLayeredWindow = nullptr;
 
 bool Desktop::canUseSemiTransparentWindows() noexcept
 {
-    if (updateLayeredWindow == 0)
-    {
-        if (! juce_IsRunningInWine())
-        {
-            HMODULE user32Mod = GetModuleHandle (_T("user32.dll"));
-            jassert (user32Mod != 0);
-            updateLayeredWindow = (UpdateLayeredWinFunc) GetProcAddress (user32Mod, "UpdateLayeredWindow");
-        }
-    }
+    if (updateLayeredWindow == nullptr && ! juce_IsRunningInWine())
+        updateLayeredWindow = (UpdateLayeredWinFunc) getUser32Function ("UpdateLayeredWindow");
 
     return updateLayeredWindow != 0;
 }
@@ -103,12 +109,9 @@ static bool canUseMultiTouch()
     {
         hasCheckedForMultiTouch = true;
 
-        HMODULE user32Mod = GetModuleHandle (_T("user32.dll"));
-        jassert (user32Mod != 0);
-
-        registerTouchWindow   = (RegisterTouchWindowFunc)   GetProcAddress (user32Mod, "RegisterTouchWindow");
-        getTouchInputInfo     = (GetTouchInputInfoFunc)     GetProcAddress (user32Mod, "GetTouchInputInfo");
-        closeTouchInputHandle = (CloseTouchInputHandleFunc) GetProcAddress (user32Mod, "CloseTouchInputHandle");
+        registerTouchWindow   = (RegisterTouchWindowFunc)   getUser32Function ("RegisterTouchWindow");
+        getTouchInputInfo     = (GetTouchInputInfoFunc)     getUser32Function ("GetTouchInputInfo");
+        closeTouchInputHandle = (CloseTouchInputHandleFunc) getUser32Function ("CloseTouchInputHandle");
     }
 
     return registerTouchWindow != nullptr;
@@ -281,8 +284,6 @@ public:
                        const RectangleList& maskedRegion,
                        const uint8 updateLayeredWindowAlpha) noexcept
     {
-        static HDRAWDIB hdd = createDrawDIB();
-
         SetMapMode (dc, MM_TEXT);
 
         if (transparent)
@@ -327,20 +328,11 @@ public:
                 }
             }
 
-            if (hdd == 0)
-            {
-                StretchDIBits (dc,
-                               x, y, width, height,
-                               0, 0, width, height,
-                               bitmapData, (const BITMAPINFO*) &bitmapInfo,
-                               DIB_RGB_COLORS, SRCCOPY);
-            }
-            else
-            {
-                DrawDibDraw (hdd, dc, x, y, -1, -1,
-                             (BITMAPINFOHEADER*) &bitmapInfo, bitmapData,
-                             0, 0, width, height, 0);
-            }
+            StretchDIBits (dc,
+                           x, y, width, height,
+                           0, 0, width, height,
+                           bitmapData, (const BITMAPINFO*) &bitmapInfo,
+                           DIB_RGB_COLORS, SRCCOPY);
 
             if (! maskedRegion.isEmpty())
                 RestoreDC (dc, savedDC);
@@ -357,16 +349,6 @@ public:
 
 private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (WindowsBitmapImage);
-
-    static HDRAWDIB createDrawDIB() noexcept
-    {
-        HDC dc = GetDC (0);
-        const int n = GetDeviceCaps (dc, BITSPIXEL);
-        ReleaseDC (0, dc);
-
-        // only open if we're not palettised
-        return n > 8 ? DrawDibOpen() : 0;
-    }
 };
 
 //==============================================================================
@@ -1052,7 +1034,8 @@ private:
 
         Image& getImage (const bool transparent, const int w, const int h)
         {
-            const Image::PixelFormat format = transparent ? Image::ARGB : Image::RGB;
+            static bool alwaysUseARGB = isGraphicsCard32Bit(); // NB: for 32-bit cards, it's faster to use a 32-bit image.
+            const Image::PixelFormat format = (transparent || alwaysUseARGB) ? Image::ARGB : Image::RGB;
 
             if ((! image.isValid()) || image.getWidth() < w || image.getHeight() < h || image.getFormat() != format)
                 image = Image (new WindowsBitmapImage (format, (w + 31) & ~31, (h + 31) & ~31, false));
@@ -1069,6 +1052,14 @@ private:
 
     private:
         Image image;
+
+        static bool isGraphicsCard32Bit()
+        {
+            HDC dc = GetDC (0);
+            const int bitsPerPixel = GetDeviceCaps (dc, BITSPIXEL);
+            ReleaseDC (0, dc);
+            return bitsPerPixel > 24;
+        }
 
         JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (TemporaryImage);
     };

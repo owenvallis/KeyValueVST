@@ -55,14 +55,14 @@ void JNIClassBase::release (JNIEnv* env)
 
 void JNIClassBase::initialiseAllClasses (JNIEnv* env)
 {
-    Array<JNIClassBase*>& classes = getClasses();
+    const Array<JNIClassBase*>& classes = getClasses();
     for (int i = classes.size(); --i >= 0;)
         classes.getUnchecked(i)->initialise (env);
 }
 
 void JNIClassBase::releaseAllClasses (JNIEnv* env)
 {
-    Array<JNIClassBase*>& classes = getClasses();
+    const Array<JNIClassBase*>& classes = getClasses();
     for (int i = classes.size(); --i >= 0;)
         classes.getUnchecked(i)->release (env);
 }
@@ -100,7 +100,7 @@ ThreadLocalJNIEnvHolder threadLocalJNIEnvHolder;
 
 JNIEnv* getEnv() noexcept
 {
-    return threadLocalJNIEnvHolder.get();
+    return threadLocalJNIEnvHolder.getOrAttach();
 }
 
 //==============================================================================
@@ -178,7 +178,7 @@ int SystemStats::getCpuSpeedInMegaherz()
 
 int SystemStats::getMemorySizeInMegabytes()
 {
-   #if __ANDROID_API__ > 7
+   #if __ANDROID_API__ >= 9
     struct sysinfo sysi;
 
     if (sysinfo (&sysi) == 0)

@@ -31,8 +31,8 @@ namespace juce
 {
 
 //==============================================================================
-JUCE_JNI_CALLBACK (JuceAppActivity, launchApp, void, (JNIEnv* env, jobject activity,
-                                                      jstring appFile, jstring appDataDir))
+JUCE_JNI_CALLBACK (JUCE_ANDROID_ACTIVITY_CLASSNAME, launchApp, void, (JNIEnv* env, jobject activity,
+                                                                      jstring appFile, jstring appDataDir))
 {
     android.initialise (env, activity, appFile, appDataDir);
 
@@ -47,7 +47,7 @@ JUCE_JNI_CALLBACK (JuceAppActivity, launchApp, void, (JNIEnv* env, jobject activ
         exit (0);
 }
 
-JUCE_JNI_CALLBACK (JuceAppActivity, quitApp, void, (JNIEnv* env, jobject activity))
+JUCE_JNI_CALLBACK (JUCE_ANDROID_ACTIVITY_CLASSNAME, quitApp, void, (JNIEnv* env, jobject activity))
 {
     JUCEApplicationBase::appWillTerminateByForce();
 
@@ -78,8 +78,9 @@ DECLARE_JNI_CLASS (CanvasMinimal, "android/graphics/Canvas");
  METHOD (hasFocus,      "hasFocus",         "()Z") \
  METHOD (invalidate,    "invalidate",       "(IIII)V") \
  METHOD (containsPoint, "containsPoint",    "(II)Z") \
+ METHOD (createGLView,  "createGLView",     "()L" JUCE_ANDROID_ACTIVITY_CLASSPATH "$OpenGLView;") \
 
-DECLARE_JNI_CLASS (ComponentPeerView, "com/juce/ComponentPeerView");
+DECLARE_JNI_CLASS (ComponentPeerView, JUCE_ANDROID_ACTIVITY_CLASSPATH "$ComponentPeerView");
 #undef JNI_CLASS_MEMBERS
 
 
@@ -228,6 +229,14 @@ public:
                                view.callIntMethod (ComponentPeerView.getTop),
                                view.callIntMethod (ComponentPeerView.getWidth),
                                view.callIntMethod (ComponentPeerView.getHeight));
+    }
+
+    void handleScreenSizeChange()
+    {
+        ComponentPeer::handleScreenSizeChange();
+
+        if (isFullScreen())
+            setFullScreen (true);
     }
 
     Point<int> getScreenPosition() const
@@ -457,6 +466,7 @@ public:
         // TODO
     }
 
+   #if USE_ANDROID_CANVAS
     StringArray getAvailableRenderingEngines()
     {
         StringArray s (ComponentPeer::getAvailableRenderingEngines());
@@ -464,7 +474,6 @@ public:
         return s;
     }
 
-   #if USE_ANDROID_CANVAS
     int getCurrentRenderingEngine() const
     {
         return usingAndroidGraphics ? 1 : 0;
@@ -565,7 +574,7 @@ Point<int> AndroidComponentPeer::lastMousePos;
 
 //==============================================================================
 #define JUCE_VIEW_CALLBACK(returnType, javaMethodName, params, juceMethodInvocation) \
-  JUCE_JNI_CALLBACK (ComponentPeerView, javaMethodName, returnType, params) \
+  JUCE_JNI_CALLBACK (JUCE_JOIN_MACRO (JUCE_ANDROID_ACTIVITY_CLASSNAME, _00024ComponentPeerView), javaMethodName, returnType, params) \
   { \
       AndroidComponentPeer* const peer = AndroidComponentPeer::findPeerForJavaView (env, view); \
       if (peer != nullptr) \
@@ -585,6 +594,11 @@ ComponentPeer* Component::createNewPeer (int styleFlags, void*)
     return new AndroidComponentPeer (this, styleFlags);
 }
 
+jobject createOpenGLView (ComponentPeer* peer)
+{
+    jobject parentView = static_cast <jobject> (peer->getNativeHandle());
+    return getEnv()->CallObjectMethod (parentView, ComponentPeerView.createGLView);
+}
 
 //==============================================================================
 bool Desktop::canUseSemiTransparentWindows() noexcept
@@ -671,8 +685,8 @@ int JUCE_CALLTYPE NativeMessageBox::showYesNoCancelBox (AlertWindow::AlertIconTy
     return 0;
 }
 
-JUCE_JNI_CALLBACK (JuceAppActivity, alertDismissed, void, (JNIEnv* env, jobject activity,
-                                                           jlong callbackAsLong, jint result))
+JUCE_JNI_CALLBACK (JUCE_ANDROID_ACTIVITY_CLASSNAME, alertDismissed, void, (JNIEnv* env, jobject activity,
+                                                                           jlong callbackAsLong, jint result))
 {
     ModalComponentManager::Callback* callback = (ModalComponentManager::Callback*) callbackAsLong;
 
@@ -700,11 +714,11 @@ void Desktop::setKioskComponent (Component* kioskModeComponent, bool enableOrDis
 //==============================================================================
 void Desktop::getCurrentMonitorPositions (Array <Rectangle<int> >& monitorCoords, const bool clipToWorkArea)
 {
-    monitorCoords.add (Rectangle<int> (0, 0, android.screenWidth, android.screenHeight));
+    monitorCoords.add (Rectangle<int> (android.screenWidth, android.screenHeight));
 }
 
-JUCE_JNI_CALLBACK (JuceAppActivity, setScreenSize, void, (JNIEnv* env, jobject activity,
-                                                          jint screenWidth, jint screenHeight))
+JUCE_JNI_CALLBACK (JUCE_ANDROID_ACTIVITY_CLASSNAME, setScreenSize, void, (JNIEnv* env, jobject activity,
+                                                                          jint screenWidth, jint screenHeight))
 {
     const bool isSystemInitialised = android.screenWidth != 0;
     android.screenWidth = screenWidth;

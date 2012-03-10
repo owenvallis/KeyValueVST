@@ -23,7 +23,7 @@
   ==============================================================================
 */
 
-#ifdef __JUCE_AUDIO_FORMATS_JUCEHEADER__
+#if defined (__JUCE_AUDIO_FORMATS_JUCEHEADER__) && ! JUCE_AMALGAMATED_INCLUDE
  /* When you add this cpp file to your project, you mustn't include it in a file where you've
     already included any other headers - just put it inside a file on its own, possibly with your config
     flags preceding it, but don't include anything else. That also includes avoiding any automatic prefix
@@ -80,7 +80,9 @@
   #endif
  #endif
 
- #include <wmsdk.h>
+ #if JUCE_USE_WINDOWS_MEDIA_FORMAT
+  #include <wmsdk.h>
+ #endif
 #endif
 
 //==============================================================================
