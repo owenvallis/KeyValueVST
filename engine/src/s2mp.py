@@ -67,7 +67,7 @@ class S2MP:
                 weight_pos = -1
                 count_minus_ones += 1
 
-            # store matching weight - max weight in this row
+            # store matching weight i.e. max weight in this row
             self._mapping_order.append(weight_pos)
 
             row += 1
@@ -128,7 +128,7 @@ class S2MP:
                 sc1id = avbl[j]
                 no_alternative_found = False
 
-        # Now evaluate all the scores for keeping _mapping_order[j] the same and changing _mapping_order[i]
+        # Now evaluate all the scores for keeping _mapping_order[k] the same and changing _mapping_order[i]
         sc2 = 0.0
         sc2id = 0
 
@@ -243,7 +243,7 @@ def test_datafiles():
 
     event_fields = ['performer', 'MIDI channel', 'cc number', 'cc value', 'MIDI timestamp']
 
-    folder = 'data/training_data/'
+    folder = '../data/training_data/'
     filenames = [filename for filename in os.listdir(folder) if 'json' in filename.lower()]
     for filename in filenames:
         jdata = json.loads(open(folder + filename, 'r').read())
