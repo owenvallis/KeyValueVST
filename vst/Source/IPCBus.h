@@ -25,7 +25,7 @@ public:
     
     void sendData (const MemoryBlock& message);
     
-    void connect ();
+    void connect();
     
     void messageReceived (const MemoryBlock& message);
     void connectionLost();

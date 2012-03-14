@@ -21,6 +21,13 @@
   </EXPORTFORMATS>
   <MAINGROUP id="rDjLyJ" name="KeyValueVst">
     <GROUP id="{1411B4F7-C7FC-6C86-0543-E4ACF975A2A7}" name="Source">
+      <GROUP id="{61FB89BE-730C-9BC3-9FB6-ABAFDE9DE2AA}" name="Algorithm">
+        <FILE id="F9Ktsh" name="KeyValueMIDIPair.h" compile="0" resource="0"
+              file="Source/KeyValueMIDIPair.h"/>
+        <FILE id="wTMJ1N" name="SeqPat.h" compile="0" resource="0" file="Source/SeqPat.h"/>
+        <FILE id="sET5gG" name="S2MP.cpp" compile="1" resource="0" file="Source/S2MP.cpp"/>
+        <FILE id="Zla6BU" name="S2MP.h" compile="0" resource="0" file="Source/S2MP.h"/>
+      </GROUP>
       <FILE id="GweXct" name="BackgroundThread.cpp" compile="1" resource="0"
             file="Source/BackgroundThread.cpp"/>
       <FILE id="RRt2NG" name="BackgroundThread.h" compile="0" resource="0"

@@ -39,7 +39,7 @@ void IPCBus::connect()
     bool openedOk = false;
     
     // connect to our external pipe
-    openedOk = connectToSocket("127.0.0.1", 5555, 1000);
+    openedOk = connectToSocket("127.0.0.1", 5555, 1001);
     
     if (! openedOk)
     {        
