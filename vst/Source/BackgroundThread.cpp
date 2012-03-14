@@ -10,8 +10,7 @@
 
 #include "BackgroundThread.h"
 
-BackgroundThread::BackgroundThread (IPCBus& dataBus_) :  Thread ("MIDI to Var Converter"),
-                                                        dataBus (dataBus_)
+BackgroundThread::BackgroundThread() :  Thread ("MIDI processor")
 {
     startThread();
 }
@@ -23,10 +22,16 @@ BackgroundThread::~BackgroundThread()
 }
 
 // update our data
-void BackgroundThread::sendBarOfMidi (var& MIDILog_)
+void BackgroundThread::processMidi (const String mode, 
+                                    const MidiMessageSequence& perfA, 
+                                    const MidiMessageSequence& perfB)
 {
-    MIDILog = MIDILog_;
     notify();
+}
+
+void BackgroundThread::parseMidi()
+{
+   
 }
 
 void BackgroundThread::run()
@@ -41,15 +46,8 @@ void BackgroundThread::run()
         // sleep until we get an event
         wait (-1);
             
-        DBG ("passing to IPC Bus");
+        DBG ("parsing midi");
         
-        // write the data to the IPC bus
-        MemoryBlock m;
-        MemoryOutputStream mos (m, false);
-        JSON::writeToStream (mos, MIDILog);
-        //DBG (JSON::toString (data));
-        
-        dataBus.sendData (m);
-
+        parseMidi();
     }
 }

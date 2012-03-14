@@ -12,7 +12,9 @@
 #define __BACKGROUNDTHREAD_H_E82F8E88__
 
 #include "../JuceLibraryCode/JuceHeader.h"
-#include "IPCBus.h"
+#include "S2MP.h"
+#include "SeqPat.h"
+#include "KeyValueMIDIPair.h"
 
 //==============================================================================
 /**
@@ -20,17 +22,18 @@
 class BackgroundThread : public Thread
 {
 public:
-    BackgroundThread (IPCBus& dataBus_);
+    BackgroundThread();
     ~BackgroundThread();
     
     // send our data out the IPC bus
-    void sendBarOfMidi (var& MIDILog_);
+    void processMidi (const String mode, 
+                      const MidiMessageSequence& perfA, 
+                      const MidiMessageSequence& perfB);
     
 private:
+    SeqPat seq1, seq2;
     
-    IPCBus& dataBus;
-    
-    var MIDILog;
+    void parseMidi();
     
     void run();
             

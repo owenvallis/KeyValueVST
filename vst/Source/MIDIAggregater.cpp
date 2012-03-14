@@ -9,8 +9,8 @@
  */
 #include "MIDIAggregater.h"
 
-MIDIAggregater::MIDIAggregater (BackgroundThread& varToJSONConverter_) : varToJSONConverter (varToJSONConverter_),  
-                                                                         mode("Learning")
+MIDIAggregater::MIDIAggregater (BackgroundThread& midiSequenceProcessor_) : midiSequenceProcessor (midiSequenceProcessor_),  
+mode("Learning")
 {    
     // Parts per Quater Note 
     // ths should be determined by the host
@@ -19,34 +19,30 @@ MIDIAggregater::MIDIAggregater (BackgroundThread& varToJSONConverter_) : varToJS
     ticksPerBar = ppqn * 4;
     
     // initialize our timestamp variables
-    samplesPerBar = 0;
-    currentSamplePosWithinBar = 0;
     framesPerTick = 0;
-    previousPPQPosOfLastBarStart = 0;
-    
+    previousPPQPosOfLastBarStart = 0;    
 }
 
 MIDIAggregater::~MIDIAggregater()
 {
-
+    
 }
 
 void MIDIAggregater::addMidiBuffer (const MidiBuffer& buffer, 
-                                   const int processBlockSizeInSamples, 
-                                   const AudioPlayHead::CurrentPositionInfo& newTime, 
-                                   const double sampleRate)
+                                    const int processBlockSizeInSamples, 
+                                    const AudioPlayHead::CurrentPositionInfo& newTime, 
+                                    const double sampleRate)
 {       
     // calculate the current number of samples per Bar
     double secPerQuarterNote = 60.0/newTime.bpm;
     double samplesPerBeat = sampleRate * secPerQuarterNote;
-    samplesPerBar = samplesPerBeat * 4.0;
     
     // calculate the current number of frames (samples) per tick
     framesPerTick = samplesPerBeat/ppqn;
     
     // calculate the tick timestamp at the start of this block
     double currentTickPosFromLastBar = (newTime.ppqPosition - newTime.ppqPositionOfLastBarStart) * ppqn;
-        
+    
     // create TimeStamps as Ticks
     MidiBuffer::Iterator i (buffer);
     MidiMessage message (0xf4, 0.0);
@@ -56,16 +52,10 @@ void MIDIAggregater::addMidiBuffer (const MidiBuffer& buffer,
     while (i.getNextEvent (message, currentFrame))
     {
         double currentTickPos = currentTickPosFromLastBar + (currentFrame/framesPerTick);
-        int currentSamplePos = currentSamplePosWithinBar + currentFrame;
-        tickTimeStamp.set (currentSamplePos, currentTickPos);
+        message.setTimeStamp(currentTickPos);
+        oneBarMidiSequence.addEvent(message);
     }
     
-    // add current midiBuffer to the aggregate midi buffer
-    oneBarMidiBuffer.addEvents (buffer, buffer.getFirstEventTime(), -1, currentSamplePosWithinBar);
-    
-    // update our current sample position within the Bar
-    currentSamplePosWithinBar += processBlockSizeInSamples;
-        
     // lets see if we've collected a full Bar of midi
     if(previousPPQPosOfLastBarStart != newTime.ppqPositionOfLastBarStart)
     {
@@ -73,11 +63,6 @@ void MIDIAggregater::addMidiBuffer (const MidiBuffer& buffer,
         
         previousPPQPosOfLastBarStart = newTime.ppqPositionOfLastBarStart;
     }
-}
-
-void MIDIAggregater::resetCurrentPos(double pos)
-{
-    currentSamplePosWithinBar = pos;
 }
 
 void MIDIAggregater::setMidiChannelA (int channelA_)
@@ -94,88 +79,52 @@ void MIDIAggregater::setMode (String mode_)
 {
     mode = mode_;
 }
-                                               
+
 
 
 void MIDIAggregater::sendBarOfMidi()
 {
-    var MIDILog = mode;
+    MidiMessageSequence perfA;
+    MidiMessageSequence perfB;
     
-    // check for overflow events and place them at the start of the next midiBuffer
-    MidiBuffer::Iterator i (oneBarMidiBuffer);
-    MidiMessage message (0xf4, 0.0);
+    oneBarMidiSequence.updateMatchedPairs();
     
-    int currentFrame;
-    double sampleOffset;
+    MidiMessageSequence overflowSequence;
     
-    MidiBuffer tempBuffer;
-    HashMap<int, double> tempTimeStamps;
+    MidiMessageSequence::MidiEventHolder* midiEvent;
+    
+    for (int i = 0; i < oneBarMidiSequence.getNumEvents(); i++)
+    {
+        midiEvent = oneBarMidiSequence.getEventPointer(i);
         
-    while (i.getNextEvent (message, currentFrame))
-    {     
-        // if we are within our single Bar
-        if (currentFrame <= samplesPerBar && tickTimeStamp[currentFrame] <= ticksPerBar)
+        // and its a control message
+        if (midiEvent->message.isController())
         {
-            // and its a control message
-            if (message.isController())
+            // if we are within our single Bar
+            if (midiEvent->message.getTimeStamp() <= ticksPerBar)
             {
-                if (message.getChannel() == channelA)
+                
+                if (midiEvent->message.getChannel() == channelA)
                 {
-                    var cc;
-                    
-                    cc.append ("PerfA");
-                    cc.append (channelA);
-                    cc.append (message.getControllerNumber());
-                    cc.append (message.getControllerValue());
-                    cc.append (tickTimeStamp[currentFrame]);
-                    
-                    MIDILog.append (cc);	
-                    
-                } else if (message.getChannel() == channelB) {
-                    
-                    var cc;
-                    
-                    cc.append ("PerfB");
-                    cc.append (channelB);
-                    cc.append (message.getControllerNumber());
-                    cc.append (message.getControllerValue());
-                    cc.append (tickTimeStamp[currentFrame]);
-                    
-                    MIDILog.append (cc);	
+                    perfA.addEvent(midiEvent->message);
+                } 
+                else if (midiEvent->message.getChannel() == channelB) 
+                {
+                    perfB.addEvent(midiEvent->message);
                 }
+                
+            } else { 
+                // if a tick timestamp is > ticksPerBar ticks, then it must be from the next bar
+                overflowSequence.addEvent(midiEvent->message);
             }
-        } else {  // if we are over our single Bar
-
-            sampleOffset = currentFrame - samplesPerBar;
-
-            // if a tick timestamp is > ticksPerBar ticks, then it must be from the next bar
-            if (tickTimeStamp[currentFrame] > ticksPerBar)
-            {         
-                double wrappedTimeStamp = tickTimeStamp[currentFrame] - (int)tickTimeStamp[currentFrame];
-                tempTimeStamps.set (sampleOffset, wrappedTimeStamp);
-            }
-            
-            // pack any messages after the one Bar point into this temp midibuffer
-            tempBuffer.addEvent (message, sampleOffset);
-            
-            // update the timestamps to the start of a new Bar            
-            tempTimeStamps.set (sampleOffset, tickTimeStamp[currentFrame]);
         }
     }
     
-    // pass our data to the background thread to send out over the IPC bus
-    varToJSONConverter.sendBarOfMidi (MIDILog);
+    midiEvent = nullptr;
     
-    sampleOffset = currentSamplePosWithinBar - samplesPerBar; 
+    midiSequenceProcessor.processMidi (mode, perfA, perfB);
     
     // clear our midibuffer and then add back in the leftover midi events
-    oneBarMidiBuffer.clear();
-    oneBarMidiBuffer.addEvents (tempBuffer, tempBuffer.getFirstEventTime(), -1, 0);
-    
-    // clear our timestamp buffer and add back in the leftover timestamps
-    tickTimeStamp.clear();
-    tickTimeStamp.swapWith (tempTimeStamps);
-    
-    // reset our current pos to include the offset
-    resetCurrentPos (sampleOffset);
+    oneBarMidiSequence.clear();
+    oneBarMidiSequence.addSequence (overflowSequence, -ticksPerBar, 0, ticksPerBar);
 }

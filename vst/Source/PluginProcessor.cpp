@@ -13,9 +13,8 @@
 
 
 //==============================================================================
-Key_valueAudioProcessor::Key_valueAudioProcessor() : midiAggregater(ipcWorkerThread),
-                                                     ipcWorkerThread(dataBus),
-                                                     dataBus(keyValueMIDIRecieve)
+Key_valueAudioProcessor::Key_valueAudioProcessor() : midiAggregater(midiSequenceProcessor),
+                                                     midiSequenceProcessor()
 {
 }
 
@@ -119,7 +118,6 @@ void Key_valueAudioProcessor::prepareToPlay (double sampleRate, int samplesPerBl
 {
     // Use this method as the place to do any pre-playback
     // initialisation that you need..
-    midiAggregater.resetCurrentPos();
 }
 
 void Key_valueAudioProcessor::releaseResources()
@@ -171,7 +169,6 @@ void Key_valueAudioProcessor::setStateInformation (const void* data, int sizeInB
 
 void Key_valueAudioProcessor::connectToDataBus()
 {
-    dataBus.connect();
 }
 
 void Key_valueAudioProcessor::setMidiChannelPerformerA (int channel)

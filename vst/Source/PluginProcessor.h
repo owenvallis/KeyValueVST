@@ -75,9 +75,8 @@ public:
 
 private:
     MIDIAggregater midiAggregater;
-    BackgroundThread ipcWorkerThread;
+    BackgroundThread midiSequenceProcessor;
     KeyValueMIDIRecieve keyValueMIDIRecieve;
-    IPCBus dataBus;
         
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Key_valueAudioProcessor);
