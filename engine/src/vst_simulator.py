@@ -82,7 +82,7 @@ def generate_message_queues_from_datafiles():
     import os
 
     event_fields = ['performer', 'MIDI channel', 'cc number', 'cc value', 'MIDI timestamp']
-    folder = 'data/training_data/'
+    folder = '../data/training_data/'
 
     return [generate_message_queue_from_datafile(folder + filename) for filename in os.listdir(folder) if 'json' in filename.lower()]
 

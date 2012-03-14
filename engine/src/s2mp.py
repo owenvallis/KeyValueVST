@@ -38,7 +38,7 @@ class S2MP:
             row = []
 
             for itemset_j in self._sp2:
-                # matching weight  = (num elements in intersection)/(avg num of elements in itemsets)
+                    
                 intersection = list(set(itemset_i).intersection(itemset_j))
                 row.append(
                     len(intersection) / (len(itemset_i) + len(itemset_j) / 2.0)
