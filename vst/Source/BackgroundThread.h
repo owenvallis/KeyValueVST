@@ -13,7 +13,6 @@
 
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "S2MP.h"
-#include "SeqPat.h"
 #include "KeyValueMIDIPair.h"
 
 //==============================================================================
@@ -26,12 +25,23 @@ public:
     ~BackgroundThread();
     
     // send our data out the IPC bus
-    void processMidi (const String mode, 
-                      const MidiMessageSequence& perfA, 
-                      const MidiMessageSequence& perfB);
+    void processMidi (const String mode_, 
+                      const SortedSet<int>& perfA_, 
+                      const MidiMessageSequence& perfB_);
+    
+    const MidiMessageSequence& getMidiNextMidiSequence();
     
 private:
-    SeqPat seq1, seq2;
+    OwnedArray<KeyValueMIDIPair> seq1, seq2;
+    S2MP s2mp;
+    
+    String mode;
+    
+    Boolean firstMeasure;
+    
+    SortedSet<int> perfA, perfAPrevious;
+    MidiMessageSequence perfB, emptyMidiSeq;
+    OwnedArray<MidiMessageSequence> outputSequences;
     
     void parseMidi();
     

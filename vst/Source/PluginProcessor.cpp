@@ -13,8 +13,7 @@
 
 
 //==============================================================================
-Key_valueAudioProcessor::Key_valueAudioProcessor() : midiAggregater(midiSequenceProcessor),
-                                                     midiSequenceProcessor()
+Key_valueAudioProcessor::Key_valueAudioProcessor()
 {
 }
 
@@ -129,15 +128,20 @@ void Key_valueAudioProcessor::releaseResources()
 void Key_valueAudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuffer& midiMessages)
 {
     // get the number of samples for this block
-    const int blockSizeInSamples = buffer.getNumSamples();
+    int blockSizeInSamples = buffer.getNumSamples();
     
     // ask the host for the current time so we can calculate the size of our measure...
     AudioPlayHead::CurrentPositionInfo newTime;
 
     if (getPlayHead() != 0 && getPlayHead()->getCurrentPosition (newTime))
     {
-        if(newTime.isPlaying)
-            midiAggregater.addMidiBuffer(midiMessages, blockSizeInSamples, newTime, getSampleRate());     
+        if(newTime.isPlaying) {
+            midiAggregater.addMidiBuffer(midiMessages, newTime, getSampleRate());  
+            
+            if (midiAggregater.getMode() == "Performance") {
+                midiAggregater.getMidiBuffer(midiMessages, blockSizeInSamples);
+            }
+        }
     }
     
 }

@@ -13,8 +13,6 @@
 
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "MIDIAggregater.h"
-#include "BackgroundThread.h"
-#include "IPCBus.h"
 
 //==============================================================================
 /**
@@ -75,9 +73,7 @@ public:
 
 private:
     MIDIAggregater midiAggregater;
-    BackgroundThread midiSequenceProcessor;
-    KeyValueMIDIRecieve keyValueMIDIRecieve;
-        
+    
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Key_valueAudioProcessor);
 };

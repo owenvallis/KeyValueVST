@@ -9,8 +9,6 @@
 */
 
 #import "S2MP.h"
-#include <set>
-#include <algorithm>
 
 S2MP::S2MP()
 {
@@ -25,7 +23,7 @@ S2MP::~S2MP()
 }
 
 // Calculates similarity between two lists of lists
-double S2MP::compareSequences (SeqPat &sp1, SeqPat &sp2, 
+double S2MP::compareSequences (const OwnedArray<KeyValueMIDIPair> &sp1, const OwnedArray<KeyValueMIDIPair> &sp2, 
                                int sp1frst, int sp2frst, 
                                int sp1len, int sp2len)
 {    
@@ -62,7 +60,7 @@ double S2MP::compareSequences (SeqPat &sp1, SeqPat &sp2,
 // ==================================================================
 
 // Calulate the matching weights between each pair of itemsets in the sequences, stores in a matrix
-void S2MP::calcWeightMatrix(SeqPat &sp1, SeqPat &sp2)
+void S2MP::calcWeightMatrix(const OwnedArray<KeyValueMIDIPair> &sp1, const OwnedArray<KeyValueMIDIPair> &sp2)
 {
     // clear the weight matrix
     _w.clearQuick();
@@ -75,7 +73,7 @@ void S2MP::calcWeightMatrix(SeqPat &sp1, SeqPat &sp2)
         
         for (int j = _sp2frst; j < _sp1len; j++) {
             // find interection
-            int intersection = numberOfIntersections (sp1.getItemSet(i), sp2.getItemSet(j));
+            int intersection = numberOfIntersections (sp1[i]->getItemSet(), sp2[j]->getItemSet());
             
             // append row with jth: matching weight = (num elements in intersection)/(avg num of elements in itemsets)		
             _w.getReference(i - _sp1frst).add (intersection/(_sp1len + _sp2len/2.0));

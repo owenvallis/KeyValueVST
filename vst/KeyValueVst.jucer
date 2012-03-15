@@ -24,7 +24,6 @@
       <GROUP id="{61FB89BE-730C-9BC3-9FB6-ABAFDE9DE2AA}" name="Algorithm">
         <FILE id="F9Ktsh" name="KeyValueMIDIPair.h" compile="0" resource="0"
               file="Source/KeyValueMIDIPair.h"/>
-        <FILE id="wTMJ1N" name="SeqPat.h" compile="0" resource="0" file="Source/SeqPat.h"/>
         <FILE id="sET5gG" name="S2MP.cpp" compile="1" resource="0" file="Source/S2MP.cpp"/>
         <FILE id="Zla6BU" name="S2MP.h" compile="0" resource="0" file="Source/S2MP.h"/>
       </GROUP>
@@ -32,12 +31,6 @@
             file="Source/BackgroundThread.cpp"/>
       <FILE id="RRt2NG" name="BackgroundThread.h" compile="0" resource="0"
             file="Source/BackgroundThread.h"/>
-      <FILE id="KUMbxT" name="IPCBus.cpp" compile="1" resource="0" file="Source/IPCBus.cpp"/>
-      <FILE id="OJdHuo" name="IPCBus.h" compile="0" resource="0" file="Source/IPCBus.h"/>
-      <FILE id="gVZ2G8" name="KeyValueMIDIRecieve.cpp" compile="1" resource="0"
-            file="Source/KeyValueMIDIRecieve.cpp"/>
-      <FILE id="Ak8Av2" name="KeyValueMIDIRecieve.h" compile="0" resource="0"
-            file="Source/KeyValueMIDIRecieve.h"/>
       <FILE id="OVHtPy" name="MIDIAggregater.cpp" compile="1" resource="0"
             file="Source/MIDIAggregater.cpp"/>
       <FILE id="ZFafYz" name="MIDIAggregater.h" compile="0" resource="0"

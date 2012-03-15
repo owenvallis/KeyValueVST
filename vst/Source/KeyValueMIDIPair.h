@@ -16,26 +16,20 @@
 class KeyValueMIDIPair 
 {    
 public:
-    KeyValueMIDIPair();
-    ~KeyValueMIDIPair();
-    
-    void addItemSet (const Array <int> &itemSet)
+    KeyValueMIDIPair(const SortedSet<int>& itemSet_, const MidiMessageSequence& midiSeq_)
     {
-        _itemSet.addArray (itemSet.begin(), itemSet.size());
+        itemSet = itemSet_;
+        midiSeq = midiSeq_;
     }
     
-    void addMIDIBuffer (const MidiBuffer &buffer)
-    {
-        _buffer = buffer;
-    }
-
+    ~KeyValueMIDIPair() {}
     
-    const SortedSet<int>& getItemSet() const { return _itemSet; }
-    const MidiBuffer& getMIDIBuffer() const { return _buffer; }
+    const SortedSet<int>& getItemSet() const { return itemSet; }
+    const MidiMessageSequence& getMIDISequence() const { return midiSeq; }
     
 private:
-    SortedSet<int> _itemSet;
-    MidiBuffer _buffer;
+    SortedSet<int> itemSet;
+    MidiMessageSequence midiSeq;
 };
 
 

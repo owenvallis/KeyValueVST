@@ -22,7 +22,7 @@
 #define __S2MP_H_3C6A6B70__
 
 #include "../JuceLibraryCode/JuceHeader.h"
-#include "SeqPat.h"
+#include "KeyValueMIDIPair.h"
 
 class S2MP {
 public:
@@ -30,7 +30,7 @@ public:
     ~S2MP();
     
     // Calculates similarity between two lists of lists
-    double compareSequences (SeqPat &sp1, SeqPat &sp2, 
+    double compareSequences (const OwnedArray<KeyValueMIDIPair> &sp1, const OwnedArray<KeyValueMIDIPair> &sp2, 
                              int sp1frst = 0, int sp2frst = 0, 
                              int sp1len = -1, int sp2len = -1);
     
@@ -56,7 +56,7 @@ private:
 	/*
 	 * Private functions for calculating the similarity
 	 */
-	void calcWeightMatrix (SeqPat &sp1, SeqPat &sp2);
+	void calcWeightMatrix (const OwnedArray<KeyValueMIDIPair> &sp1, const OwnedArray<KeyValueMIDIPair> &sp2);
     int numberOfIntersections (const SortedSet<int> &set1, const SortedSet<int> &set2);
 
 	void calcMappingScore();

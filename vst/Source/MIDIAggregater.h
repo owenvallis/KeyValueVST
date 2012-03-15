@@ -20,13 +20,14 @@
 class MIDIAggregater
 {
 public:
-    MIDIAggregater (BackgroundThread& midiSequenceProcessor_);
+    MIDIAggregater ();
     ~MIDIAggregater();
     
     void addMidiBuffer (const MidiBuffer& buffer, 
-                       const int processBlockSizeInSamples, 
                        const AudioPlayHead::CurrentPositionInfo& newTime, 
                        const double sampleRate);
+    
+    void getMidiBuffer (MidiBuffer& buffer, const int numberSamplesInProcessBlock);
         
     void setMidiChannelA (int channelA_);
     void setMidiChannelB (int channelB_);
@@ -34,13 +35,17 @@ public:
     
     String getMode() { return mode; }
     
-private:    
-    MidiMessageSequence oneBarMidiSequence; 
+private: 
     
-    // our worker thread to convert teh data to JSON
-    // and pass along to the IPC bus thread
-    // this happens outside of our VST/host thread
-    BackgroundThread& midiSequenceProcessor;
+    CriticalSection lock;
+    
+    SortedSet<int>      perfASortedSet;
+    SortedSet<int>      overflowSet;
+    
+    MidiMessageSequence perfBMidi, overflowSequence, outputSequence;
+    
+    // our worker thread 
+    BackgroundThread midiSequenceProcessor;
     
     // Parts per Quater Note 
     // ths should be determined by the host
@@ -52,14 +57,14 @@ private:
     double framesPerTick;
     double previousPPQPosOfLastBarStart;
     
+    int numberOfSamplesPerBar;
+    int currentMidiMessageInSequence;
+    int samplePosOfLastProcessBlock;
+    
     // midi channels
     int channelA, channelB;
     // mode
     String mode;
-        
-    // send our data out the IPC bus
-    void sendBarOfMidi();  
-    
 };
 
 #endif  // __MIDIAGGREGATER_H_5BE1F691__
