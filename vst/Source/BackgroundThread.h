@@ -18,7 +18,7 @@
 //==============================================================================
 /**
  */
-class BackgroundThread : public Thread
+class BackgroundThread
 {
 public:
     BackgroundThread();
@@ -29,9 +29,9 @@ public:
                       const SortedSet<int>& perfA_, 
                       const MidiMessageSequence& perfB_);
     
-    const MidiMessageSequence& getMidiNextMidiSequence();
+    MidiMessageSequence getMidiNextMidiSequence();
     
-private:
+private:    
     OwnedArray<KeyValueMIDIPair> seq1, seq2;
     S2MP s2mp;
     
@@ -42,11 +42,10 @@ private:
     SortedSet<int> perfA, perfAPrevious;
     MidiMessageSequence perfB, emptyMidiSeq;
     OwnedArray<MidiMessageSequence> outputSequences;
+    //MidiMessageSequence outputSequences;
     
     void parseMidi();
-    
-    void run();
-            
+                
 };
 
 #endif  // __BACKGROUNDTHREAD_H_E82F8E88__

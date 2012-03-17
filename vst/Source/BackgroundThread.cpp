@@ -10,16 +10,13 @@
 
 #include "BackgroundThread.h"
 
-BackgroundThread::BackgroundThread() :  Thread ("MIDI processor")
+BackgroundThread::BackgroundThread()
 {
     firstMeasure = true;
-    startThread();
 }
 
 BackgroundThread::~BackgroundThread()
 {
-    // allow the thread 2 seconds to stop cleanly - should be plenty of time.
-    stopThread (2000);
 }
 
 // update our data
@@ -31,68 +28,71 @@ void BackgroundThread::processMidi (const String mode_,
     perfA = perfA_;
     perfB = perfB_;
     
+    DBG (perfB.getNumEvents());
+    
     mode = mode_;
     
     if (firstMeasure) {
         firstMeasure = false;
     } else {
-        notify();
+        parseMidi();
     }
 }
 
 void BackgroundThread::parseMidi()
 {    
+    DBG("in");
+
     if (mode == "Learning") {
+        DBG("learn");
         seq2.add (new KeyValueMIDIPair(perfAPrevious, perfB));
         
     } else if (mode == "Performance") {
-        
-        if (seq1.size() < 8) {
+        DBG("perf");
+         
+        if (seq1.size() == 0) {
+            DBG("adding first seq");
             seq1.add (new KeyValueMIDIPair(perfAPrevious, emptyMidiSeq));
+            DBG("added first seq");
         } else {
+            DBG("removing first seq");
             seq1.remove (0);
-            seq1.add (new KeyValueMIDIPair(perfAPrevious, emptyMidiSeq));   
-            
-            int i = 0;
-            double similarityScore, previousSimilarityScore;
-            int posMaxSimilarityScore;
-            
-            while ((i + 8) < seq2.size()) {
-                similarityScore = s2mp.compareSequences(seq1, seq2, 0, i, 8, 8);
-                
-                if (similarityScore > previousSimilarityScore) {
-                    posMaxSimilarityScore = i;
-                }
-                
-                previousSimilarityScore = similarityScore;
-                
-                i++;
-            }
-            
-            outputSequences.add(&(seq2[i]->getMIDISequence()));
+            DBG("adding new seq");
+            seq1.add (new KeyValueMIDIPair(perfAPrevious, emptyMidiSeq));  
+            DBG("added new seq");
         }
-    }
-}
-
-const MidiMessageSequence& BackgroundThread::getMidiNextMidiSequence()
-{
-    return *outputSequences.removeAndReturn(0);
-}
-
-void BackgroundThread::run()
-{
-    // this is the code that runs this thread - we'll loop continuously,
-    // updating the co-ordinates of our blob.
-    
-    // threadShouldExit() returns true when the stopThread() method has been
-    // called, so we should check it often, and exit as soon as it gets flagged.
-    while (! threadShouldExit())
-    {
-        // sleep until we get an event
-        wait (-1);
-            
-        DBG ("parsing midi");
         
-        parseMidi();
+        int i = 0;
+        double similarityScore = .5;
+        double previousSimilarityScore = 0;
+        int posMaxSimilarityScore = 0;
+        
+        while ((i + 1) < seq2.size()) {
+            //similarityScore = s2mp.compareSequences(seq1, seq2, 0, i, 1, 1);
+            
+            if (similarityScore > previousSimilarityScore) {
+                posMaxSimilarityScore = i;
+            }
+            previousSimilarityScore = similarityScore;
+            
+            i++;
+        }
+        
+        outputSequences.add(&(seq2[i]->getMIDISequence()));
+        //outputSequences = seq2[1]->getMIDISequence();
     }
+    DBG("out");
+}
+
+MidiMessageSequence BackgroundThread::getMidiNextMidiSequence()
+{
+    MidiMessageSequence seq;
+    
+    if(outputSequences.size() > 0) {
+       seq = *outputSequences.removeAndReturn(0);
+    }
+    
+    DBG(outputSequences.size());   
+    DBG("gettingmidi");
+    return seq;
 }

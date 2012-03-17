@@ -24,10 +24,12 @@ public:
     ~MIDIAggregater();
     
     void addMidiBuffer (const MidiBuffer& buffer, 
-                       const AudioPlayHead::CurrentPositionInfo& newTime, 
-                       const double sampleRate);
+                        const AudioPlayHead::CurrentPositionInfo& newTime, 
+                        const double sampleRate);
     
     void getMidiBuffer (MidiBuffer& buffer, const int numberSamplesInProcessBlock);
+    
+    void resetValues();
         
     void setMidiChannelA (int channelA_);
     void setMidiChannelB (int channelB_);
@@ -55,11 +57,12 @@ private:
     
     // timestamp variables
     double framesPerTick;
-    double previousPPQPosOfLastBarStart;
+    double currentTickPosFromLastBar;
+    double ppqPositionOfLastBarStart, previousPPQPosOfLastBarStart;
     
     int numberOfSamplesPerBar;
     int currentMidiMessageInSequence;
-    int samplePosOfLastProcessBlock;
+    int samplePosInCurrentBarSinceLastBlock;
     
     // midi channels
     int channelA, channelB;

@@ -23,6 +23,9 @@ MIDIAggregater::MIDIAggregater () : mode("Learning")
     
     numberOfSamplesPerBar = 0;
     
+    samplePosInCurrentBarSinceLastBlock = 0;
+    currentMidiMessageInSequence = -1;
+    
 }
 
 MIDIAggregater::~MIDIAggregater()
@@ -42,8 +45,10 @@ void MIDIAggregater::addMidiBuffer (const MidiBuffer& buffer,
     // calculate the current number of frames (samples) per tick
     framesPerTick = samplesPerBeat/ppqn;
     
+    ppqPositionOfLastBarStart = newTime.ppqPositionOfLastBarStart;
+    
     // calculate the tick timestamp at the start of this block
-    double currentTickPosFromLastBar = (newTime.ppqPosition - newTime.ppqPositionOfLastBarStart) * ppqn;
+    currentTickPosFromLastBar = (newTime.ppqPosition - ppqPositionOfLastBarStart) * ppqn;
     
     // create TimeStamps as Ticks
     MidiBuffer::Iterator i (buffer);
@@ -93,7 +98,24 @@ void MIDIAggregater::addMidiBuffer (const MidiBuffer& buffer,
     if(previousPPQPosOfLastBarStart != newTime.ppqPositionOfLastBarStart)
     {
         // if so, lets process our data
+        DBG("process");
         midiSequenceProcessor.processMidi (mode, perfASortedSet, perfBMidi);
+        
+        if (getMode() == "Performance")
+        {
+            outputSequence.clear();
+            outputSequence = midiSequenceProcessor.getMidiNextMidiSequence();
+            DBG("gotMIDI");
+            
+            if(currentMidiMessageInSequence == -1)
+            {
+                samplePosInCurrentBarSinceLastBlock = 0;
+            } else {
+                samplePosInCurrentBarSinceLastBlock = samplePosInCurrentBarSinceLastBlock - numberOfSamplesPerBar;
+            }
+            
+            currentMidiMessageInSequence = 0;
+        }
         
         // clear our ordered set and then add back in the overflow
         perfASortedSet = overflowSet;
@@ -110,28 +132,40 @@ void MIDIAggregater::addMidiBuffer (const MidiBuffer& buffer,
 
 void MIDIAggregater::getMidiBuffer (MidiBuffer& buffer, const int numberSamplesInProcessBlock)
 {
+    
     buffer.clear();
     int currentSample = 0;
     
-    while (currentSample < numberSamplesInProcessBlock)
+    while (currentSample < numberSamplesInProcessBlock && currentMidiMessageInSequence < outputSequence.getNumEvents())
     {
-        if (currentMidiMessageInSequence >= outputSequence.getNumEvents()) 
-        {
-            outputSequence.clear();
-            outputSequence = midiSequenceProcessor.getMidiNextMidiSequence();
-            currentMidiMessageInSequence = 0;
-            samplePosOfLastProcessBlock = numberSamplesInProcessBlock - currentSample;
+        double timeStamp = outputSequence.getEventPointer(currentMidiMessageInSequence)->message.getTimeStamp();
+        
+        currentSample = (timeStamp * framesPerTick) - samplePosInCurrentBarSinceLastBlock;
+
+        if (currentSample > 0 && currentSample < numberSamplesInProcessBlock) {
+            buffer.addEvent (outputSequence.getEventPointer(currentMidiMessageInSequence)->message, currentSample);
         }
         
-        double timeStamp = outputSequence.getEventPointer(currentMidiMessageInSequence)->message.getTimeStamp();
-        currentSample = (timeStamp * framesPerTick) - samplePosOfLastProcessBlock;
-        buffer.addEvent (outputSequence.getEventPointer(currentMidiMessageInSequence)->message, currentSample);
-        
-        currentMidiMessageInSequence++;
+        if (currentSample < numberSamplesInProcessBlock)
+        {
+            currentMidiMessageInSequence++;
+        }
     }
     
-    samplePosOfLastProcessBlock += numberSamplesInProcessBlock;
+    samplePosInCurrentBarSinceLastBlock += numberSamplesInProcessBlock;
 
+}
+
+void MIDIAggregater::resetValues()
+{
+    // initialize our timestamp variables
+    framesPerTick = 0;
+    previousPPQPosOfLastBarStart = 0; 
+    
+    numberOfSamplesPerBar = 0;
+    
+    samplePosInCurrentBarSinceLastBlock = 0;
+    currentMidiMessageInSequence = -1;
 }
 
 void MIDIAggregater::setMidiChannelA (int channelA_)

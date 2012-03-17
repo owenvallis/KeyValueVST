@@ -117,6 +117,7 @@ void Key_valueAudioProcessor::prepareToPlay (double sampleRate, int samplesPerBl
 {
     // Use this method as the place to do any pre-playback
     // initialisation that you need..
+    midiAggregater.resetValues();
 }
 
 void Key_valueAudioProcessor::releaseResources()
