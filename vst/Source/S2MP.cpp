@@ -32,7 +32,7 @@ double S2MP::compareSequences (const OwnedArray<KeyValueMIDIPair> &sp1, const Ow
     
     // check bounds
     if ((sp1len > -1) && (_sp1frst + sp1len) <= sp1.size()) {
-        _sp1len = sp1len;
+        _sp1len = _sp1frst + sp1len;
     } else {
         _sp1len = sp1.size() - _sp1frst;
     }
@@ -41,7 +41,7 @@ double S2MP::compareSequences (const OwnedArray<KeyValueMIDIPair> &sp1, const Ow
     
     // check bounds
     if ((sp2len > -1) && (_sp2frst + sp2len) <= sp2.size()) {
-        _sp2len = sp2len;
+        _sp2len = _sp2frst + sp2len;
     } else {
         _sp2len = sp2.size() - _sp2frst;
     }
@@ -62,6 +62,9 @@ double S2MP::compareSequences (const OwnedArray<KeyValueMIDIPair> &sp1, const Ow
 // Calulate the matching weights between each pair of itemsets in the sequences, stores in a matrix
 void S2MP::calcWeightMatrix(const OwnedArray<KeyValueMIDIPair> &sp1, const OwnedArray<KeyValueMIDIPair> &sp2)
 {
+    DBG("sp1 size: " + String(sp1.size()));
+    DBG("sp2 size: " + String(sp2.size()));
+
     // clear the weight matrix
     _w.clearQuick();
     
@@ -71,13 +74,14 @@ void S2MP::calcWeightMatrix(const OwnedArray<KeyValueMIDIPair> &sp1, const Owned
         // add a new row for itemset i
         _w.add(Array<double>());
         
-        for (int j = _sp2frst; j < _sp1len; j++) {
+        for (int j = _sp2frst; j < _sp2len; j++) {
             // find interection
             int intersection = numberOfIntersections (sp1[i]->getItemSet(), sp2[j]->getItemSet());
             
             // append row with jth: matching weight = (num elements in intersection)/(avg num of elements in itemsets)		
             _w.getReference(i - _sp1frst).add (intersection/(_sp1len + _sp2len/2.0));
-        }
+        }   
+        DBG("Size of row " + String(i) + " " + String(_w.getReference(i - _sp1frst).size()) + "   number of jth items tested " + String(_sp2len));
     }
     
 }
@@ -124,7 +128,6 @@ void S2MP::calcMappingScore()
     {
         // in the case of two matching Max weights, we take the first one
         int weightPos = indexOfMax(_w.getReference(i));
-    
         // set all mappings associated with a meanininglessly small weight to -1
         if (_w.getReference(i).getUnchecked(weightPos) < 0.00001)
         {
@@ -146,6 +149,7 @@ void S2MP::calcMappingScore()
     // Now detect conflicts/duplicates (two itemsets in sp1 mapped to the same itemset in sp2)
     for (int i = 0; i < (_sp1len - _sp1frst - 1); i++)
     {        
+
         //if we have a none zero matching weight, find conflict and resolve
         if (_mappingOrder.getUnchecked(i) > -1)
         {

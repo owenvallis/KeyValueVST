@@ -50,7 +50,7 @@ void BackgroundThread::parseMidi()
     } else if (mode == "Performance") {
         DBG("perf");
          
-        if (seq1.size() == 0) {
+        if (seq1.size() < 2) {
             DBG("adding first seq");
             seq1.add (new KeyValueMIDIPair(perfAPrevious, emptyMidiSeq));
             DBG("added first seq");
@@ -60,26 +60,24 @@ void BackgroundThread::parseMidi()
             DBG("adding new seq");
             seq1.add (new KeyValueMIDIPair(perfAPrevious, emptyMidiSeq));  
             DBG("added new seq");
-        }
-        
-        int i = 0;
-        double similarityScore = .5;
-        double previousSimilarityScore = 0;
-        int posMaxSimilarityScore = 0;
-        
-        while ((i + 1) < seq2.size()) {
-            //similarityScore = s2mp.compareSequences(seq1, seq2, 0, i, 1, 1);
             
-            if (similarityScore > previousSimilarityScore) {
-                posMaxSimilarityScore = i;
+            int i = 0;
+            double similarityScore = 0;
+            double previousSimilarityScore = 0;
+            int posMaxSimilarityScore = 0;
+            
+            for (int i = 0; i < (seq2.size() - 2); i++) {
+                
+                similarityScore = s2mp.compareSequences(seq1, seq2, 0, i, 2, 2);
+                
+                if (similarityScore > previousSimilarityScore) {
+                    posMaxSimilarityScore = i;
+                }
+                previousSimilarityScore = similarityScore;
             }
-            previousSimilarityScore = similarityScore;
             
-            i++;
+            outputSequences.add(&(seq2[i]->getMIDISequence()));
         }
-        
-        outputSequences.add(&(seq2[i]->getMIDISequence()));
-        //outputSequences = seq2[1]->getMIDISequence();
     }
     DBG("out");
 }
