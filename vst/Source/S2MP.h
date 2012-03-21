@@ -61,7 +61,7 @@ private:
 
 	void calcMappingScore();
     int indexOfMax (Array<double> &weights);
-    void solveConflict (int i, int k);
+    void solveConflict (int i_, int k_);
     double calcLocalSim (int id1, int cid1, double w1, int id2, int cid2, double w2);
     
 	void calcOrderScore();

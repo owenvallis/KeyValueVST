@@ -182,3 +182,11 @@ void MIDIAggregater::setMode (String mode_)
 {
     mode = mode_;
 }
+
+void MIDIAggregater::saveData() {
+    
+}
+
+void MIDIAggregater::loadData() {
+    
+}

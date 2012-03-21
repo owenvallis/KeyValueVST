@@ -37,6 +37,9 @@ public:
     
     String getMode() { return mode; }
     
+    void saveData();
+    void loadData();
+    
 private: 
     
     CriticalSection lock;

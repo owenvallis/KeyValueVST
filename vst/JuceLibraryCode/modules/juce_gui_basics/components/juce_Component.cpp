@@ -23,7 +23,11 @@
   ==============================================================================
 */
 
-#define CHECK_MESSAGE_MANAGER_IS_LOCKED     jassert (MessageManager::getInstance()->currentThreadHasLockedMessageManager());
+#define CHECK_MESSAGE_MANAGER_IS_LOCKED \
+    jassert (MessageManager::getInstance()->currentThreadHasLockedMessageManager());
+
+#define CHECK_MESSAGE_MANAGER_IS_LOCKED_OR_OFFSCREEN \
+    jassert (MessageManager::getInstance()->currentThreadHasLockedMessageManager() || getPeer() == nullptr);
 
 Component* Component::currentlyFocusedComponent = nullptr;
 
@@ -89,9 +93,7 @@ public:
             }
         }
 
-        Component* p = comp.parentComponent;
-
-        while (p != nullptr)
+        for (Component* p = comp.parentComponent; p != nullptr; p = p->parentComponent)
         {
             MouseListenerList* const list = p->mouseListeners;
 
@@ -109,8 +111,6 @@ public:
                     i = jmin (i, list->numDeepMouseListeners);
                 }
             }
-
-            p = p->parentComponent;
         }
     }
 
@@ -134,9 +134,7 @@ public:
             }
         }
 
-        Component* p = comp.parentComponent;
-
-        while (p != nullptr)
+        for (Component* p = comp.parentComponent; p != nullptr; p = p->parentComponent)
         {
             MouseListenerList* const list = p->mouseListeners;
 
@@ -154,8 +152,6 @@ public:
                     i = jmin (i, list->numDeepMouseListeners);
                 }
             }
-
-            p = p->parentComponent;
         }
     }
 
@@ -336,8 +332,7 @@ struct Component::ComponentHelpers
     }
 
     static void subtractObscuredRegions (const Component& comp, RectangleList& result,
-                                         const Point<int>& delta,
-                                         const Rectangle<int>& clipRect,
+                                         const Point<int>& delta, const Rectangle<int>& clipRect,
                                          const Component* const compToAvoid)
     {
         for (int i = comp.childComponentList.size(); --i >= 0;)
@@ -371,74 +366,6 @@ struct Component::ComponentHelpers
                                                     : Desktop::getInstance().getMainMonitorArea();
     }
 };
-
-//==============================================================================
-class StandardCachedComponentImage  : public CachedComponentImage
-{
-public:
-    StandardCachedComponentImage (Component& owner_) noexcept : owner (owner_) {}
-
-    void paint (Graphics& g)
-    {
-        const Rectangle<int> bounds (owner.getLocalBounds());
-
-        if (image.isNull() || image.getBounds() != bounds)
-        {
-            image = Image (owner.isOpaque() ? Image::RGB : Image::ARGB,
-                           jmax (1, bounds.getWidth()), jmax (1, bounds.getHeight()), ! owner.isOpaque());
-
-            validArea.clear();
-        }
-
-        {
-            Graphics imG (image);
-            LowLevelGraphicsContext* const lg = imG.getInternalContext();
-
-            for (RectangleList::Iterator i (validArea); i.next();)
-                lg->excludeClipRectangle (*i.getRectangle());
-
-            if (! lg->isClipEmpty())
-            {
-                if (! owner.isOpaque())
-                {
-                    lg->setFill (Colours::transparentBlack);
-                    lg->fillRect (bounds, true);
-                    lg->setFill (Colours::black);
-                }
-
-                owner.paintEntireComponent (imG, true);
-            }
-        }
-
-        validArea = bounds;
-
-        g.setColour (Colours::black.withAlpha (owner.getAlpha()));
-        g.drawImageAt (image, 0, 0);
-    }
-
-    void invalidateAll()
-    {
-        validArea.clear();
-    }
-
-    void invalidate (const Rectangle<int>& area)
-    {
-        validArea.subtract (area);
-    }
-
-    void releaseResources()
-    {
-        image = Image::null;
-    }
-
-private:
-    Image image;
-    RectangleList validArea;
-    Component& owner;
-
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (StandardCachedComponentImage);
-};
-
 
 //==============================================================================
 Component::Component()
@@ -488,7 +415,7 @@ void Component::setName (const String& name)
 {
     // if component methods are being called from threads other than the message
     // thread, you'll need to use a MessageManagerLock object to make sure it's thread-safe.
-    CHECK_MESSAGE_MANAGER_IS_LOCKED
+    CHECK_MESSAGE_MANAGER_IS_LOCKED_OR_OFFSCREEN
 
     if (componentName != name)
     {
@@ -519,7 +446,7 @@ void Component::setVisible (bool shouldBeVisible)
     {
         // if component methods are being called from threads other than the message
         // thread, you'll need to use a MessageManagerLock object to make sure it's thread-safe.
-        CHECK_MESSAGE_MANAGER_IS_LOCKED
+        CHECK_MESSAGE_MANAGER_IS_LOCKED_OR_OFFSCREEN
 
         const WeakReference<Component> safePointer (this);
         flags.visibleFlag = shouldBeVisible;
@@ -564,14 +491,11 @@ void Component::setVisible (bool shouldBeVisible)
     }
 }
 
-void Component::visibilityChanged()
-{
-}
+void Component::visibilityChanged() {}
 
 void Component::sendVisibilityChangeMessage()
 {
     BailOutChecker checker (this);
-
     visibilityChanged();
 
     if (! checker.shouldBailOut())
@@ -580,21 +504,14 @@ void Component::sendVisibilityChangeMessage()
 
 bool Component::isShowing() const
 {
-    if (flags.visibleFlag)
-    {
-        if (parentComponent != nullptr)
-        {
-            return parentComponent->isShowing();
-        }
-        else
-        {
-            const ComponentPeer* const peer = getPeer();
+    if (! flags.visibleFlag)
+        return false;
 
-            return peer != nullptr && ! peer->isMinimised();
-        }
-    }
+    if (parentComponent != nullptr)
+        return parentComponent->isShowing();
 
-    return false;
+    const ComponentPeer* const peer = getPeer();
+    return peer != nullptr && ! peer->isMinimised();
 }
 
 
@@ -657,7 +574,6 @@ void Component::addToDesktop (int styleWanted, void* nativeWindowToAttachTo)
             oldNonFullScreenBounds = peer->getNonFullScreenBounds();
 
             removeFromDesktop();
-
             setTopLeftPosition (topLeft);
         }
 
@@ -711,10 +627,9 @@ void Component::removeFromDesktop()
     if (flags.hasHeavyweightPeerFlag)
     {
         ComponentPeer* const peer = ComponentPeer::getPeerFor (this);
+        jassert (peer != nullptr);
 
         flags.hasHeavyweightPeerFlag = false;
-
-        jassert (peer != nullptr);
         delete peer;
 
         Desktop::getInstance().removeDesktopComponent (this);
@@ -724,6 +639,16 @@ void Component::removeFromDesktop()
 bool Component::isOnDesktop() const noexcept
 {
     return flags.hasHeavyweightPeerFlag;
+}
+
+ComponentPeer* Component::getPeer() const
+{
+    if (flags.hasHeavyweightPeerFlag)
+        return ComponentPeer::getPeerFor (this);
+    else if (parentComponent == nullptr)
+        return nullptr;
+
+    return parentComponent->getPeer();
 }
 
 void Component::userTriedToCloseWindow()
@@ -738,9 +663,7 @@ void Component::userTriedToCloseWindow()
     jassertfalse;
 }
 
-void Component::minimisationStateChanged (bool)
-{
-}
+void Component::minimisationStateChanged (bool) {}
 
 //==============================================================================
 void Component::setOpaque (const bool shouldBeOpaque)
@@ -770,6 +693,61 @@ bool Component::isOpaque() const noexcept
 }
 
 //==============================================================================
+class StandardCachedComponentImage  : public CachedComponentImage
+{
+public:
+    StandardCachedComponentImage (Component& owner_) noexcept : owner (owner_) {}
+
+    void paint (Graphics& g)
+    {
+        const Rectangle<int> bounds (owner.getLocalBounds());
+
+        if (image.isNull() || image.getBounds() != bounds)
+        {
+            image = Image (owner.isOpaque() ? Image::RGB : Image::ARGB,
+                           jmax (1, bounds.getWidth()), jmax (1, bounds.getHeight()), ! owner.isOpaque());
+
+            validArea.clear();
+        }
+
+        {
+            Graphics imG (image);
+            LowLevelGraphicsContext* const lg = imG.getInternalContext();
+
+            for (RectangleList::Iterator i (validArea); i.next();)
+                lg->excludeClipRectangle (*i.getRectangle());
+
+            if (! lg->isClipEmpty())
+            {
+                if (! owner.isOpaque())
+                {
+                    lg->setFill (Colours::transparentBlack);
+                    lg->fillRect (bounds, true);
+                    lg->setFill (Colours::black);
+                }
+
+                owner.paintEntireComponent (imG, true);
+            }
+        }
+
+        validArea = bounds;
+
+        g.setColour (Colours::black.withAlpha (owner.getAlpha()));
+        g.drawImageAt (image, 0, 0);
+    }
+
+    void invalidateAll()                            { validArea.clear(); }
+    void invalidate (const Rectangle<int>& area)    { validArea.subtract (area); }
+    void releaseResources()                         { image = Image::null; }
+
+private:
+    Image image;
+    RectangleList validArea;
+    Component& owner;
+
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (StandardCachedComponentImage);
+};
+
 void Component::setCachedComponentImage (CachedComponentImage* newCachedImage)
 {
     cachedImage = newCachedImage;
@@ -795,7 +773,7 @@ void Component::setBufferedToImage (const bool shouldBeBuffered)
 }
 
 //==============================================================================
-void Component::moveChildInternal (const int sourceIndex, const int destIndex)
+void Component::reorderChildInternal (const int sourceIndex, const int destIndex)
 {
     if (sourceIndex != destIndex)
     {
@@ -814,7 +792,7 @@ void Component::toFront (const bool setAsForeground)
 {
     // if component methods are being called from threads other than the message
     // thread, you'll need to use a MessageManagerLock object to make sure it's thread-safe.
-    CHECK_MESSAGE_MANAGER_IS_LOCKED
+    CHECK_MESSAGE_MANAGER_IS_LOCKED_OR_OFFSCREEN
 
     if (flags.hasHeavyweightPeerFlag)
     {
@@ -848,7 +826,7 @@ void Component::toFront (const bool setAsForeground)
                         --insertIndex;
                 }
 
-                parentComponent->moveChildInternal (index, insertIndex);
+                parentComponent->reorderChildInternal (index, insertIndex);
             }
         }
 
@@ -881,7 +859,7 @@ void Component::toBehind (Component* const other)
                     if (index < otherIndex)
                         --otherIndex;
 
-                    parentComponent->moveChildInternal (index, otherIndex);
+                    parentComponent->reorderChildInternal (index, otherIndex);
                 }
             }
         }
@@ -924,7 +902,7 @@ void Component::toBack()
                     while (insertIndex < childList.size() && ! childList.getUnchecked (insertIndex)->isAlwaysOnTop())
                         ++insertIndex;
 
-                parentComponent->moveChildInternal (index, insertIndex);
+                parentComponent->reorderChildInternal (index, insertIndex);
             }
         }
     }
@@ -970,15 +948,8 @@ bool Component::isAlwaysOnTop() const noexcept
 }
 
 //==============================================================================
-int Component::proportionOfWidth (const float proportion) const noexcept
-{
-    return roundToInt (proportion * bounds.getWidth());
-}
-
-int Component::proportionOfHeight (const float proportion) const noexcept
-{
-    return roundToInt (proportion * bounds.getHeight());
-}
+int Component::proportionOfWidth  (const float proportion) const noexcept   { return roundToInt (proportion * bounds.getWidth()); }
+int Component::proportionOfHeight (const float proportion) const noexcept   { return roundToInt (proportion * bounds.getHeight()); }
 
 int Component::getParentWidth() const noexcept
 {
@@ -997,6 +968,11 @@ int Component::getScreenY() const   { return getScreenPosition().y; }
 
 Point<int> Component::getScreenPosition() const       { return localPointToGlobal (Point<int>()); }
 Rectangle<int> Component::getScreenBounds() const     { return localAreaToGlobal (getLocalBounds()); }
+
+Rectangle<int> Component::getParentMonitorArea() const
+{
+    return Desktop::getInstance().getMonitorAreaContaining (getScreenBounds().getCentre());
+}
 
 Point<int> Component::getLocalPoint (const Component* source, const Point<int>& point) const
 {
@@ -1018,7 +994,7 @@ Rectangle<int> Component::localAreaToGlobal (const Rectangle<int>& area) const
     return ComponentHelpers::convertCoordinate (nullptr, this, area);
 }
 
-/* Deprecated methods... */
+// Deprecated methods...
 Point<int> Component::relativePositionToGlobal (const Point<int>& relativePosition) const
 {
     return localPointToGlobal (relativePosition);
@@ -1041,7 +1017,7 @@ void Component::setBounds (const int x, const int y, int w, int h)
 {
     // if component methods are being called from threads other than the message
     // thread, you'll need to use a MessageManagerLock object to make sure it's thread-safe.
-    CHECK_MESSAGE_MANAGER_IS_LOCKED
+    CHECK_MESSAGE_MANAGER_IS_LOCKED_OR_OFFSCREEN
 
     if (w < 0) w = 0;
     if (h < 0) h = 0;
@@ -1335,10 +1311,9 @@ bool Component::contains (const Point<int>& point)
     if (ComponentHelpers::hitTest (*this, point))
     {
         if (parentComponent != nullptr)
-        {
             return parentComponent->contains (ComponentHelpers::convertToParentSpace (*this, point));
-        }
-        else if (flags.hasHeavyweightPeerFlag)
+
+        if (flags.hasHeavyweightPeerFlag)
         {
             const ComponentPeer* const peer = getPeer();
 
@@ -1390,7 +1365,10 @@ void Component::addChildComponent (Component* const child, int zOrder)
 {
     // if component methods are being called from threads other than the message
     // thread, you'll need to use a MessageManagerLock object to make sure it's thread-safe.
-    CHECK_MESSAGE_MANAGER_IS_LOCKED
+    CHECK_MESSAGE_MANAGER_IS_LOCKED_OR_OFFSCREEN
+
+    jassert (MessageManager::getInstance()->currentThreadHasLockedMessageManager() || ! isShowing());
+
 
     if (child != nullptr && child->parentComponent != this)
     {
@@ -1457,7 +1435,7 @@ Component* Component::removeChildComponent (const int index, bool sendParentEven
 {
     // if component methods are being called from threads other than the message
     // thread, you'll need to use a MessageManagerLock object to make sure it's thread-safe.
-    CHECK_MESSAGE_MANAGER_IS_LOCKED
+    CHECK_MESSAGE_MANAGER_IS_LOCKED_OR_OFFSCREEN
 
     Component* const child = childComponentList [index];
 
@@ -1522,7 +1500,6 @@ void Component::deleteAllChildren()
         delete (removeChildComponent (childComponentList.size() - 1));
 }
 
-//==============================================================================
 int Component::getNumChildComponents() const noexcept
 {
     return childComponentList.size();
@@ -1574,13 +1551,8 @@ bool Component::isParentOf (const Component* possibleChild) const noexcept
 }
 
 //==============================================================================
-void Component::parentHierarchyChanged()
-{
-}
-
-void Component::childrenChanged()
-{
-}
+void Component::parentHierarchyChanged() {}
+void Component::childrenChanged() {}
 
 void Component::internalChildrenChanged()
 {
@@ -1832,14 +1804,14 @@ void Component::internalRepaint (const Rectangle<int>& area)
 
 void Component::internalRepaintUnchecked (const Rectangle<int>& area, const bool isEntireComponent)
 {
-    // if component methods are being called from threads other than the message
-    // thread, you'll need to use a MessageManagerLock object to make sure it's thread-safe.
-    CHECK_MESSAGE_MANAGER_IS_LOCKED
-
     if (flags.visibleFlag)
     {
         if (flags.hasHeavyweightPeerFlag)
         {
+            // if component methods are being called from threads other than the message
+            // thread, you'll need to use a MessageManagerLock object to make sure it's thread-safe.
+            CHECK_MESSAGE_MANAGER_IS_LOCKED
+
             ComponentPeer* const peer = getPeer();
 
             if (peer != nullptr)
@@ -1859,6 +1831,19 @@ void Component::internalRepaintUnchecked (const Rectangle<int>& area, const bool
                 parentComponent->internalRepaint (ComponentHelpers::convertToParentSpace (*this, area));
         }
     }
+}
+
+//==============================================================================
+void Component::paint (Graphics&)
+{
+    // all painting is done in the subclasses
+
+    jassert (! isOpaque()); // if your component's opaque, you've gotta paint it!
+}
+
+void Component::paintOverChildren (Graphics&)
+{
+    // all painting is done in the subclasses
 }
 
 //==============================================================================
@@ -2041,16 +2026,13 @@ void Component::setLookAndFeel (LookAndFeel* const newLookAndFeel)
     }
 }
 
-void Component::lookAndFeelChanged()
-{
-}
+void Component::lookAndFeelChanged() {}
+void Component::colourChanged() {}
 
 void Component::sendLookAndFeelChange()
 {
-    repaint();
-
     const WeakReference<Component> safePointer (this);
-
+    repaint();
     lookAndFeelChanged();
 
     if (safePointer != nullptr)
@@ -2115,10 +2097,6 @@ void Component::copyAllExplicitColoursTo (Component& target) const
         target.colourChanged();
 }
 
-void Component::colourChanged()
-{
-}
-
 //==============================================================================
 MarkerList* Component::getMarkers (bool /*xAxis*/)
 {
@@ -2178,45 +2156,17 @@ void Component::getVisibleArea (RectangleList& result, const bool includeSibling
 }
 
 //==============================================================================
-void Component::mouseEnter (const MouseEvent&)
-{
-    // base class does nothing
-}
-
-void Component::mouseExit (const MouseEvent&)
-{
-    // base class does nothing
-}
-
-void Component::mouseDown (const MouseEvent&)
-{
-    // base class does nothing
-}
-
-void Component::mouseUp (const MouseEvent&)
-{
-    // base class does nothing
-}
-
-void Component::mouseDrag (const MouseEvent&)
-{
-    // base class does nothing
-}
-
-void Component::mouseMove (const MouseEvent&)
-{
-    // base class does nothing
-}
-
-void Component::mouseDoubleClick (const MouseEvent&)
-{
-    // base class does nothing
-}
+void Component::mouseEnter (const MouseEvent&)          {}
+void Component::mouseExit  (const MouseEvent&)          {}
+void Component::mouseDown  (const MouseEvent&)          {}
+void Component::mouseUp    (const MouseEvent&)          {}
+void Component::mouseDrag  (const MouseEvent&)          {}
+void Component::mouseMove  (const MouseEvent&)          {}
+void Component::mouseDoubleClick (const MouseEvent&)    {}
 
 void Component::mouseWheelMove (const MouseEvent& e, float wheelIncrementX, float wheelIncrementY)
 {
     // the base class just passes this event up to its parent..
-
     if (parentComponent != nullptr)
         parentComponent->mouseWheelMove (e.getEventRelativeTo (parentComponent),
                                          wheelIncrementX, wheelIncrementY);
@@ -2224,25 +2174,10 @@ void Component::mouseWheelMove (const MouseEvent& e, float wheelIncrementX, floa
 
 
 //==============================================================================
-void Component::resized()
-{
-    // base class does nothing
-}
-
-void Component::moved()
-{
-    // base class does nothing
-}
-
-void Component::childBoundsChanged (Component*)
-{
-    // base class does nothing
-}
-
-void Component::parentSizeChanged()
-{
-    // base class does nothing
-}
+void Component::resized()                       {}
+void Component::moved()                         {}
+void Component::childBoundsChanged (Component*) {}
+void Component::parentSizeChanged()             {}
 
 void Component::addComponentListener (ComponentListener* const newListener)
 {
@@ -2276,20 +2211,6 @@ void Component::internalModalInputAttempt()
 
     if (current != nullptr)
         current->inputAttemptWhenModal();
-}
-
-
-//==============================================================================
-void Component::paint (Graphics&)
-{
-    // all painting is done in the subclasses
-
-    jassert (! isOpaque()); // if your component's opaque, you've gotta paint it!
-}
-
-void Component::paintOverChildren (Graphics&)
-{
-    // all painting is done in the subclasses
 }
 
 //==============================================================================
@@ -2395,7 +2316,6 @@ void Component::internalMouseExit (MouseInputSource& source, const Point<int>& r
     MouseListenerList::sendMouseEvent (*this, checker, &MouseListener::mouseExit, me);
 }
 
-//==============================================================================
 void Component::internalMouseDown (MouseInputSource& source, const Point<int>& relativePos, const Time& time)
 {
     Desktop& desktop = Desktop::getInstance();
@@ -2458,7 +2378,6 @@ void Component::internalMouseDown (MouseInputSource& source, const Point<int>& r
     MouseListenerList::sendMouseEvent (*this, checker, &MouseListener::mouseDown, me);
 }
 
-//==============================================================================
 void Component::internalMouseUp (MouseInputSource& source, const Point<int>& relativePos, const Time& time, const ModifierKeys& oldModifiers)
 {
     BailOutChecker checker (this);
@@ -2472,7 +2391,6 @@ void Component::internalMouseUp (MouseInputSource& source, const Point<int>& rel
                          source.getLastMouseDownTime(),
                          source.getNumberOfMultipleClicks(),
                          source.hasMouseMovedSignificantlySincePressed());
-
     mouseUp (me);
 
     if (checker.shouldBailOut())
@@ -2509,7 +2427,6 @@ void Component::internalMouseDrag (MouseInputSource& source, const Point<int>& r
                          source.getLastMouseDownTime(),
                          source.getNumberOfMultipleClicks(),
                          source.hasMouseMovedSignificantlySincePressed());
-
     mouseDrag (me);
 
     if (checker.shouldBailOut())
@@ -2523,10 +2440,6 @@ void Component::internalMouseDrag (MouseInputSource& source, const Point<int>& r
 void Component::internalMouseMove (MouseInputSource& source, const Point<int>& relativePos, const Time& time)
 {
     Desktop& desktop = Desktop::getInstance();
-    BailOutChecker checker (this);
-
-    const MouseEvent me (source, relativePos, source.getCurrentModifiers(),
-                         this, this, time, relativePos, time, 0, false);
 
     if (isCurrentlyBlockedByAnotherModalComponent())
     {
@@ -2535,6 +2448,10 @@ void Component::internalMouseMove (MouseInputSource& source, const Point<int>& r
     }
     else
     {
+        BailOutChecker checker (this);
+
+        const MouseEvent me (source, relativePos, source.getCurrentModifiers(),
+                             this, this, time, relativePos, time, 0, false);
         mouseMove (me);
 
         if (checker.shouldBailOut())
@@ -2585,11 +2502,12 @@ void Component::sendFakeMouseMove() const
         mainMouse.triggerFakeMove();
 }
 
-void Component::beginDragAutoRepeat (const int interval)
+void JUCE_CALLTYPE Component::beginDragAutoRepeat (const int interval)
 {
     Desktop::getInstance().beginDragAutoRepeat (interval);
 }
 
+//==============================================================================
 void Component::broughtToFront()
 {
 }
@@ -2620,10 +2538,10 @@ void Component::internalBroughtToFront()
                                                                                    // active, and therefore can't receive mouse-clicks
 }
 
-void Component::focusGained (FocusChangeType)
-{
-    // base class does nothing
-}
+//==============================================================================
+void Component::focusGained (FocusChangeType)   {}
+void Component::focusLost (FocusChangeType)     {}
+void Component::focusOfChildComponentChanged (FocusChangeType) {}
 
 void Component::internalFocusGain (const FocusChangeType cause)
 {
@@ -2638,11 +2556,6 @@ void Component::internalFocusGain (const FocusChangeType cause, const WeakRefere
         internalChildFocusChange (cause, safePointer);
 }
 
-void Component::focusLost (FocusChangeType)
-{
-    // base class does nothing
-}
-
 void Component::internalFocusLoss (const FocusChangeType cause)
 {
     const WeakReference<Component> safePointer (this);
@@ -2651,11 +2564,6 @@ void Component::internalFocusLoss (const FocusChangeType cause)
 
     if (safePointer != nullptr)
         internalChildFocusChange (cause, safePointer);
-}
-
-void Component::focusOfChildComponentChanged (FocusChangeType /*cause*/)
-{
-    // base class does nothing
 }
 
 void Component::internalChildFocusChange (FocusChangeType cause, const WeakReference<Component>& safePointer)
@@ -2676,54 +2584,6 @@ void Component::internalChildFocusChange (FocusChangeType cause, const WeakRefer
         parentComponent->internalChildFocusChange (cause, WeakReference<Component> (parentComponent));
 }
 
-//==============================================================================
-bool Component::isEnabled() const noexcept
-{
-    return (! flags.isDisabledFlag)
-            && (parentComponent == nullptr || parentComponent->isEnabled());
-}
-
-void Component::setEnabled (const bool shouldBeEnabled)
-{
-    if (flags.isDisabledFlag == shouldBeEnabled)
-    {
-        flags.isDisabledFlag = ! shouldBeEnabled;
-
-        // if any parent components are disabled, setting our flag won't make a difference,
-        // so no need to send a change message
-        if (parentComponent == nullptr || parentComponent->isEnabled())
-            sendEnablementChangeMessage();
-    }
-}
-
-void Component::sendEnablementChangeMessage()
-{
-    const WeakReference<Component> safePointer (this);
-
-    enablementChanged();
-
-    if (safePointer == nullptr)
-        return;
-
-    for (int i = getNumChildComponents(); --i >= 0;)
-    {
-        Component* const c = getChildComponent (i);
-
-        if (c != nullptr)
-        {
-            c->sendEnablementChangeMessage();
-
-            if (safePointer == nullptr)
-                return;
-        }
-    }
-}
-
-void Component::enablementChanged()
-{
-}
-
-//==============================================================================
 void Component::setWantsKeyboardFocus (const bool wantsFocus) noexcept
 {
     flags.wantsFocusFlag = wantsFocus;
@@ -2917,6 +2777,51 @@ void Component::giveAwayFocus (const bool sendFocusLossEvent)
 }
 
 //==============================================================================
+bool Component::isEnabled() const noexcept
+{
+    return (! flags.isDisabledFlag)
+            && (parentComponent == nullptr || parentComponent->isEnabled());
+}
+
+void Component::setEnabled (const bool shouldBeEnabled)
+{
+    if (flags.isDisabledFlag == shouldBeEnabled)
+    {
+        flags.isDisabledFlag = ! shouldBeEnabled;
+
+        // if any parent components are disabled, setting our flag won't make a difference,
+        // so no need to send a change message
+        if (parentComponent == nullptr || parentComponent->isEnabled())
+            sendEnablementChangeMessage();
+    }
+}
+
+void Component::enablementChanged() {}
+
+void Component::sendEnablementChangeMessage()
+{
+    const WeakReference<Component> safePointer (this);
+
+    enablementChanged();
+
+    if (safePointer == nullptr)
+        return;
+
+    for (int i = getNumChildComponents(); --i >= 0;)
+    {
+        Component* const c = getChildComponent (i);
+
+        if (c != nullptr)
+        {
+            c->sendEnablementChangeMessage();
+
+            if (safePointer == nullptr)
+                return;
+        }
+    }
+}
+
+//==============================================================================
 bool Component::isMouseOver (const bool includeChildren) const
 {
     const Desktop& desktop = Desktop::getInstance();
@@ -2972,12 +2877,6 @@ Point<int> Component::getMouseXYRelative() const
 }
 
 //==============================================================================
-Rectangle<int> Component::getParentMonitorArea() const
-{
-    return Desktop::getInstance().getMonitorAreaContaining (getScreenBounds().getCentre());
-}
-
-//==============================================================================
 void Component::addKeyListener (KeyListener* const newListener)
 {
     if (keyListeners == nullptr)
@@ -2992,15 +2891,8 @@ void Component::removeKeyListener (KeyListener* const listenerToRemove)
         keyListeners->removeValue (listenerToRemove);
 }
 
-bool Component::keyPressed (const KeyPress&)
-{
-    return false;
-}
-
-bool Component::keyStateChanged (const bool /*isKeyDown*/)
-{
-    return false;
-}
+bool Component::keyPressed (const KeyPress&)                { return false; }
+bool Component::keyStateChanged (const bool /*isKeyDown*/)  { return false; }
 
 void Component::modifierKeysChanged (const ModifierKeys& modifiers)
 {
@@ -3011,19 +2903,7 @@ void Component::modifierKeysChanged (const ModifierKeys& modifiers)
 void Component::internalModifierKeysChanged()
 {
     sendFakeMouseMove();
-
     modifierKeysChanged (ModifierKeys::getCurrentModifiers());
-}
-
-//==============================================================================
-ComponentPeer* Component::getPeer() const
-{
-    if (flags.hasHeavyweightPeerFlag)
-        return ComponentPeer::getPeerFor (this);
-    else if (parentComponent == nullptr)
-        return nullptr;
-
-    return parentComponent->getPeer();
 }
 
 //==============================================================================

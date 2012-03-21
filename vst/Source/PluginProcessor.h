@@ -70,6 +70,9 @@ public:
     
     void setMode (String mode_);
     String getMode() { return midiAggregater.getMode(); }
+    
+    void saveData();
+    void loadData();
 
 private:
     MIDIAggregater midiAggregater;

@@ -8,6 +8,12 @@
               pluginProducesMidiOut="1" pluginSilenceInIsSilenceOut="0" pluginTailLength="0"
               pluginEditorRequiresKeys="0" pluginAUExportPrefix="KeyValueVstAU"
               pluginAUViewClass="KeyValueVstAU_V1" pluginRTASCategory="" jucerVersion="3.0.0">
+  <CONFIGURATIONS>
+    <CONFIGURATION name="Debug" isDebug="1" optimisation="1" targetName="KeyValueVst"
+                   osxSDK="default" osxCompatibility="default" osxArchitecture="default"/>
+    <CONFIGURATION name="Release" isDebug="0" optimisation="2" targetName="KeyValueVst"
+                   osxSDK="default" osxCompatibility="default" osxArchitecture="default"/>
+  </CONFIGURATIONS>
   <EXPORTFORMATS>
     <XCODE_MAC targetFolder="Builds/MacOSX" objCExtraSuffix="TecZ6l" juceFolder="../../../../sdks/juce/modules"
                vstFolder="~/SDKs/vstsdk2.4">

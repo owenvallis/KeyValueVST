@@ -43,7 +43,7 @@ private:
     ComboBox    performerMidiInputSelectorA, performerMidiInputSelectorB, mode;
     Label       performerMidiInputSelectorALabel, performerMidiInputSelectorBLabel, modeLabel;
         
-    TextButton  connectToIPC;
+    TextButton  saveData, loadData;
         
     Key_valueAudioProcessor* getProcessor() const throw()       
     { 

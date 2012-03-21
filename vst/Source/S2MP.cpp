@@ -200,7 +200,7 @@ int S2MP::indexOfMax(Array<double>& weights)
 
 // The conflict: _mapping_order[i] and _mapping_order[k] are equal.
 // Need to find possible resolutions to this conflict and pick the best one.
-void S2MP::solveConflict (int i, int k)
+void S2MP::solveConflict (int i_, int k_)
 {
     // First find what itemsets in sp2 are still available to be mapped to
     
@@ -227,12 +227,12 @@ void S2MP::solveConflict (int i, int k)
     
     for (int j = 0; j < avbl.size(); j++)
     {
-        score = calcLocalSim (i,
-                              _mappingOrder.getUnchecked(i),
-                              _w.getReference(i).getUnchecked(_mappingOrder.getUnchecked(i)),
-                              k,
+        score = calcLocalSim (i_,
+                              _mappingOrder.getUnchecked(i_),
+                              _w.getReference(i_).getUnchecked(_mappingOrder.getUnchecked(i_)),
+                              k_,
                               avbl.getUnchecked(j),
-                              _w.getReference(k).getUnchecked(avbl.getUnchecked(j)));
+                              _w.getReference(k_).getUnchecked(avbl.getUnchecked(j)));
         if (score > sc1)
         {
             sc1 = score;
@@ -247,12 +247,12 @@ void S2MP::solveConflict (int i, int k)
     
     for (int j = 0; j < avbl.size(); j++)
     {        
-        score = calcLocalSim (i, 
+        score = calcLocalSim (i_, 
                               avbl.getUnchecked(j), 
-                              _w.getReference(i).getUnchecked(avbl.getUnchecked(j)), 
-                              k,
-                              _mappingOrder.getUnchecked(k),
-                              _w.getReference(k).getUnchecked(_mappingOrder.getUnchecked(k)));
+                              _w.getReference(i_).getUnchecked(avbl.getUnchecked(j)), 
+                              k_,
+                              _mappingOrder.getUnchecked(k_),
+                              _w.getReference(k_).getUnchecked(_mappingOrder.getUnchecked(k_)));
         if (score > sc2)
         {
             sc2 = score;
@@ -268,26 +268,26 @@ void S2MP::solveConflict (int i, int k)
     {
         // If matching weight associated with _mapping_order[i] is greater, 
         // Then keep i
-        if (_w.getReference(i).getUnchecked(_mappingOrder.getUnchecked(i)) > 
-            _w.getReference(k).getUnchecked(_mappingOrder.getUnchecked(k)))
+        if (_w.getReference(i_).getUnchecked(_mappingOrder.getUnchecked(i_)) > 
+            _w.getReference(k_).getUnchecked(_mappingOrder.getUnchecked(k_)))
         {
-            _mappingOrder.set(k, -1);
+            _mappingOrder.set(k_, -1);
         }
         // Else keep k
         else
         {
-            _mappingOrder.set(i, -1);
+            _mappingOrder.set(i_, -1);
         }
     }
     // If the best resolution was found by changing the _mapping_order[k], then implement this change
     else if (sc1 > sc2)
     {
-        _mappingOrder.set(k, sc1id);
+        _mappingOrder.set(k_, sc1id);
     }
     // Else the best resolution is implemented by changing _mapping_order[i]
     else
     {
-        _mappingOrder.set(k, sc2id);
+        _mappingOrder.set(k_, sc2id);
     }
 }
 

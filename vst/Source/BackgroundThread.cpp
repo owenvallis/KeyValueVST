@@ -89,8 +89,6 @@ MidiMessageSequence BackgroundThread::getMidiNextMidiSequence()
     if(outputSequences.size() > 0) {
        seq = *outputSequences.removeAndReturn(0);
     }
-    
-    DBG(outputSequences.size());   
-    DBG("gettingmidi");
+
     return seq;
 }

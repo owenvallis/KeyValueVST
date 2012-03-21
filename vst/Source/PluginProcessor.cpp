@@ -191,6 +191,14 @@ void Key_valueAudioProcessor::setMode (String mode_)
     midiAggregater.setMode (mode_);
 }
 
+void Key_valueAudioProcessor::saveData() {
+    midiAggregater.saveData();
+}
+
+void Key_valueAudioProcessor::loadData() {
+    midiAggregater.loadData();
+}
+
 //==============================================================================
 // This creates new instances of the plugin..
 AudioProcessor* JUCE_CALLTYPE createPluginFilter()

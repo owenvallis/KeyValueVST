@@ -21,7 +21,8 @@ Key_valueAudioProcessorEditor::Key_valueAudioProcessorEditor (Key_valueAudioProc
       performerMidiInputSelectorALabel(" ", "MIDI Channel PerformerA"),
       performerMidiInputSelectorBLabel(" ", "MIDI Channel PerformerB"),      
       modeLabel(" ", "Mode"),
-      connectToIPC("Connect")
+      saveData("Save"),
+      loadData("Load")
 
 {
     
@@ -47,13 +48,15 @@ Key_valueAudioProcessorEditor::Key_valueAudioProcessorEditor (Key_valueAudioProc
     performerMidiInputSelectorA.addListener(this);
     performerMidiInputSelectorB.addListener(this);
     mode.addListener(this);
-    connectToIPC.addListener(this);
+    saveData.addListener(this);
+    loadData.addListener(this);
     
     // add all our components
     addAndMakeVisible(&performerMidiInputSelectorA);
     addAndMakeVisible(&performerMidiInputSelectorB);
     addAndMakeVisible(&mode);
-    addAndMakeVisible(&connectToIPC);
+    addAndMakeVisible(&saveData);
+    addAndMakeVisible(&loadData);
     
     mode.setText(getProcessor()->getMode());
     
@@ -77,7 +80,8 @@ void Key_valueAudioProcessorEditor::resized()
     performerMidiInputSelectorA.setBounds(10, 30, 100, 22);
     performerMidiInputSelectorB.setBounds(10, 80, 100, 22);
     mode.setBounds(130, 30, 100, 22);
-    connectToIPC.setBounds(130, 80, 100, 22);
+    saveData.setBounds(130, 80, 45, 22);
+    loadData.setBounds(185, 80, 45, 22);
 }
 
 void Key_valueAudioProcessorEditor::comboBoxChanged (ComboBox *comboBoxThatHasChanged)
@@ -98,9 +102,10 @@ void Key_valueAudioProcessorEditor::comboBoxChanged (ComboBox *comboBoxThatHasCh
 
 void Key_valueAudioProcessorEditor::buttonClicked (Button* button)
 {       
-    if (button == &connectToIPC) {
-                
-        getProcessor()->connectToDataBus();
+    if (button == &saveData) {
+        getProcessor()->saveData();       
+    } else if (button == &loadData) {
+        getProcessor()->loadData();
     }
 }
 
