@@ -22,47 +22,57 @@
 #define __S2MP_H_3C6A6B70__
 
 #include "../JuceLibraryCode/JuceHeader.h"
-#include "KeyValueMIDIPair.h"
 
 class S2MP {
 public:
     S2MP();
     ~S2MP();
     
+    void setParams (OwnedArray<SortedSet<int>> &sp1_, OwnedArray<SortedSet<int>> &sp2_, 
+                    int sp1frst = 0, int sp2frst = 0, 
+                    int sp1len = -1, int sp2len = -1);
+    
+    void compareSequences();
+    
+    float getSimilarityScore() { return _similarity; }
+    
     // Calculates similarity between two lists of lists
-    double compareSequences (const OwnedArray<KeyValueMIDIPair> &sp1, const OwnedArray<KeyValueMIDIPair> &sp2, 
+    float compareSequences (OwnedArray<SortedSet<int>> &sp1_, OwnedArray<SortedSet<int>> &sp2_, 
                              int sp1frst = 0, int sp2frst = 0, 
                              int sp1len = -1, int sp2len = -1);
     
 private:
+    CriticalSection lock;
     
+    OwnedArray<SortedSet<int>>* sp1; 
+    OwnedArray<SortedSet<int>>* sp2;
 	/*
 	 * Private variables
 	 */
-	double _mappingCo;                 // Mapping coefficient
-	double _orderCo;                   // Order coefficient
+	float _mappingCo;                 // Mapping coefficient
+	float _orderCo;                   // Order coefficient
 	
 	int _sp1frst;                      // Element of _sp1 to start first subsequence
 	int _sp1len;                       // Length of first subsequence
 	int _sp2frst;                      // Element of _sp2 to start second subsequence
 	int _sp2len;                       // Length of second subsequence
 	
-	double _mappingScore;              // Average weight score
-	double _orderScore;                // Order score
+	float _mappingScore;              // Average weight score
+	float _orderScore;                // Order score
 	Array <int> _mappingOrder;         // Mapping order
-	Array <Array <double> > _w;        // Weight matrix
-	double _similarity;                // Overall similarity
+	Array <Array <float> > _w;        // Weight matrix
+	float _similarity;                // Overall similarity
 	
 	/*
 	 * Private functions for calculating the similarity
 	 */
-	void calcWeightMatrix (const OwnedArray<KeyValueMIDIPair> &sp1, const OwnedArray<KeyValueMIDIPair> &sp2);
-    int numberOfIntersections (const SortedSet<int> &set1, const SortedSet<int> &set2);
+	void calcWeightMatrix (OwnedArray<SortedSet<int>> &sp1, OwnedArray<SortedSet<int>> &sp2);
+    int numberOfIntersections (SortedSet<int>* set1, SortedSet<int>* set2);
 
 	void calcMappingScore();
-    int indexOfMax (Array<double> &weights);
+    int indexOfMax (Array<float> &weights);
     void solveConflict (int i_, int k_);
-    double calcLocalSim (int id1, int cid1, double w1, int id2, int cid2, double w2);
+    float calcLocalSim (int id1, int cid1, float w1, int id2, int cid2, float w2);
     
 	void calcOrderScore();
     

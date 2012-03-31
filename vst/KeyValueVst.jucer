@@ -8,12 +8,6 @@
               pluginProducesMidiOut="1" pluginSilenceInIsSilenceOut="0" pluginTailLength="0"
               pluginEditorRequiresKeys="0" pluginAUExportPrefix="KeyValueVstAU"
               pluginAUViewClass="KeyValueVstAU_V1" pluginRTASCategory="" jucerVersion="3.0.0">
-  <CONFIGURATIONS>
-    <CONFIGURATION name="Debug" isDebug="1" optimisation="1" targetName="KeyValueVst"
-                   osxSDK="default" osxCompatibility="default" osxArchitecture="default"/>
-    <CONFIGURATION name="Release" isDebug="0" optimisation="2" targetName="KeyValueVst"
-                   osxSDK="default" osxCompatibility="default" osxArchitecture="default"/>
-  </CONFIGURATIONS>
   <EXPORTFORMATS>
     <XCODE_MAC targetFolder="Builds/MacOSX" objCExtraSuffix="TecZ6l" juceFolder="../../../../sdks/juce/modules"
                vstFolder="~/SDKs/vstsdk2.4">
@@ -28,15 +22,9 @@
   <MAINGROUP id="rDjLyJ" name="KeyValueVst">
     <GROUP id="{1411B4F7-C7FC-6C86-0543-E4ACF975A2A7}" name="Source">
       <GROUP id="{61FB89BE-730C-9BC3-9FB6-ABAFDE9DE2AA}" name="Algorithm">
-        <FILE id="F9Ktsh" name="KeyValueMIDIPair.h" compile="0" resource="0"
-              file="Source/KeyValueMIDIPair.h"/>
         <FILE id="sET5gG" name="S2MP.cpp" compile="1" resource="0" file="Source/S2MP.cpp"/>
         <FILE id="Zla6BU" name="S2MP.h" compile="0" resource="0" file="Source/S2MP.h"/>
       </GROUP>
-      <FILE id="GweXct" name="BackgroundThread.cpp" compile="1" resource="0"
-            file="Source/BackgroundThread.cpp"/>
-      <FILE id="RRt2NG" name="BackgroundThread.h" compile="0" resource="0"
-            file="Source/BackgroundThread.h"/>
       <FILE id="OVHtPy" name="MIDIAggregater.cpp" compile="1" resource="0"
             file="Source/MIDIAggregater.cpp"/>
       <FILE id="ZFafYz" name="MIDIAggregater.h" compile="0" resource="0"

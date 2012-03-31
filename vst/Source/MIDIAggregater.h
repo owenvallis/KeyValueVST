@@ -12,7 +12,39 @@
 #define __MIDIAGGREGATER_H_5BE1F691__
 
 #include "../JuceLibraryCode/JuceHeader.h"
-#include "BackgroundThread.h"
+#include "S2MP.h"
+
+class S2MPThreadJob  :  public S2MP,
+                        public ThreadPoolJob
+{
+public:
+    S2MPThreadJob(int ID)
+    : ThreadPoolJob (String(ID))
+    
+    {
+        isCompareFinished = true;
+    }
+    
+    ~S2MPThreadJob()
+    {
+    }
+    
+    JobStatus runJob()
+    {
+        
+            isCompareFinished = false;
+            compareSequences();
+            isCompareFinished = true;  
+        
+        return jobHasFinished;
+    }
+    
+    bool compareComplete() { return isCompareFinished; }
+    
+private:
+    bool isCompareFinished;
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (S2MPThreadJob);
+};
 
 //==============================================================================
 /**
@@ -23,12 +55,11 @@ public:
     MIDIAggregater ();
     ~MIDIAggregater();
     
-    void addMidiBuffer (const MidiBuffer& buffer, 
+    void addMidiBuffer (MidiBuffer& buffer, 
                         const AudioPlayHead::CurrentPositionInfo& newTime, 
-                        const double sampleRate);
-    
-    void getMidiBuffer (MidiBuffer& buffer, const int numberSamplesInProcessBlock);
-    
+                        const double sampleRate,
+                        const int numberSamplesInProcessBlock);
+        
     void resetValues();
         
     void setMidiChannelA (int channelA_);
@@ -39,38 +70,41 @@ public:
     
     void saveData();
     void loadData();
+        
+private:
+    ThreadPool simThreads;
     
-private: 
+    // send our data out the IPC bus
+    void processMidi (const String mode_, 
+                      SortedSet<int>* perfA_,
+                      SortedSet<int>& perfB_);
     
-    CriticalSection lock;
+    SortedSet<int> getMidiNextItemSet();
     
-    SortedSet<int>      perfASortedSet;
-    SortedSet<int>      overflowSet;
+    OwnedArray<SortedSet<int>> seq1, seq2;
+    SortedSet<int> returnedSet;
+    OwnedArray<S2MPThreadJob> simMatches;   
     
-    MidiMessageSequence perfBMidi, overflowSequence, outputSequence;
+    HashMap<int, int>   midiEventHolderPerfA, midiEventHolderPerfB;
+    SortedSet<int>          midiEventHolderPerfAKey, midiEventHolderPerfBKey;
     
-    // our worker thread 
-    BackgroundThread midiSequenceProcessor;
+    HashMap<int, int>   midiEventHolderPerfAOverFlow, midiEventHolderPerfBOverFlow;
+    SortedSet<int>          midiEventHolderPerfAOverFlowKey, midiEventHolderPerfBOverFlowKey;
     
-    // Parts per Quater Note 
-    // ths should be determined by the host
-    // but we'll hard set it for now at Ableton's 96 ppq
-    double ppqn;
-    double ticksPerBar;
-    
-    // timestamp variables
-    double framesPerTick;
-    double currentTickPosFromLastBar;
-    double ppqPositionOfLastBarStart, previousPPQPosOfLastBarStart;
-    
-    int numberOfSamplesPerBar;
-    int currentMidiMessageInSequence;
-    int samplePosInCurrentBarSinceLastBlock;
-    
+    int numberOfSamplesSinceLastSnapshot;
+    int numberOfSamplesInSnapshot;
+        
     // midi channels
     int channelA, channelB;
     // mode
     String mode;
+    
+    double similarityScore;
+    double bestMatchScore;
+    int posBestMatchScore;
+    
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MIDIAggregater);
+
 };
 
 #endif  // __MIDIAGGREGATER_H_5BE1F691__

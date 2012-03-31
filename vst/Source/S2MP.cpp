@@ -15,6 +15,7 @@ S2MP::S2MP()
     // similarity calculation coefficients
     _mappingCo = 0.5;
     _orderCo = 0.5; 
+    
 }
 
 S2MP::~S2MP()
@@ -22,8 +23,47 @@ S2MP::~S2MP()
     
 }
 
+void S2MP::setParams (OwnedArray<SortedSet<int>> &sp1_, OwnedArray<SortedSet<int>> &sp2_, 
+                      int sp1frst, int sp2frst, 
+                      int sp1len, int sp2len)
+{
+    const ScopedLock sl (lock);
+    
+    // set ranges from sequences
+    _sp1frst = sp1frst;
+    
+    // check bounds
+    if ((sp1len > -1) && (_sp1frst + sp1len) <= sp1_.size()) {
+        _sp1len = _sp1frst + sp1len;
+    } else {
+        _sp1len = sp1_.size() - _sp1frst;
+    }
+    
+    _sp2frst = sp2frst;
+    
+    // check bounds
+    if ((sp2len > -1) && (_sp2frst + sp2len) <= sp2_.size()) {
+        _sp2len = _sp2frst + sp2len;
+    } else {
+        _sp2len = sp2_.size() - _sp2frst;
+    }
+    
+    sp1 = &sp1_;
+    sp2 = &sp2_;
+    
+}
+
+void S2MP::compareSequences() 
+{
+    // do calculations
+    calcWeightMatrix(*sp1, *sp2);
+    calcMappingScore();
+    calcOrderScore();
+    calcSimilarity();
+}
+
 // Calculates similarity between two lists of lists
-double S2MP::compareSequences (const OwnedArray<KeyValueMIDIPair> &sp1, const OwnedArray<KeyValueMIDIPair> &sp2, 
+float S2MP::compareSequences (OwnedArray<SortedSet<int>> &sp1_, OwnedArray<SortedSet<int>> &sp2_, 
                                int sp1frst, int sp2frst, 
                                int sp1len, int sp2len)
 {    
@@ -31,23 +71,23 @@ double S2MP::compareSequences (const OwnedArray<KeyValueMIDIPair> &sp1, const Ow
     _sp1frst = sp1frst;
     
     // check bounds
-    if ((sp1len > -1) && (_sp1frst + sp1len) <= sp1.size()) {
+    if ((sp1len > -1) && (_sp1frst + sp1len) <= sp1_.size()) {
         _sp1len = _sp1frst + sp1len;
     } else {
-        _sp1len = sp1.size() - _sp1frst;
+        _sp1len = sp1_.size() - _sp1frst;
     }
     
     _sp2frst = sp2frst;
     
     // check bounds
-    if ((sp2len > -1) && (_sp2frst + sp2len) <= sp2.size()) {
+    if ((sp2len > -1) && (_sp2frst + sp2len) <= sp2_.size()) {
         _sp2len = _sp2frst + sp2len;
     } else {
-        _sp2len = sp2.size() - _sp2frst;
+        _sp2len = sp2_.size() - _sp2frst;
     }
     
     // do calculations
-    calcWeightMatrix(sp1, sp2);
+    calcWeightMatrix(sp1_, sp2_);
     calcMappingScore();
     calcOrderScore();
     calcSimilarity();
@@ -60,10 +100,10 @@ double S2MP::compareSequences (const OwnedArray<KeyValueMIDIPair> &sp1, const Ow
 // ==================================================================
 
 // Calulate the matching weights between each pair of itemsets in the sequences, stores in a matrix
-void S2MP::calcWeightMatrix(const OwnedArray<KeyValueMIDIPair> &sp1, const OwnedArray<KeyValueMIDIPair> &sp2)
+void S2MP::calcWeightMatrix(OwnedArray<SortedSet<int>> &sp1, OwnedArray<SortedSet<int>> &sp2)
 {
-    DBG("sp1 size: " + String(sp1.size()));
-    DBG("sp2 size: " + String(sp2.size()));
+    //DBG("sp1 size: " + String(sp1.size()));
+    //DBG("sp2 size: " + String(sp2.size()));
 
     // clear the weight matrix
     _w.clearQuick();
@@ -72,35 +112,35 @@ void S2MP::calcWeightMatrix(const OwnedArray<KeyValueMIDIPair> &sp1, const Owned
     for (int i = _sp1frst; i < _sp1len; i++)
     {
         // add a new row for itemset i
-        _w.add(Array<double>());
+        _w.add(Array<float>());
         
         for (int j = _sp2frst; j < _sp2len; j++) {
             // find interection
-            int intersection = numberOfIntersections (sp1[i]->getItemSet(), sp2[j]->getItemSet());
+            int intersection = numberOfIntersections (sp1[i], sp2[j]);
             
             // append row with jth: matching weight = (num elements in intersection)/(avg num of elements in itemsets)		
             _w.getReference(i - _sp1frst).add (intersection/(_sp1len + _sp2len/2.0));
         }   
-        DBG("Size of row " + String(i) + " " + String(_w.getReference(i - _sp1frst).size()) + "   number of jth items tested " + String(_sp2len));
+        //DBG("Size of row " + String(i) + " " + String(_w.getReference(i - _sp1frst).size()) + "   number of jth items tested " + String(_sp2len));
     }
     
 }
 
-int S2MP::numberOfIntersections (const SortedSet<int> &set1, const SortedSet<int> &set2)
+int S2MP::numberOfIntersections (SortedSet<int>* set1, SortedSet<int>* set2)
 {
     int i = 0, j = 0;
-    int m = set1.size();
-    int n = set2.size();
+    int m = set1->size();
+    int n = set2->size();
     
     int intersectionCount = 0;
     
     while (i < m && j < n)
     {
-        if (set1.getUnchecked(i) < set2.getUnchecked(j))
+        if (set1->getUnchecked(i) < set2->getUnchecked(j))
         {
             i++;
         }
-        else if (set2.getUnchecked(j) < set1.getUnchecked(i))
+        else if (set2->getUnchecked(j) < set1->getUnchecked(i))
         {
             j++;
         }
@@ -122,12 +162,14 @@ void S2MP::calcMappingScore()
     
     // keep track of the number of matching weights equal to zero
     int coutnMinusOnes = 0;
-    
+  
     // find the position of each row's max matching weight
-    for (int i = 0; i < (_sp1len - _sp1frst); i++)
+    for (int i = 0; i < _w.size(); i++)
     {
+
         // in the case of two matching Max weights, we take the first one
         int weightPos = indexOfMax(_w.getReference(i));
+ 
         // set all mappings associated with a meanininglessly small weight to -1
         if (_w.getReference(i).getUnchecked(weightPos) < 0.00001)
         {
@@ -137,6 +179,7 @@ void S2MP::calcMappingScore()
         
         // store matching weight position i.e. max weight in this row
         _mappingOrder.add(weightPos);
+
     }
     
     // If there are no mappings, return with mappingScore = 0
@@ -162,8 +205,8 @@ void S2MP::calcMappingScore()
     }
     
     // set _mapping_score to the mean of the weights of the mapped itemsets and return
-    double count = 0.0;
-    double total = 0.0;
+    float count = 0.0;
+    float total = 0.0;
     
     for (int i = 0; i < _mappingOrder.size(); i++)
     {
@@ -173,17 +216,17 @@ void S2MP::calcMappingScore()
             count += 1.0;
         }
     }
-            
+          
     if (count != 0)
     {
         _mappingScore = total/count;
     } else {
         _mappingScore = 0.0;
     }
-    
+
 }
 
-int S2MP::indexOfMax(Array<double>& weights)
+int S2MP::indexOfMax(Array<float>& weights)
 {
     int mx = 0;
     
@@ -221,8 +264,8 @@ void S2MP::solveConflict (int i_, int k_)
         
     // Now evaluate all the scores for keeping _mapping_order[i] the same and changing _mapping_order[k]
     bool noAlternativeFound = true;
-    double score = 0.0;
-    double sc1 = 0.0;
+    float score = 0.0;
+    float sc1 = 0.0;
     int sc1id = 0;
     
     for (int j = 0; j < avbl.size(); j++)
@@ -242,7 +285,7 @@ void S2MP::solveConflict (int i_, int k_)
     }
     
     // Now evaluate all the scores for keeping _mapping_order[k] the same and changing _mapping_order[i]
-    double sc2 = 0.0;
+    float sc2 = 0.0;
     int sc2id = 0;
     
     for (int j = 0; j < avbl.size(); j++)
@@ -291,7 +334,7 @@ void S2MP::solveConflict (int i_, int k_)
     }
 }
 
-double S2MP::calcLocalSim (int id1, int cid1, double w1, int id2, int cid2, double w2)
+float S2MP::calcLocalSim (int id1, int cid1, float w1, int id2, int cid2, float w2)
 {
     if (((id1 > id2) && (cid1 > cid2)) || ((id1 < id2) && (cid1 < cid2)))
         return (w1+w2)/2.0;
@@ -308,11 +351,11 @@ void S2MP::calcOrderScore()
 {
     Array <int> subs;
     Array <int> subsids;
-	double totalOrder;
-	double meanlen = ((double)_sp1len + (double)_sp2len)/2.0;
-	double positionOrder;
-	double score;
-	double sm;
+	float totalOrder;
+	float meanlen = ((float)_sp1len + (float)_sp2len)/2.0;
+	float positionOrder;
+	float score;
+	float sm;
     
 	_orderScore = 0.0;
     

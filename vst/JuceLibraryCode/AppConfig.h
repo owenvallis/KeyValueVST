@@ -30,90 +30,220 @@
 //==============================================================================
 // juce_audio_devices flags:
 
-//#define  JUCE_ASIO
-//#define  JUCE_WASAPI
-//#define  JUCE_DIRECTSOUND
-//#define  JUCE_ALSA
-//#define  JUCE_JACK
-//#define  JUCE_USE_ANDROID_OPENSLES
-//#define  JUCE_USE_CDREADER
-//#define  JUCE_USE_CDBURNER
+#ifndef    JUCE_ASIO
+ //#define JUCE_ASIO
+#endif
+
+#ifndef    JUCE_WASAPI
+ //#define JUCE_WASAPI
+#endif
+
+#ifndef    JUCE_DIRECTSOUND
+ //#define JUCE_DIRECTSOUND
+#endif
+
+#ifndef    JUCE_ALSA
+ //#define JUCE_ALSA
+#endif
+
+#ifndef    JUCE_JACK
+ //#define JUCE_JACK
+#endif
+
+#ifndef    JUCE_USE_ANDROID_OPENSLES
+ //#define JUCE_USE_ANDROID_OPENSLES
+#endif
+
+#ifndef    JUCE_USE_CDREADER
+ //#define JUCE_USE_CDREADER
+#endif
+
+#ifndef    JUCE_USE_CDBURNER
+ //#define JUCE_USE_CDBURNER
+#endif
 
 //==============================================================================
 // juce_audio_formats flags:
 
-//#define  JUCE_USE_FLAC
-//#define  JUCE_USE_OGGVORBIS
-//#define  JUCE_USE_MP3AUDIOFORMAT
-//#define  JUCE_USE_WINDOWS_MEDIA_FORMAT
+#ifndef    JUCE_USE_FLAC
+ //#define JUCE_USE_FLAC
+#endif
+
+#ifndef    JUCE_USE_OGGVORBIS
+ //#define JUCE_USE_OGGVORBIS
+#endif
+
+#ifndef    JUCE_USE_MP3AUDIOFORMAT
+ //#define JUCE_USE_MP3AUDIOFORMAT
+#endif
+
+#ifndef    JUCE_USE_WINDOWS_MEDIA_FORMAT
+ //#define JUCE_USE_WINDOWS_MEDIA_FORMAT
+#endif
 
 //==============================================================================
 // juce_audio_processors flags:
 
-//#define  JUCE_PLUGINHOST_VST
-//#define  JUCE_PLUGINHOST_AU
+#ifndef    JUCE_PLUGINHOST_VST
+ //#define JUCE_PLUGINHOST_VST
+#endif
+
+#ifndef    JUCE_PLUGINHOST_AU
+ //#define JUCE_PLUGINHOST_AU
+#endif
 
 //==============================================================================
 // juce_core flags:
 
-//#define  JUCE_FORCE_DEBUG
-//#define  JUCE_LOG_ASSERTIONS
-//#define  JUCE_CHECK_MEMORY_LEAKS
-//#define  JUCE_DONT_AUTOLINK_TO_WIN32_LIBRARIES
+#ifndef    JUCE_FORCE_DEBUG
+ //#define JUCE_FORCE_DEBUG
+#endif
+
+#ifndef    JUCE_LOG_ASSERTIONS
+ //#define JUCE_LOG_ASSERTIONS
+#endif
+
+#ifndef    JUCE_CHECK_MEMORY_LEAKS
+ //#define JUCE_CHECK_MEMORY_LEAKS
+#endif
+
+#ifndef    JUCE_DONT_AUTOLINK_TO_WIN32_LIBRARIES
+ //#define JUCE_DONT_AUTOLINK_TO_WIN32_LIBRARIES
+#endif
 
 //==============================================================================
 // juce_graphics flags:
 
-//#define  JUCE_USE_COREIMAGE_LOADER
-//#define  JUCE_USE_DIRECTWRITE
+#ifndef    JUCE_USE_COREIMAGE_LOADER
+ //#define JUCE_USE_COREIMAGE_LOADER
+#endif
+
+#ifndef    JUCE_USE_DIRECTWRITE
+ //#define JUCE_USE_DIRECTWRITE
+#endif
 
 //==============================================================================
 // juce_gui_basics flags:
 
-//#define  JUCE_ENABLE_REPAINT_DEBUGGING
-//#define  JUCE_USE_XSHM
-//#define  JUCE_USE_XRENDER
-//#define  JUCE_USE_XCURSOR
+#ifndef    JUCE_ENABLE_REPAINT_DEBUGGING
+ //#define JUCE_ENABLE_REPAINT_DEBUGGING
+#endif
+
+#ifndef    JUCE_USE_XSHM
+ //#define JUCE_USE_XSHM
+#endif
+
+#ifndef    JUCE_USE_XRENDER
+ //#define JUCE_USE_XRENDER
+#endif
+
+#ifndef    JUCE_USE_XCURSOR
+ //#define JUCE_USE_XCURSOR
+#endif
 
 //==============================================================================
 // juce_gui_extra flags:
 
-//#define  JUCE_WEB_BROWSER
+#ifndef    JUCE_WEB_BROWSER
+ //#define JUCE_WEB_BROWSER
+#endif
+
 
 //==============================================================================
 // Audio plugin settings..
 
-#define JucePlugin_Build_VST    1
-#define JucePlugin_Build_AU     0
-#define JucePlugin_Build_RTAS   0
-
-#define JucePlugin_Name                 "KeyValueVst"
-#define JucePlugin_Desc                 "KeyValueVst"
-#define JucePlugin_Manufacturer         "flipmu"
-#define JucePlugin_ManufacturerCode     'Manu'
-#define JucePlugin_PluginCode           'Plug'
-#define JucePlugin_MaxNumInputChannels  2
-#define JucePlugin_MaxNumOutputChannels 2
-#define JucePlugin_PreferredChannelConfigurations   {1, 1}, {2, 2}
-#define JucePlugin_IsSynth              1
-#define JucePlugin_WantsMidiInput       1
-#define JucePlugin_ProducesMidiOutput   1
-#define JucePlugin_SilenceInProducesSilenceOut  0
-#define JucePlugin_TailLengthSeconds    0
-#define JucePlugin_EditorRequiresKeyboardFocus  0
-#define JucePlugin_VersionCode          0x1
-#define JucePlugin_VersionString        "0.0.1"
-#define JucePlugin_VSTUniqueID          JucePlugin_PluginCode
-#define JucePlugin_VSTCategory          kPlugCategSynth
-#define JucePlugin_AUMainType           kAudioUnitType_MusicDevice
-#define JucePlugin_AUSubType            JucePlugin_PluginCode
-#define JucePlugin_AUExportPrefix       KeyValueVstAU
-#define JucePlugin_AUExportPrefixQuoted "KeyValueVstAU"
-#define JucePlugin_AUManufacturerCode   JucePlugin_ManufacturerCode
-#define JucePlugin_CFBundleIdentifier   com.flipmu.KeyValueVst
-#define JucePlugin_AUCocoaViewClassName KeyValueVstAU_V1
-#define JucePlugin_RTASCategory         ePlugInCategory_SWGenerators
-#define JucePlugin_RTASManufacturerCode JucePlugin_ManufacturerCode
-#define JucePlugin_RTASProductId        JucePlugin_PluginCode
+#ifndef  JucePlugin_Build_VST
+ #define JucePlugin_Build_VST              1
+#endif
+#ifndef  JucePlugin_Build_AU
+ #define JucePlugin_Build_AU               0
+#endif
+#ifndef  JucePlugin_Build_RTAS
+ #define JucePlugin_Build_RTAS             0
+#endif
+#ifndef  JucePlugin_Name
+ #define JucePlugin_Name                   "KeyValueVst"
+#endif
+#ifndef  JucePlugin_Desc
+ #define JucePlugin_Desc                   "KeyValueVst"
+#endif
+#ifndef  JucePlugin_Manufacturer
+ #define JucePlugin_Manufacturer           "flipmu"
+#endif
+#ifndef  JucePlugin_ManufacturerCode
+ #define JucePlugin_ManufacturerCode       'Manu'
+#endif
+#ifndef  JucePlugin_PluginCode
+ #define JucePlugin_PluginCode             'Plug'
+#endif
+#ifndef  JucePlugin_MaxNumInputChannels
+ #define JucePlugin_MaxNumInputChannels    2
+#endif
+#ifndef  JucePlugin_MaxNumOutputChannels
+ #define JucePlugin_MaxNumOutputChannels   2
+#endif
+#ifndef  JucePlugin_PreferredChannelConfigurations
+ #define JucePlugin_PreferredChannelConfigurations  {1, 1}, {2, 2}
+#endif
+#ifndef  JucePlugin_IsSynth
+ #define JucePlugin_IsSynth                1
+#endif
+#ifndef  JucePlugin_WantsMidiInput
+ #define JucePlugin_WantsMidiInput         1
+#endif
+#ifndef  JucePlugin_ProducesMidiOutput
+ #define JucePlugin_ProducesMidiOutput     1
+#endif
+#ifndef  JucePlugin_SilenceInProducesSilenceOut
+ #define JucePlugin_SilenceInProducesSilenceOut  0
+#endif
+#ifndef  JucePlugin_TailLengthSeconds
+ #define JucePlugin_TailLengthSeconds      0
+#endif
+#ifndef  JucePlugin_EditorRequiresKeyboardFocus
+ #define JucePlugin_EditorRequiresKeyboardFocus  0
+#endif
+#ifndef  JucePlugin_VersionCode
+ #define JucePlugin_VersionCode            0x1
+#endif
+#ifndef  JucePlugin_VersionString
+ #define JucePlugin_VersionString          "0.0.1"
+#endif
+#ifndef  JucePlugin_VSTUniqueID
+ #define JucePlugin_VSTUniqueID            JucePlugin_PluginCode
+#endif
+#ifndef  JucePlugin_VSTCategory
+ #define JucePlugin_VSTCategory            kPlugCategSynth
+#endif
+#ifndef  JucePlugin_AUMainType
+ #define JucePlugin_AUMainType             kAudioUnitType_MusicDevice
+#endif
+#ifndef  JucePlugin_AUSubType
+ #define JucePlugin_AUSubType              JucePlugin_PluginCode
+#endif
+#ifndef  JucePlugin_AUExportPrefix
+ #define JucePlugin_AUExportPrefix         KeyValueVstAU
+#endif
+#ifndef  JucePlugin_AUExportPrefixQuoted
+ #define JucePlugin_AUExportPrefixQuoted   "KeyValueVstAU"
+#endif
+#ifndef  JucePlugin_AUManufacturerCode
+ #define JucePlugin_AUManufacturerCode     JucePlugin_ManufacturerCode
+#endif
+#ifndef  JucePlugin_CFBundleIdentifier
+ #define JucePlugin_CFBundleIdentifier     com.flipmu.KeyValueVst
+#endif
+#ifndef  JucePlugin_AUCocoaViewClassName
+ #define JucePlugin_AUCocoaViewClassName   KeyValueVstAU_V1
+#endif
+#ifndef  JucePlugin_RTASCategory
+ #define JucePlugin_RTASCategory           ePlugInCategory_SWGenerators
+#endif
+#ifndef  JucePlugin_RTASManufacturerCode
+ #define JucePlugin_RTASManufacturerCode   JucePlugin_ManufacturerCode
+#endif
+#ifndef  JucePlugin_RTASProductId
+ #define JucePlugin_RTASProductId          JucePlugin_PluginCode
+#endif
 
 #endif  // __JUCE_APPCONFIG_EPKJQ3__

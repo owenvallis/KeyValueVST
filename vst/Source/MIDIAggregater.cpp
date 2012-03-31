@@ -9,163 +9,212 @@
  */
 #include "MIDIAggregater.h"
 
-MIDIAggregater::MIDIAggregater () : mode("Learning")
+
+
+
+
+//==============================================================================
+MIDIAggregater::MIDIAggregater () : simThreads (400),
+                                    mode ("Learning")
+                                    
 {    
-    // Parts per Quater Note 
-    // ths should be determined by the host
-    // but we'll hard set it for now at Ableton's 96 ppq
-    ppqn = 96;   
-    ticksPerBar = ppqn * 4;
+    // same as Ableton's internal CC rate of 100hrz
+    numberOfSamplesInSnapshot = 441;
     
-    // initialize our timestamp variables
-    framesPerTick = 0;
-    previousPPQPosOfLastBarStart = 0; 
-    
-    numberOfSamplesPerBar = 0;
-    
-    samplePosInCurrentBarSinceLastBlock = 0;
-    currentMidiMessageInSequence = -1;
-    
+    resetValues();    
 }
 
 MIDIAggregater::~MIDIAggregater()
 {
-    
+    simThreads.removeAllJobs (true, 2000);
 }
 
-void MIDIAggregater::addMidiBuffer (const MidiBuffer& buffer, 
+void MIDIAggregater::addMidiBuffer (MidiBuffer& buffer, 
                                     const AudioPlayHead::CurrentPositionInfo& newTime, 
-                                    const double sampleRate)
-{       
-    // calculate the current number of samples per Bar
-    double secPerQuarterNote = 60.0/newTime.bpm;
-    double samplesPerBeat = sampleRate * secPerQuarterNote;
-    numberOfSamplesPerBar = samplesPerBeat * 4;
+                                    const double sampleRate,
+                                    const int numberSamplesInProcessBlock)
+{    
+    MidiBuffer currentBuffer = buffer;
     
-    // calculate the current number of frames (samples) per tick
-    framesPerTick = samplesPerBeat/ppqn;
+    similarityScore = 0;
+    bestMatchScore = -1;
+    posBestMatchScore = -1;
     
-    ppqPositionOfLastBarStart = newTime.ppqPositionOfLastBarStart;
-    
-    // calculate the tick timestamp at the start of this block
-    currentTickPosFromLastBar = (newTime.ppqPosition - ppqPositionOfLastBarStart) * ppqn;
-    
+    if (numberOfSamplesSinceLastSnapshot >= numberOfSamplesInSnapshot)
+    {
+        SortedSet <int>* itemSetA = new SortedSet<int>();
+        SortedSet <int> itemSetB;
+        
+        // we have to add 1 to the CC number as they are 0 - 127 and we need 1 - 128 for this to work
+        for (int i = 0; i < midiEventHolderPerfAKey.size(); i++) 
+        {
+            int key = midiEventHolderPerfAKey[i];
+            int ccValue = (midiEventHolderPerfA[key]) + (key * 128);
+            itemSetA->add (ccValue);
+        }
+        
+        // we have to add 1 to the CC number as they are 0 - 127 and we need 1 - 128 for this to work
+        for (int i = 0; i < midiEventHolderPerfB.size(); i++)
+        {
+            int key = midiEventHolderPerfBKey[i];
+            int ccValue = (midiEventHolderPerfB[key]) + ((key + 128) * 128);
+            itemSetB.add (ccValue);
+        }
+        
+        // add our overflow to the hasmap for the next snapshot
+        midiEventHolderPerfA.swapWith (midiEventHolderPerfAOverFlow);
+        midiEventHolderPerfAOverFlow.clear();
+        midiEventHolderPerfAKey = midiEventHolderPerfAOverFlowKey;
+        midiEventHolderPerfAOverFlowKey.clearQuick();
+        
+        // add our overflow to the hasmap for the next snapshot
+        midiEventHolderPerfB.swapWith (midiEventHolderPerfAOverFlow);
+        midiEventHolderPerfBOverFlow.clear();
+        midiEventHolderPerfBKey = midiEventHolderPerfBOverFlowKey;
+        midiEventHolderPerfBOverFlowKey.clearQuick();
+        
+        // modulo the current sample position at the start of this block by our snapshot size
+        // use the remainder as our starting offset for the next snapshot
+        numberOfSamplesSinceLastSnapshot = numberOfSamplesSinceLastSnapshot % numberOfSamplesInSnapshot;
+        
+        // lets process our data
+        if (mode == "Learning") {
+            DBG("learn");
+            
+            for (int i = 0; i < itemSetB.size(); i++) {
+                itemSetA->add (itemSetB[i]);
+                DBG ("added: " + String(itemSetB[i]) );
+            }
+            seq2.add (itemSetA);
+            
+            DBG (seq2.size());
+            
+        } else if (mode == "Performance") { 
+            //DBG("perform");
+            
+            if (seq1.size() > 96) {
+                seq1.remove (0);
+            }    
+                
+            DBG ("start sim match: " + String(Time::getMillisecondCounter()));
+            DBG (simMatches.size());
+            
+            DBG (seq2.size() - seq1.size());
+            
+            for (int i = 0; i < seq2.size() - seq1.size(); i++) {
+                
+                if (i < simMatches.size()) {
+                    simMatches[i]->setParams (seq1, seq2, 0, i, seq1.size(), seq1.size());
+                    simThreads.addJob (simMatches[i], false);
+                    // DBG("already added");
+                } else {
+                    DBG("adding new S2MP");
+                    S2MPThreadJob* newMatch = new S2MPThreadJob (i);
+                    simMatches.add (newMatch);
+                    simMatches[i]->setParams (seq1, seq2, 0, i, seq1.size(), seq1.size());
+                    simThreads.addJob (newMatch, false);
+                }
+                                
+            }
+            DBG ("threads running: " + String(Time::getMillisecondCounter()));
+            DBG (simMatches.size());
+            
+            while (simMatches.getLast()->compareComplete() != true) {
+                DBG("stuck");
+            }
+            
+            DBG ("end sim match: " + String(Time::getMillisecondCounter()));
+            
+            DBG (simMatches.size());
+            
+            for (int i = 0; i < simMatches.size(); i++) {
+                
+                similarityScore = simMatches[i]->getSimilarityScore();
+                if (similarityScore > bestMatchScore) {
+                    posBestMatchScore = i;
+                    bestMatchScore = similarityScore;
+                }
+            }
+            
+            DBG ("found sim match: " + String (posBestMatchScore) + ",  " + String (bestMatchScore) + ",  " + String(Time::getMillisecondCounter()));
+            
+            if (posBestMatchScore != -1) {
+                
+                buffer.clear();
+                
+                for (int i = 0; i < seq2[posBestMatchScore]->size(); i++) { 
+                    
+                    // only add items above our first performers range
+                    if ((*seq2[posBestMatchScore])[i] > (128 * 128)) {
+                        itemSetA->add ((*seq2[posBestMatchScore])[i]);
+                        
+                        double storedValue = ((*seq2[posBestMatchScore])[i]/128.00) - 128;
+                        int controllerType = storedValue;
+                        int value = (storedValue - controllerType) * 128.00;
+                        //DBG ("stored value: " + String((*seq2[posBestMatchScore])[i]) + "  controllerType: " + String (controllerType) + "  value: " + String (value));
+                        buffer.addEvent (MidiMessage::controllerEvent (channelB, controllerType, value), numberOfSamplesSinceLastSnapshot);
+                    }
+                } 
+                
+            }   
+
+            seq1.add (itemSetA);
+        }
+    }
+
     // create TimeStamps as Ticks
-    MidiBuffer::Iterator i (buffer);
+    MidiBuffer::Iterator i (currentBuffer);
     MidiMessage message (0xf4, 0.0);
-    int currentFrame;
-    
-    const ScopedLock sl (lock);
-    
-    // iterate over our new MIDI events and create their tick timestamps
+    int currentFrame = -1 ;
+        
+    // iterate over our new MIDI events and add them to our HashMap
     while (i.getNextEvent (message, currentFrame))
     {
         if (message.isController()) 
         {
-            // get our timestamp in ticks
-            double currentTickPos = currentTickPosFromLastBar + (currentFrame/framesPerTick);
-            
-            // if we are within our single Bar
-            if (currentTickPos < ticksPerBar)
+            if (message.getChannel() == channelA) 
             {
-                if (message.getChannel() == channelA)
+                if (numberOfSamplesSinceLastSnapshot + currentFrame < numberOfSamplesInSnapshot)
                 {
-                    perfASortedSet.add (message.getControllerValue());
-                } 
-                else if (message.getChannel() == channelB) 
-                {
-                    message.setTimeStamp (currentTickPos);
-                    perfBMidi.addEvent (message);
-                }                
-            } 
-            else // we have overflowed into the next bar
-            { 
-                if (message.getChannel() == channelA)
-                {
-                    overflowSet.add (message.getControllerValue());
-                } 
-                else if (message.getChannel() == channelB) 
-                {
-                    // if a tick timestamp is > ticksPerBar ticks, then it must be from the next bar
-                    message.setTimeStamp (currentTickPos);
-                    overflowSequence.addEvent (message);
+                    midiEventHolderPerfA.set (message.getControllerNumber(), message.getControllerValue());
+                    midiEventHolderPerfAKey.add (message.getControllerNumber());
+                } else {
+                    midiEventHolderPerfAOverFlow.set (message.getControllerNumber(), message.getControllerValue());
+                    midiEventHolderPerfAOverFlowKey.add (message.getControllerNumber());
                 }
+            } else if (message.getChannel() == channelB) {
+                if (numberOfSamplesSinceLastSnapshot + currentFrame < numberOfSamplesInSnapshot)
+                {
+                    midiEventHolderPerfB.set (message.getControllerNumber(), message.getControllerValue());
+                    midiEventHolderPerfBKey.add (message.getControllerNumber());
+                } else {
+                    midiEventHolderPerfBOverFlow.set (message.getControllerNumber(), message.getControllerValue());
+                    midiEventHolderPerfBOverFlowKey.add (message.getControllerNumber());
+                }            
             }
         }
     }
     
-    // lets see if we've collected a full Bar of midi
-    if(previousPPQPosOfLastBarStart != newTime.ppqPositionOfLastBarStart)
-    {
-        // if so, lets process our data
-        DBG("process");
-        midiSequenceProcessor.processMidi (mode, perfASortedSet, perfBMidi);
-        
-        if (getMode() == "Performance")
-        {
-            outputSequence.clear();
-            outputSequence = midiSequenceProcessor.getMidiNextMidiSequence();
-            DBG("gotMIDI");
-            
-            if(currentMidiMessageInSequence == -1)
-            {
-                samplePosInCurrentBarSinceLastBlock = 0;
-            } else {
-                samplePosInCurrentBarSinceLastBlock = samplePosInCurrentBarSinceLastBlock - numberOfSamplesPerBar;
-            }
-            
-            currentMidiMessageInSequence = 0;
-        }
-        
-        // clear our ordered set and then add back in the overflow
-        perfASortedSet = overflowSet;
-        overflowSet.clearQuick();
-        
-        // clear our midiSequence and then add back in the overflow midi events
-        perfBMidi.clear();
-        perfBMidi.addSequence (overflowSequence, -ticksPerBar, 0, ticksPerBar);
-        overflowSequence.clear();
-        
-        previousPPQPosOfLastBarStart = newTime.ppqPositionOfLastBarStart;
+    numberOfSamplesSinceLastSnapshot += numberSamplesInProcessBlock;
+    
+    if (posBestMatchScore == -1) {
+        buffer.clear();
     }
-}
-
-void MIDIAggregater::getMidiBuffer (MidiBuffer& buffer, const int numberSamplesInProcessBlock)
-{
-    
-    buffer.clear();
-    int currentSample = 0;
-    
-    while (currentSample < numberSamplesInProcessBlock && currentMidiMessageInSequence < outputSequence.getNumEvents())
-    {
-        double timeStamp = outputSequence.getEventPointer(currentMidiMessageInSequence)->message.getTimeStamp();
-        
-        currentSample = (timeStamp * framesPerTick) - samplePosInCurrentBarSinceLastBlock;
-
-        if (currentSample > 0 && currentSample < numberSamplesInProcessBlock) {
-            buffer.addEvent (outputSequence.getEventPointer(currentMidiMessageInSequence)->message, currentSample);
-        }
-        
-        if (currentSample < numberSamplesInProcessBlock)
-        {
-            currentMidiMessageInSequence++;
-        }
-    }
-    
-    samplePosInCurrentBarSinceLastBlock += numberSamplesInProcessBlock;
-
 }
 
 void MIDIAggregater::resetValues()
-{
-    // initialize our timestamp variables
-    framesPerTick = 0;
-    previousPPQPosOfLastBarStart = 0; 
+{    
+    numberOfSamplesSinceLastSnapshot = 0;
     
-    numberOfSamplesPerBar = 0;
+    midiEventHolderPerfA.clear();
+    midiEventHolderPerfB.clear();
+    midiEventHolderPerfAKey.clearQuick();
+    midiEventHolderPerfBKey.clearQuick();
     
-    samplePosInCurrentBarSinceLastBlock = 0;
-    currentMidiMessageInSequence = -1;
+    midiEventHolderPerfAOverFlow.clear();
+    midiEventHolderPerfBOverFlow.clear();
+    midiEventHolderPerfAOverFlowKey.clearQuick();
+    midiEventHolderPerfBOverFlowKey.clearQuick();
 }
 
 void MIDIAggregater::setMidiChannelA (int channelA_)
@@ -188,5 +237,6 @@ void MIDIAggregater::saveData() {
 }
 
 void MIDIAggregater::loadData() {
-    
+    seq1.clear();
+    seq2.clear();
 }

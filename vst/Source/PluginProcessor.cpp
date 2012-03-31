@@ -118,7 +118,7 @@ void Key_valueAudioProcessor::prepareToPlay (double sampleRate, int samplesPerBl
     // Use this method as the place to do any pre-playback
     // initialisation that you need..
     midiAggregater.resetValues();
-}
+ }
 
 void Key_valueAudioProcessor::releaseResources()
 {
@@ -137,11 +137,9 @@ void Key_valueAudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuffe
     if (getPlayHead() != 0 && getPlayHead()->getCurrentPosition (newTime))
     {
         if(newTime.isPlaying) {
-            midiAggregater.addMidiBuffer(midiMessages, newTime, getSampleRate());  
-            
-            if (midiAggregater.getMode() == "Performance") {
-                midiAggregater.getMidiBuffer(midiMessages, blockSizeInSamples);
-            }
+
+            midiAggregater.addMidiBuffer(midiMessages, newTime, getSampleRate(), blockSizeInSamples);  
+
         }
     }
     
